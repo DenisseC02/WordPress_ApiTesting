@@ -1,43 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 6.0.2 (Python 3.8.8 on win32)" generated="20230416 18:39:25.137" rpa="false" schemaversion="3">
+<robot generator="Robot 6.0.2 (Python 3.8.8 on win32)" generated="20230416 18:56:13.870" rpa="false" schemaversion="3">
 <suite id="s1" name="Test1" source="C:\Users\User\Documents\API_testing\WordPress_ApiTesting\wp_api\tests\pages\test1.robot">
 <test id="s1-t1" name="Verify get" line="15">
 <kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
 <var>${url}</var>
-<arg>${end_point}</arg>
 <doc>Returns the URL</doc>
-<msg timestamp="20230416 18:39:25.209" level="INFO">${url} = http://localhost/wp-json/wp/v2/pages</msg>
-<status status="PASS" starttime="20230416 18:39:25.209" endtime="20230416 18:39:25.209"/>
+<msg timestamp="20230416 18:56:13.945" level="INFO">${url} = http://www.google.com/</msg>
+<status status="PASS" starttime="20230416 18:56:13.945" endtime="20230416 18:56:13.945"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>${url}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230416 18:39:25.209" endtime="20230416 18:39:25.210"/>
+<status status="PASS" starttime="20230416 18:56:13.945" endtime="20230416 18:56:13.945"/>
 </kw>
 <kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
 <var>${session}</var>
 <var>${params}</var>
 <doc>IN PROGRESS</doc>
-<msg timestamp="20230416 18:39:25.210" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000001D089DAA850&gt;</msg>
-<msg timestamp="20230416 18:39:25.210" level="INFO">${params} = {}</msg>
-<status status="PASS" starttime="20230416 18:39:25.210" endtime="20230416 18:39:25.210"/>
+<msg timestamp="20230416 18:56:13.946" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000001F37590CC10&gt;</msg>
+<msg timestamp="20230416 18:56:13.946" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230416 18:56:13.945" endtime="20230416 18:56:13.946"/>
 </kw>
 <kw name="Custom Get" library="libraries.requests.custom_request.CustomRequest">
 <var>${response}</var>
 <arg>${session}</arg>
 <arg>${url}</arg>
 <arg>${params}</arg>
-<msg timestamp="20230416 18:39:25.248" level="INFO">${response} = [{'id': 182, 'date': '2023-04-13T15:37:29', 'date_gmt': '2023-04-13T15:37:29', 'guid': {'rendered': 'http://localhost/?page_id=182'}, 'modified': '2023-04-13T15:37:29', 'modified_gmt': '2023-04-13T15:...</msg>
-<status status="PASS" starttime="20230416 18:39:25.210" endtime="20230416 18:39:25.248"/>
+<msg timestamp="20230416 18:56:14.125" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20230416 18:56:13.946" endtime="20230416 18:56:14.125"/>
 </kw>
 <kw name="Log To Console" library="BuiltIn">
 <arg>${response}</arg>
 <doc>Logs the given message to the console.</doc>
-<status status="PASS" starttime="20230416 18:39:25.248" endtime="20230416 18:39:25.252"/>
+<status status="PASS" starttime="20230416 18:56:14.125" endtime="20230416 18:56:14.125"/>
 </kw>
-<status status="PASS" starttime="20230416 18:39:25.209" endtime="20230416 18:39:25.253"/>
+<status status="PASS" starttime="20230416 18:56:13.944" endtime="20230416 18:56:14.125"/>
 </test>
-<status status="PASS" starttime="20230416 18:39:25.138" endtime="20230416 18:39:25.254"/>
+<status status="PASS" starttime="20230416 18:56:13.871" endtime="20230416 18:56:14.126"/>
 </suite>
 <statistics>
 <total>

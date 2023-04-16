@@ -8,15 +8,15 @@ Library  libraries.process_data.url_assembler.UrlAssembler
 ${user}    telmarf
 ${password}    Pasuconsumo
 ${base_url}    http://localhost
-${end_point}    wp-json/wp/v2/pages
+${end_point_path}    media
 ${status}    401
 
 *** Test Cases ***
 Verify get
-    ${url}    get url    ${end_point}
+    ${url}    get url    
     Log To Console    ${url}
     ${session}  ${params}  create session    
-    ${response}    custom get    ${session}    ${url}    ${params}  
+    ${response}    custom get    ${session}    ${url}    ${params}
     Log To Console    ${response}
 
 
