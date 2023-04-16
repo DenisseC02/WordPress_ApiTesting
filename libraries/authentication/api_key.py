@@ -19,6 +19,6 @@ from libraries.authentication.authorization import Authorization
 class Api_Key(Authorization):
     """Should be implemented"""
     def authentication(self, key, token, add_to) -> tuple:
-          params = {}
+          params = {'key': key, 'token': token}
           session = requests.Session()
           return session, params

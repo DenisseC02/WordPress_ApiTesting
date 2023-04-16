@@ -1,22 +1,22 @@
 *** Settings ***
+Variables    wp_api/resources/config/config.py
 Library  libraries.requests.custom_request.CustomRequest
-Library  libraries.authentication.basic.Basic
+Library  libraries.authentication.custom_session.CustomSession
 Library  libraries.process_data.url_assembler.UrlAssembler
-Library    ../../../venv/lib/site-packages/robot/libraries/Process.py
   
 *** Variables ***
 ${user}    telmarf
 ${password}    Pasuconsumo
 ${base_url}    http://localhost
 ${end_point}    wp-json/wp/v2/pages
-${id}    ?_fields=id 
-${result}
+${status}    401
 
 *** Test Cases ***
 Verify get
-    ${url}    get url    ${base_url}    ${end_point}    id=${id}
-    ${session}  ${params}  authentication   ${user}    ${password} 
-    ${response}    custom get    ${session}    ${url}    ${params}
+    ${url}    get url    ${end_point}
+    Log To Console    ${url}
+    ${session}  ${params}  create session    
+    ${response}    custom get    ${session}    ${url}    ${params}  
     Log To Console    ${response}
 
 

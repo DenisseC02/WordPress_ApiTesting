@@ -22,5 +22,6 @@ class Bearer(Authorization):
         """Should be implemented"""
         params = {}
         session = requests.Session()
+        session.headers.update({'Authorization': 'Bearer ' + token})
         return session, params
     

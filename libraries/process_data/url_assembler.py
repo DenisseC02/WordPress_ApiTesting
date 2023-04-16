@@ -12,13 +12,14 @@
  #
 
 
-from dotenv import load_dotenv
-load_dotenv()
+from os import getenv
 
 
 class UrlAssembler:
-
-    def get_url(self, base_url, end_point, **kwargs):
+    """Assembler the URL"""
+    def get_url(self, end_point, **kwargs):
+        """Returns the URL"""
+        base_url = getenv("HOST")
         url = '%s/%s' % (base_url, end_point)
         for extra_path in kwargs:
             extra_path_value = kwargs.get(extra_path)

@@ -19,9 +19,7 @@ from libraries.process_data.parser_data import ParserData
 
 
 class CustomRequest:
-    def __init__(self) -> None:
-        pass
-
+    """"""
     def custom_get(self, session, url, params, expected_status=200, response_type=0):
         response = MakeRequest(session, url, params).method_get(expected_status=expected_status)
         # result = ParserData(response, response_type).method()

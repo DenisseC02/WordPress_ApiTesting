@@ -13,8 +13,9 @@
 
 
 class MakeRequest(object):
-
+    """Makes different types of requests"""
     def __init__(self, session, url, params):
+        """Defines the constructor"""
         self.session = session
         self.url = url
         self.params = params
