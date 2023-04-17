@@ -13,6 +13,7 @@
 
 
 import json
+from libraries.process_data.decode import Decode
 
 
 class ParserData(object):
@@ -22,22 +23,41 @@ class ParserData(object):
         self.response = response
         self.response_type = response_type
 
-    def parser_by(self):
-        """Calls the appropiated method acording the required result"""
+    def parser_by(self, key=None):
+        """Calls the appropriate method according the required result"""
         response_types = {
             'json': self._parser_json,
-            'key': self._key
+            'key': self._key,
+            'text': self._text,
+            'binary': self._content
         }
         method_to_implement = response_types[self.response_type]
-        parser = method_to_implement()
+        if self.response_type == 'key':
+            parser = method_to_implement(key)  # convert key to integer
+        else:
+            parser = method_to_implement()
         return parser
 
-    def _key(self, key):
+    def _key(self, key=None):
         """Returns the value of requested key"""
-        data = json.loads(self.response)
-        return data[key]
+        decoded_response = Decode().decode_response(self.response)
+        data = json.loads(decoded_response)
+        if isinstance(data, list):
+            return [item[key] for item in data]
+        elif isinstance(data, dict):
+            return data[key]
 
     def _parser_json(self):
         """Returns result as json"""
         result = self.response.json()
+        return result
+
+    def _text(self):
+        """Returns result as text"""
+        result = self.response.text
+        return result
+
+    def _content(self):
+        """Returns result as bytes"""
+        result = self.response.content
         return result

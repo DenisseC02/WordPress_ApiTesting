@@ -44,6 +44,7 @@ data = {
     "oauth_2": [server, client_id, client_secret]
 }
 
+
 class CustomSession:
     """Creates custom session"""
 
