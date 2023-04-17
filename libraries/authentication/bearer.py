@@ -25,4 +25,3 @@ class Bearer(Authorization):
         session = requests.Session()
         session.headers.update({'Authorization': 'Bearer ' + token})
         return session, params
-    

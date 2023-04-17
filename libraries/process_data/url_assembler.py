@@ -28,4 +28,3 @@ class UrlAssembler:
             extra_path_value = kwargs.get(extra_path)
             url = '%s/%s' % (url, extra_path_value)
         return url
-    

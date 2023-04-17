@@ -24,4 +24,3 @@ class OAuth2(Authorization):
         params={}
         session = requests.Session()
         return session, params
-    

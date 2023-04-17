@@ -17,7 +17,7 @@ import json
 
 class ParserData(object):
     """Evaluates response and returns result on demand"""
-    
+
     def __init__(self, response, response_type):
         self.response = response
         self.response_type = response_type
@@ -41,4 +41,3 @@ class ParserData(object):
         """Returns result as json"""
         result = self.response.json()
         return result
-    

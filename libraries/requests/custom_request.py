@@ -44,4 +44,3 @@ class CustomRequest:
         response = MakeRequest(session, url, params).method_delete(expected_status)
         result = ParserData(response, response_type).parser_by()
         return result
-    
