@@ -14,7 +14,8 @@
 
 import json
 from robot.api import logger
-from assertpy import soft_assertions, assert_that
+from assertpy import soft_assertions
+from assertpy import assert_that
 
 
 class Verification(object):
@@ -25,7 +26,6 @@ class Verification(object):
         with soft_assertions():
             with open(expected_result, 'r') as schema:
                 schema = json.load(schema)
-            print('Expected result:', schema)
             logger.info("*****Expected******")
             logger.info(schema)
             logger.info("*****Actual******")

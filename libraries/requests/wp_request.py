@@ -13,6 +13,8 @@
 
 
 from assertpy import assert_that
+
+
 class MakeRequest(object):
     """Makes different types of requests"""
     
@@ -25,23 +27,22 @@ class MakeRequest(object):
         """Makes a post request"""
         result = self.session.post(self.url, json=body, params=self.params)
         assert_that(result.status_code).is_in(expected_status)
-        assert result.status_code == expected_status, 'Actual response is %s, expect: %s' %(result.status_code, expected_status)
         return result
 
     def method_get(self, expected_status=200):
         """Makes a get request"""
         result = self.session.get(self.url, params=self.params)
-        assert result.status_code == expected_status, 'Actual response is %s, expect: %s' %(result.status_code, expected_status)
+        assert_that(result.status_code).is_in(expected_status)
         return result
 
     def method_put(self, body, expected_status=200):
         """Makes a put request"""
         result = self.session.put(self.url, json=body, params=self.params)
-        assert result.status_code == expected_status, 'Actual response is %s, expect: %s' %(result.status_code, expected_status)
+        assert_that(result.status_code).is_in(expected_status)
         return result
 
     def method_delete(self, expected_status=200):
         """Makes a delete request"""
         result = self.session.delete(self.url, params=self.params)
-        assert result.status_code == expected_status, 'Actual response is %s, expect: %s' %(result.status_code, expected_status)
+        assert_that(result.status_code).is_in(expected_status)
         return result
