@@ -5,9 +5,9 @@ from assertpy import assert_that
 
 
 class Verification(object):
-    """A Verification class """
+    """A Verification class"""
     def test_assertions(self, expected_result, actual_result):
-        """Asserts that the expected result is equal to the expected_result """
+        """Asserts that the expected result is equal to the expected_result"""
         with soft_assertions():
             with open(expected_result, 'r') as schema:
                 schema = json.load(schema)
