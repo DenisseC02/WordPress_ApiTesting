@@ -1,4 +1,5 @@
 .env
 __pycache__/
-.idea
+.idea/
 .gitignore
+wp_api/reports/

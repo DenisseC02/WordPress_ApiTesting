@@ -19,29 +19,29 @@ from libraries.process_data.parser_data import ParserData
 
 
 class CustomRequest:
-    """"""
-    def custom_get(self, session, url, params, expected_status=200, response_type=0):
-        response = MakeRequest(session, url, params).method_get(expected_status=expected_status)
-        # result = ParserData(response, response_type).method()
-        result = response.json()
-        return result
-    
-    def custom_post(self, session, url, params, body, expected_status=200):
-        response = MakeRequest(session, url, params).method_post(body, expected_status)
-        result = response.json()
-        return result
-    
-    def custom_put(self, session, url, params, body, expected_status=200):
-        response = MakeRequest(session, url, params).method_put(body, expected_status)
-        result = response.json()
-        return result
-    
-    def custom_delete(self, session, url, params, expected_status=200):
-        response = MakeRequest(session, url, params).method_delete(expected_status=expected_status)
-        result = response.json()
-        return result
-    
+    """Performes customized request to the end point"""
 
-    # url = UrlAssembler().get_url( base_url=base_url, end_point=end_point, id=id)
-    #     print(url)
-    #     session, params = Basic().authentication(user=user, password=password)
+    def custom_get(self, session, url, params, expected_status=200, response_type='json'):
+        """Custom get request"""
+        response = MakeRequest(session, url, params).method_get(expected_status)
+        result = ParserData(response, response_type).parser_by()
+        return result
+    
+    def custom_post(self, session, url, params, body, expected_status=200, response_type='json'):
+        """Custom post request"""
+        response = MakeRequest(session, url, params).method_post(body, expected_status)
+        result = ParserData(response, response_type).parser_by()
+        return result
+    
+    def custom_put(self, session, url, params, body, expected_status=200, response_type='json'):
+        """Custom put request"""
+        response = MakeRequest(session, url, params).method_put(body, expected_status)
+        result = ParserData(response, response_type).parser_by()
+        return result
+    
+    def custom_delete(self, session, url, params, expected_status=200, response_type='json'):
+        """Custom delete request"""
+        response = MakeRequest(session, url, params).method_delete(expected_status)
+        result = ParserData(response, response_type).parser_by()
+        return result
+    

@@ -17,8 +17,10 @@ from libraries.authentication.authorization import Authorization
 
 
 class Api_Key(Authorization):
-    """Should be implemented"""
+    """Generates users valid API key"""
+    
     def authentication(self, key, token, add_to) -> tuple:
-          params = {'key': key, 'token': token}
-          session = requests.Session()
-          return session, params
+        """Returns session authorization using API key method""" 
+        params = {'key': key, 'token': token}
+        session = requests.Session()
+        return session, params

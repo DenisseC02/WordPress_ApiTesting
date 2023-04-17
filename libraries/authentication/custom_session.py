@@ -46,8 +46,9 @@ data = {
 
 class CustomSession:
     """Creates custom session"""
+
     def create_session(self):
-        """IN PROGRESS"""
+        """Returns created session on demand"""
         authentication_method = getenv("AUTHENTICATION_METHOD")
         authorization = authentication_type[authentication_method]
         data_args = data.get(authentication_method)

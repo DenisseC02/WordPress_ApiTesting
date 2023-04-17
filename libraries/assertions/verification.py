@@ -13,13 +13,13 @@
 
 
 import json
-import jsonschema
 from robot.api import logger
 from assertpy import soft_assertions, assert_that
 
 
 class Verification(object):
     """Verifies the data"""
+
     def test_assertions(self, expected_result, actual_result):
         """Verifies actual result with the json schema"""
         with soft_assertions():
@@ -30,7 +30,4 @@ class Verification(object):
             logger.info(schema)
             logger.info("*****Actual******")
             logger.info(actual_result)
-            # assert_that(actual_result).is_equal_to(schema)
-            result_validation = jsonschema.validate(actual_result, schema)
-            assert result_validation is None
-            
+            assert_that(actual_result).is_equal_to(schema)

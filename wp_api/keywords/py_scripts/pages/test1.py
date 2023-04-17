@@ -1,7 +1,7 @@
 import os
 from libraries.authentication.basic import UserAuthentication
 from libraries.requests.wp_request import WpRequest
-from libraries.process_data.verification import Verification
+from libraries.assertions.verification import Verification
 
 
 class PageState:

@@ -17,7 +17,8 @@ from libraries.authentication.authorization import Authorization
 
 
 class Basic(Authorization): 
-    """Authorizes by basic method"""   
+    """Authorization using basic method"""   
+
     def authentication(self, user, password) -> tuple:
         """Creates a session with basic authentication"""
         params = {}

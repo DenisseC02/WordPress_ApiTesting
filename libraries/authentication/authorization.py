@@ -12,7 +12,14 @@
  #
 
 
-class Authorization(object):
+from abc import ABC
+from abc import abstractmethod
 
-    def authentication(self, **kwargs) -> tuple:
+
+class Authorization(ABC):
+    """Parent authorization class"""
+    
+    @abstractmethod
+    def authentication(self, *kwargs) -> tuple:
+        """Returns session authorization"""
         pass

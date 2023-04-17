@@ -12,10 +12,11 @@
  #
 
 
+from assertpy import assert_that
 class MakeRequest(object):
     """Makes different types of requests"""
+    
     def __init__(self, session, url, params):
-        """Defines the constructor"""
         self.session = session
         self.url = url
         self.params = params
@@ -23,6 +24,7 @@ class MakeRequest(object):
     def method_post(self, body, expected_status=200):
         """Makes a post request"""
         result = self.session.post(self.url, json=body, params=self.params)
+        assert_that(result.status_code).is_in(expected_status)
         assert result.status_code == expected_status, 'Actual response is %s, expect: %s' %(result.status_code, expected_status)
         return result
 
