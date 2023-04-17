@@ -19,7 +19,7 @@ class ParserData(object):
         }
         method_to_implement = response_types[self.response_type]
         if self.response_type == 'key':
-            parser = method_to_implement(key)  # convert key to integer
+            parser = method_to_implement(key)
         else:
             parser = method_to_implement()
         return parser
