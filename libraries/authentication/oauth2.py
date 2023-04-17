@@ -1,5 +1,5 @@
  #
- #  @config.py Copyright (c) 2023 Jalasoft.                                    #
+ #  @oauth2.py Copyright (c) 2023 Jalasoft.                                    #
  #  2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.        #
  #                                                                             #
  #  All rights reserved.                                                       #
@@ -12,6 +12,15 @@
  #
 
 
-from dotenv import load_dotenv
-load_dotenv()
+import requests
+from libraries.authentication.authorization import Authorization
 
+
+class OAuth2(Authorization): 
+    """Creates a session using OAuth 2.0"""
+
+    def authentication(self, server, client_id, client_secret, **kwargs):
+        """TO DO"""
+        params={}
+        session = requests.Session()
+        return session, params

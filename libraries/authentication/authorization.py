@@ -1,5 +1,5 @@
  #
- #  @config.py Copyright (c) 2023 Jalasoft.                                    #
+ #  @authorization.py Copyright (c) 2023 Jalasoft.                             #
  #  2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.        #
  #                                                                             #
  #  All rights reserved.                                                       #
@@ -12,6 +12,14 @@
  #
 
 
-from dotenv import load_dotenv
-load_dotenv()
+from abc import ABC
+from abc import abstractmethod
 
+
+class Authorization(ABC):
+    """Parent authorization class"""
+
+    @abstractmethod
+    def authentication(self, *kwargs) -> tuple:
+        """Returns session authorization"""
+        pass
