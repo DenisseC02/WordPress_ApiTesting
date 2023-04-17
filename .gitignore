@@ -1,5 +1,0 @@
-.env
-__pycache__/
-.idea/
-.gitignore
-wp_api/reports/
