@@ -1,5 +1,5 @@
  #
- #  @config.py Copyright (c) 2023 Jalasoft.                                    #
+ #  @api_key.py Copyright (c) 2023 Jalasoft.                                   #
  #  2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.        #
  #                                                                             #
  #  All rights reserved.                                                       #
@@ -12,6 +12,15 @@
  #
 
 
-from dotenv import load_dotenv
-load_dotenv()
+import requests
+from libraries.authentication.authorization import Authorization
 
+
+class Api_Key(Authorization):
+    """Generates users valid API key"""
+
+    def authentication(self, key, token, add_to) -> tuple:
+        """Returns session authorization using API key method""" 
+        params = {'key': key, 'token': token}
+        session = requests.Session()
+        return session, params

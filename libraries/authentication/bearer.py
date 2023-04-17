@@ -1,5 +1,5 @@
  #
- #  @config.py Copyright (c) 2023 Jalasoft.                                    #
+ #  @bearer.py Copyright (c) 2023 Jalasoft.                                    #
  #  2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.        #
  #                                                                             #
  #  All rights reserved.                                                       #
@@ -12,6 +12,16 @@
  #
 
 
-from dotenv import load_dotenv
-load_dotenv()
+import requests
+from libraries.authentication.authorization import Authorization
 
+
+class Bearer(Authorization):
+    """Authorization using bearer token method"""
+
+    def authentication(self, token) -> tuple:
+        """Returns session authorization using bearer token method"""
+        params = {}
+        session = requests.Session()
+        session.headers.update({'Authorization': 'Bearer ' + token})
+        return session, params

@@ -1,5 +1,5 @@
  #
- #  @config.py Copyright (c) 2023 Jalasoft.                                    #
+ #  @decode.py Copyright (c) 2023 Jalasoft.                                    #
  #  2643 Av Melchor Perez de Olguin, Colquiri Sud, Cochabamba, Bolivia.        #
  #                                                                             #
  #  All rights reserved.                                                       #
@@ -12,6 +12,12 @@
  #
 
 
-from dotenv import load_dotenv
-load_dotenv()
+class Decode(object):
+    """Decodes end point response"""
 
+    @staticmethod
+    def decode_response(response):
+        """Returns decoded response"""
+        decoded_result = response.content
+        decoded_result.decode('utf-8')
+        return decoded_result
