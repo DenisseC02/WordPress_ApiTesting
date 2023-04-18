@@ -16,3 +16,23 @@ class Verification(object):
             logger.info("*****Actual******")
             logger.info(actual_result)
             assert_that(actual_result).is_equal_to(schema)
+
+    def test_response_value(self, expected_result, actual_result):
+        """Asserts that certain response element
+        is equal to the expected result"""
+        with soft_assertions():
+            logger.info("*****Expected******")
+            logger.info(expected_result)
+            logger.info("*****Actual******")
+            logger.info(actual_result)
+            assert_that(actual_result).is_equal_to(expected_result)
+
+    def test_response_type(self, response, response_type):
+        """Asserts that the response is of certain type"""
+        with soft_assertions():
+            logger.info("*****Expected******")
+            logger.info(response_type)
+            logger.info("*****Actual******")
+            logger.info(type(response))
+            assert_that(response).is_instance_of(eval(response_type))
+
