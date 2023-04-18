@@ -14,5 +14,4 @@ class Api_Key(Authorization):
         else:
             session.headers.update({'Authorization': f'key {key},'
                                                      f' token {token}'})
-
         return session, params
