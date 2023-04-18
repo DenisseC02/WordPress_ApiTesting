@@ -32,9 +32,9 @@ class ParserData(object):
         parser = method_to_implement()
         return parser
 
-    def _key(self, key):
+    def _key(self, key='id'):
         """Returns the value of requested key"""
-        data = json.loads(self.response)
+        data = self.response.json()[0]
         return data[key]
 
     def _parser_json(self):
