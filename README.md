@@ -1,7 +1,7 @@
 ## [WordPress_ApiTesting v.1.0](#wordpress)
 ____
 
-Table of contents
+**Table of contents**
 - [WordPress\_ApiTesting v.1.0](#wordpress_apitesting-v10)
     - [1. Introduction](#1-introduction)
     - [2. Setup Environment](#2-setup-environment)
