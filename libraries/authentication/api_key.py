@@ -9,10 +9,6 @@ class Api_Key(Authorization):
         """Returns session authorization using API key method"""
         session = requests.Session()
         params = {}
-        if 'params' == add_to:
-            params = {'key': key, 'token': token}
-        else:
-            session.headers.update({'Authorization': f'key {key},'
-                                                     f' token {token}'})
+        session.headers.update({'api-key': key})
 
         return session, params
