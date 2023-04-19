@@ -22,3 +22,4 @@ Verify that is not possible to create more than one user with the same email
     Should Be Equal           existing_user_login   ${post_response_user2}
     ${params_delete}    Create Dictionary    force=true     reassign=1
     ${del_response_user1}   Custom Delete     ${session}    ${url_id}     ${params_delete}   200
+    
