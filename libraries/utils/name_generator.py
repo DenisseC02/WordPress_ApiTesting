@@ -19,7 +19,6 @@ class NameGenerator:
         return element_name
 
     def generate_number(self):
-        """Generate a random name with the format "Category00000000xxxxxxxx"."""
-        rand_num = str(random.randint(100, 900)).zfill(3)
-
+        """Generate a random number from 100 to 999"""
+        rand_num = str(random.randint(100, 999)).zfill(3)
         return rand_num
