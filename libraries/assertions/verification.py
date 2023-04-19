@@ -1,4 +1,5 @@
 import json
+import jsonschema
 from robot.api import logger
 from assertpy import soft_assertions
 from assertpy import assert_that
@@ -36,3 +37,13 @@ class Verification(object):
             logger.info(type(response))
             assert_that(response).is_instance_of(eval(response_type))
 
+    def verify_schema(self, path_json_schema, response): 
+        with soft_assertions(): 
+            with open(path_json_schema, 'r') as schema1: 
+                schema = json.load(schema1) 
+                logger.info("*****Expected******")
+                logger.info(schema)
+                logger.info("*****Actual******")
+                logger.info(response)
+                result_validation=jsonschema.validate(response, schema) 
+                assert result_validation is None
