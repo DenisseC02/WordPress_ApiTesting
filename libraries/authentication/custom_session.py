@@ -30,9 +30,9 @@ data = {
     "oauth_2": [server, client_id, client_secret]
 }
 
+
 class CustomSession:
     """Creates custom session"""
-
 
     def create_session(self):
         """Returns created session on demand"""
