@@ -102,21 +102,7 @@ After the setup, in this section will be explained robot framework.
 ##### 3.2. Execution examples
 Using the integrated terminal execute the following commands:
 
-1. This command is used to execute "test1.robot" suite from the "pages" endpoint and saves the output in the "reports" directory.If the `-d` option is not set the output is saved in the current directory.
-```
-robot -d wp_api/reports wp_api/tests/pages/test1.robot  
-```
+1. In progress...
 
-2. This command is used to execute "create_category.robot" suite from the "categories" endpoint and saves the output in the "reports" directory. 
-```
-robot -d wp_api/reports wp_api/tests/categories/create_category.robot 
-```
-3. This command can be used to execute "tc.robot" test case from the "tests" directory, saves the output in the current directory and `--loglevel TRACE` is used for the details level in the output reports, `TRACE` indicates to generate a very verbouse logs report. 
-```
-robot --loglevel TRACE wp_api/tests/tc.robot 
-```
-4. This command is used to execute "add_gallery.robot" suite from the "media" endpoint and saves the output in the "reports" directory. The `-i Smoke` option indicates to only execute the test cases with "Smoke" tag defined.
-```
-robot -d wp_api/reports -i Smoke wp_api/tests/media/add_gallery.robot 
 ```
 ___
