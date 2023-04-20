@@ -2,6 +2,9 @@
 Library  libraries.authentication.custom_session.CustomSession
 Library  libraries.process_data.url_assembler.UrlAssembler
 
+*** Variables ***
+${end_point_pages}    pages
+
 *** Keywords ***
 Create Session and params
     ${session}  ${params}  create_session
@@ -10,5 +13,5 @@ Create Session and params
 
 Delete Created Pages
     [Teardown]    
-    ${url}    get url    extra=${end_point_path}    id=${id}
-    custom delete    ${session}    ${url}    ${params}
+    ${url}    get_url    extra=${end_point_pages}    id=${id}
+    custom_delete    ${session}    ${url}    ${params}
