@@ -48,10 +48,10 @@ To setup the environment, please reffer to the following steps:
     - Windows users: [Docker](https://docs.docker.com/desktop/install/windows-install/) | [Docker Compose]()
     - Linux users: [Docker](https://docs.docker.com/engine/install/ubuntu/) | [Docker Compose]() 
 5. Setup WordPress and MySQL Docker Containers.
-  Download the ==docker-compose.yml== file to your computer open a terminal window in the same location (or a Bash terminal if you are using Windowws) and type the following command and wait until the wordpress and mysql containers are up:
+  Download the **docker-compose.yml** file to your computer open a terminal window in the same location (or a Bash terminal if you are using Windowws) and type the following command and wait until the wordpress and mysql containers are up:
   $ `docker compose up -d`
   To continue with the WordPress installation, open any browser and navigate to: http://localhost and follow the steps to complete WordPress installation. Write down the username and the password you choosed use it later in the environment variables.
-6. Once the installation process finish, the WordPress v.6.2 dashboard will be displayed. In the left side menu click on "plugins" and then click on "Add new" button located at the top of the page or click the following [[link]](http://localhost/wp-admin/plugin-install.php). Search and install ==WordPress REST API Authentication v.2.6.0 [(miniOrange)](https://wordpress.org/plugins/wp-rest-api-authentication/)==.
+6. Once the installation process finish, the WordPress v.6.2 dashboard will be displayed. In the left side menu click on "plugins" and then click on "Add new" button located at the top of the page or click the following [[link]](http://localhost/wp-admin/plugin-install.php). Search and install **WordPress REST API Authentication v.2.6.0 [(miniOrange)](https://wordpress.org/plugins/wp-rest-api-authentication/)**.
 7. Once the plugin is installed, go to plugins page look for the WordPress REST API Authentication plugin and click on "[settings](http://localhost/wp-admin/admin.php?page=mo_api_authentication_settings)" then click on "Basic Authorization", follow the steps and copy the result in a safe place,  once finished, back to settings and configure "JWT Authentication" copy the result in a safe place.
 
 ##### 2.3. Environment Variables Definitions
