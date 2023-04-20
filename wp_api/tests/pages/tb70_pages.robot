@@ -15,7 +15,7 @@ Verify that a child page can be deleted without modifying pages with the same pa
     Create new page    ${body_test8_post3}
     Delete the page
     Verify that the other page are listed by parent id
-#este borrara el ultimo nomas pero luego nose como listar por parent id, y terminar de borrar los otros dos pages
+
 *** Keywords ***
 Verify that the other page are listed by parent id
     ${url}    get_url    end_point=${end_point_pages}

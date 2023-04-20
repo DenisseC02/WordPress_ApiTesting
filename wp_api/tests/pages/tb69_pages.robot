@@ -15,7 +15,7 @@ Verify child pages are listed filtering by parent id
     Create new page    ${body_test7_post2}
     Create new page    ${body_test7_post3}
     Retrieve the page by parent id
-#este falta ver como voy a borrar todo lo anterior creado
+
 *** Keywords ***
 Retrieve the page by parent id
     ${url}    get_url    end_point=${end_point_pages}
