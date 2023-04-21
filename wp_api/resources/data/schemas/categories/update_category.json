@@ -1,0 +1,313 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https://example.com/object1682037656.json",
+	"title": "Root",
+	"type": "object",
+	"required": [
+		"id",
+		"count",
+		"description",
+		"link",
+		"name",
+		"slug",
+		"taxonomy",
+		"parent",
+		"meta",
+		"_links"
+	],
+	"properties": {
+		"id": {
+			"$id": "#root/id",
+			"title": "Id",
+			"type": "integer",
+			"examples": [
+				268
+			],
+			"default": 0
+		},
+		"count": {
+			"$id": "#root/count",
+			"title": "Count",
+			"type": "integer",
+			"examples": [
+				0
+			],
+			"default": 0
+		},
+		"description": {
+			"$id": "#root/description",
+			"title": "Description",
+			"type": "string",
+			"default": "",
+			"examples": [
+				""
+			],
+			"pattern": "^.*$"
+		},
+		"link": {
+			"$id": "#root/link",
+			"title": "Link",
+			"type": "string",
+			"default": "",
+			"examples": [
+				"http://localhost/wordpress/category/sin-categoria/category-95456/"
+			],
+			"pattern": "^.*$"
+		},
+		"name": {
+			"$id": "#root/name",
+			"title": "Name",
+			"type": "string",
+			"default": "",
+			"examples": [
+				"category 95"
+			],
+			"pattern": "^.*$"
+		},
+		"slug": {
+			"$id": "#root/slug",
+			"title": "Slug",
+			"type": "string",
+			"default": "",
+			"examples": [
+				"category-95456"
+			],
+			"pattern": "^.*$"
+		},
+		"taxonomy": {
+			"$id": "#root/taxonomy",
+			"title": "Taxonomy",
+			"type": "string",
+			"default": "",
+			"examples": [
+				"category"
+			],
+			"pattern": "^.*$"
+		},
+		"parent": {
+			"$id": "#root/parent",
+			"title": "Parent",
+			"type": "integer",
+			"examples": [
+				1
+			],
+			"default": 0
+		},
+		"meta": {
+			"$id": "#root/meta",
+			"title": "Meta",
+			"type": "array",
+			"default": []
+		},
+		"_links": {
+			"$id": "#root/_links",
+			"title": "_links",
+			"type": "object",
+			"required": [
+				"self",
+				"collection",
+				"about",
+				"up",
+				"wp:post_type",
+				"curies"
+			],
+			"properties": {
+				"self": {
+					"$id": "#root/_links/self",
+					"title": "Self",
+					"type": "array",
+					"default": [],
+					"items":{
+						"$id": "#root/_links/self/items",
+						"title": "Items",
+						"type": "object",
+						"required": [
+							"href"
+						],
+						"properties": {
+							"href": {
+								"$id": "#root/_links/self/items/href",
+								"title": "Href",
+								"type": "string",
+								"default": "",
+								"examples": [
+									"http://localhost/wordpress/wp-json/wp/v2/categories/268"
+								],
+								"pattern": "^.*$"
+							}
+						}
+					}
+
+				},
+				"collection": {
+					"$id": "#root/_links/collection",
+					"title": "Collection",
+					"type": "array",
+					"default": [],
+					"items":{
+						"$id": "#root/_links/collection/items",
+						"title": "Items",
+						"type": "object",
+						"required": [
+							"href"
+						],
+						"properties": {
+							"href": {
+								"$id": "#root/_links/collection/items/href",
+								"title": "Href",
+								"type": "string",
+								"default": "",
+								"examples": [
+									"http://localhost/wordpress/wp-json/wp/v2/categories"
+								],
+								"pattern": "^.*$"
+							}
+						}
+					}
+
+				},
+				"about": {
+					"$id": "#root/_links/about",
+					"title": "About",
+					"type": "array",
+					"default": [],
+					"items":{
+						"$id": "#root/_links/about/items",
+						"title": "Items",
+						"type": "object",
+						"required": [
+							"href"
+						],
+						"properties": {
+							"href": {
+								"$id": "#root/_links/about/items/href",
+								"title": "Href",
+								"type": "string",
+								"default": "",
+								"examples": [
+									"http://localhost/wordpress/wp-json/wp/v2/taxonomies/category"
+								],
+								"pattern": "^.*$"
+							}
+						}
+					}
+
+				},
+				"up": {
+					"$id": "#root/_links/up",
+					"title": "Up",
+					"type": "array",
+					"default": [],
+					"items":{
+						"$id": "#root/_links/up/items",
+						"title": "Items",
+						"type": "object",
+						"required": [
+							"embeddable",
+							"href"
+						],
+						"properties": {
+							"embeddable": {
+								"$id": "#root/_links/up/items/embeddable",
+								"title": "Embeddable",
+								"type": "boolean",
+								"examples": [
+									true
+								],
+								"default": true
+							},
+							"href": {
+								"$id": "#root/_links/up/items/href",
+								"title": "Href",
+								"type": "string",
+								"default": "",
+								"examples": [
+									"http://localhost/wordpress/wp-json/wp/v2/categories/1"
+								],
+								"pattern": "^.*$"
+							}
+						}
+					}
+
+				},
+				"wp:post_type": {
+					"$id": "#root/_links/wp:post_type",
+					"title": "Wp:post_type",
+					"type": "array",
+					"default": [],
+					"items":{
+						"$id": "#root/_links/wp:post_type/items",
+						"title": "Items",
+						"type": "object",
+						"required": [
+							"href"
+						],
+						"properties": {
+							"href": {
+								"$id": "#root/_links/wp:post_type/items/href",
+								"title": "Href",
+								"type": "string",
+								"default": "",
+								"examples": [
+									"http://localhost/wordpress/wp-json/wp/v2/posts?categories=268"
+								],
+								"pattern": "^.*$"
+							}
+						}
+					}
+
+				},
+				"curies": {
+					"$id": "#root/_links/curies",
+					"title": "Curies",
+					"type": "array",
+					"default": [],
+					"items":{
+						"$id": "#root/_links/curies/items",
+						"title": "Items",
+						"type": "object",
+						"required": [
+							"name",
+							"href",
+							"templated"
+						],
+						"properties": {
+							"name": {
+								"$id": "#root/_links/curies/items/name",
+								"title": "Name",
+								"type": "string",
+								"default": "",
+								"examples": [
+									"wp"
+								],
+								"pattern": "^.*$"
+							},
+							"href": {
+								"$id": "#root/_links/curies/items/href",
+								"title": "Href",
+								"type": "string",
+								"default": "",
+								"examples": [
+									"https://api.w.org/{rel}"
+								],
+								"pattern": "^.*$"
+							},
+							"templated": {
+								"$id": "#root/_links/curies/items/templated",
+								"title": "Templated",
+								"type": "boolean",
+								"examples": [
+									true
+								],
+								"default": true
+							}
+						}
+					}
+
+				}
+			}
+		}
+
+	}
+}
