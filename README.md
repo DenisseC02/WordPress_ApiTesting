@@ -24,10 +24,10 @@ ___
 requirements.txt and docker compose files are provided in this repository.
 ##### 2.1. Requirements
 - **Platform:** Microsoft Windows 10 (64bits) or Ubuntu Linux v.22.04.1 LTS (64bits)
-- Python 3.8.(any). It can be installed on your system or on a Virtual Machine or on a Docker Container.
+- Python 3.8.X. It can be installed on your system or on a Virtual Machine or on a Docker Container.
 - pip (latest).
 - Virtual Environment.
-- Docker (latest) and Docker Compose (latest).
+- Docker >=20.10.21 and Docker Compose >=2.13.0
 - Docker image: wordpress:php8.0 or live WordPress installation.
 - Docker image: mysql:5.7
 - WordPress REST API Authentication v.2.6.0 (miniOrange).
@@ -48,10 +48,10 @@ To setup the environment, please reffer to the following steps:
     - Windows users: [Docker](https://docs.docker.com/desktop/install/windows-install/) | [Docker Compose]()
     - Linux users: [Docker](https://docs.docker.com/engine/install/ubuntu/) | [Docker Compose]() 
 5. Setup WordPress and MySQL Docker Containers.
-  Download the ==docker-compose.yml== file to your computer open a terminal window in the same location (or a Bash terminal if you are using Windowws) and type the following command and wait until the wordpress and mysql containers are up:
+  Download the **docker-compose.yml** file to your computer open a terminal window in the same location (or a Bash terminal if you are using Windowws) and type the following command and wait until the wordpress and mysql containers are up:
   $ `docker compose up -d`
   To continue with the WordPress installation, open any browser and navigate to: http://localhost and follow the steps to complete WordPress installation. Write down the username and the password you choosed use it later in the environment variables.
-6. Once the installation process finish, the WordPress v.6.2 dashboard will be displayed. In the left side menu click on "plugins" and then click on "Add new" button located at the top of the page or click the following [[link]](http://localhost/wp-admin/plugin-install.php). Search and install ==WordPress REST API Authentication v.2.6.0 [(miniOrange)](https://wordpress.org/plugins/wp-rest-api-authentication/)==.
+6. Once the installation process finish, the WordPress v.6.2 dashboard will be displayed. In the left side menu click on "plugins" and then click on "Add new" button located at the top of the page or click the following [[link]](http://localhost/wp-admin/plugin-install.php). Search and install **WordPress REST API Authentication v.2.6.0 [(miniOrange)](https://wordpress.org/plugins/wp-rest-api-authentication/)**.
 7. Once the plugin is installed, go to plugins page look for the WordPress REST API Authentication plugin and click on "[settings](http://localhost/wp-admin/admin.php?page=mo_api_authentication_settings)" then click on "Basic Authorization", follow the steps and copy the result in a safe place,  once finished, back to settings and configure "JWT Authentication" copy the result in a safe place.
 
 ##### 2.3. Environment Variables Definitions
@@ -60,10 +60,10 @@ The following variables are required to set as environment variables
 
 | Variable name | Type | Default value | Description |
 | - | - | - | - |
-| HOST | String | http://localhost | REST API URL. |
-| END_POINT | String | wp-json/wp/v2 | End point base.   |
-| PORT | Integer | 80 | API port. |
-| AUTHENTICATION_METHOD | String | basic | By default is  "Basic Authorization" for request. Other types of authorization are: Token, API Key, Oath2.  |
+| HOST | String | http://localhost | REST API URL. **Required** |
+| END_POINT | String | wp-json/wp/v2 | End point base. **Required**   |
+| PORT | Integer | 80 | API port. **Required** |
+| AUTHENTICATION_METHOD | String | basic | By default is  "Basic Authorization" for request. Other types of authorization are: Token, API Key, Oath2. **Required**  |
 | USER | String | (blank) | Username for basic athorization, must be specified username before running test cases. Blank by default to protect sensitive data. **Required**, to test WordPress you need to provide. |
 | PASSWORD | String | (blank) | Password for basic athorization, must be specified username before running test cases. Blank by default to protect sensitive data. **Required** |
 | KEY | String | (blank) | Key for API Key athorization, must be specified username before running test cases. Blank by default to protect sensitive data. (Optional)|
@@ -102,51 +102,7 @@ After the setup, in this section will be explained robot framework.
 ##### 3.2. Execution examples
 Using the integrated terminal execute the following commands:
 
-1. This command is used to execute "test1.robot" suite from the "pages" endpoint and saves the output in the "reports" directory.If the `-d` option is not set the output is saved in the current directory.
-```
-robot -d wp_api/reports wp_api/tests/pages/test1.robot  
-```
+1. In progress...
 
-2. This command is used to execute "create_category.robot" suite from the "categories" endpoint and saves the output in the "reports" directory. 
-```
-robot -d wp_api/reports wp_api/tests/categories/create_category.robot 
-```
-3. This command can be used to execute "tc.robot" test case from the "tests" directory, saves the output in the current directory and `--loglevel TRACE` is used for the details level in the output reports, `TRACE` indicates to generate a very verbouse logs report. 
-```
-robot --loglevel TRACE wp_api/tests/tc.robot 
-```
-4. This command is used to execute "add_gallery.robot" suite from the "media" endpoint and saves the output in the "reports" directory. The `-i Smoke` option indicates to only execute the test cases with "Smoke" tag defined.
-```
-robot -d wp_api/reports -i Smoke wp_api/tests/media/add_gallery.robot 
 ```
 ___
-#### 4. Appendix
-
-**requirements.txt** content:
-```
-assertpy==1.1
-attrs==23.1.0
-certifi==2022.12.7
-charset-normalizer==3.1.0
-colorama==0.4.6
-decorator==5.1.1
-exceptiongroup==1.1.1
-idna==3.4
-importlib-resources==5.12.0
-iniconfig==2.0.0
-jsonpath-ng==1.5.3
-jsonschema==4.17.3
-packaging==23.1
-pkgutil_resolve_name==1.3.10
-pluggy==1.0.0
-ply==3.11
-pyrsistent==0.19.3
-pytest==7.3.1
-requests==2.28.2
-robotframework==6.0.2
-robotframework-jsonlibrary==0.5
-six==1.16.0
-tomli==2.0.1
-urllib3==1.26.15
-zipp==3.15.0
-```
