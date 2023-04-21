@@ -8,4 +8,4 @@ ignore_list = [('guid','raw'), 'password', ('title', 'raw'), ('content','raw'), 
 path_list_schema = r'wp_api\resources\data\schemas\posts\list_post.json'
 path_update_schema = r'wp_api\resources\data\schemas\posts\update_post.json'
 path_delete_schema = r'wp_api\resources\data\schemas\posts\delete_post.json'
-post_status = {"deleted": "true"}
+post_status = {'deleted': 'true'}
