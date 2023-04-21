@@ -7,15 +7,6 @@ from assertpy import assert_that
 
 class Verification(object):
     """A Verification class"""
-    def test_response_value(self, expected_result, actual_result):
-        """Asserts that certain response element
-        is equal to the expected result"""
-        with soft_assertions():
-            logger.info("*****Expected******")
-            logger.info(expected_result)
-            logger.info("*****Actual******")
-            logger.info(actual_result)
-            assert_that(actual_result).is_equal_to(expected_result)
 
     def verify_schema(self, path_json_schema, response):
         """Asserts the response corresponds to the schema """
@@ -38,7 +29,7 @@ class Verification(object):
             logger.info(actual_result)
             assert_that(expected_result).is_subset_of(actual_result)
 
-    def verify_equal_ignore(self, actual_result, expected_result, list_ignore):
+    def verify_equal_ignore(self, actual_result, expected_result, list_ignore=[]):
         """Asserts the actual is equal to expected ignoring params"""
         with soft_assertions():
             logger.info("*****Expected******")

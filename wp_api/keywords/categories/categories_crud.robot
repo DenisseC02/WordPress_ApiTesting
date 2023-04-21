@@ -1,12 +1,4 @@
 *** Settings ***
-#Variables   wp_api/resources/config/config.py
-#Variables    wp_api/resources/data/bodies/category.py
-#Library  libraries.process_data.url_assembler.UrlAssembler
-#Library    libraries.process_data.process_data.ProcessData
-#Library     libraries.requests.custom_request.CustomRequest
-#Library     libraries.authentication.custom_session.CustomSession
-#Library    libraries.assertions.verification.Verification
-#Library    libraries.utils.name_generator.NameGenerator
 Resource    ../../resources/imports.robot
 
 *** Variables ***
@@ -15,7 +7,7 @@ ${schemas_path}    wp_api/resources/data/schemas/categories
 
 *** Keywords ***
 Create New Session
-    ${session}  ${params}    create session
+    ${session}  ${params}    create_session
     Set Global Variable    ${session}
     Set Global Variable    ${params}
 

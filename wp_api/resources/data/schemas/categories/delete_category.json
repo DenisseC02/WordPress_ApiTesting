@@ -1,0 +1,124 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "https://example.com/object1682034119.json",
+	"title": "Root",
+	"type": "object",
+	"required": [
+		"deleted",
+		"previous"
+	],
+	"properties": {
+		"deleted": {
+			"$id": "#root/deleted",
+			"title": "Deleted",
+			"type": "boolean",
+			"examples": [
+				true
+			],
+			"default": true
+		},
+		"previous": {
+			"$id": "#root/previous",
+			"title": "Previous",
+			"type": "object",
+			"required": [
+				"id",
+				"count",
+				"description",
+				"link",
+				"name",
+				"slug",
+				"taxonomy",
+				"parent",
+				"meta"
+			],
+			"properties": {
+				"id": {
+					"$id": "#root/previous/id",
+					"title": "Id",
+					"type": "integer",
+					"examples": [
+						208
+					],
+					"default": 0
+				},
+				"count": {
+					"$id": "#root/previous/count",
+					"title": "Count",
+					"type": "integer",
+					"examples": [
+						0
+					],
+					"default": 0
+				},
+				"description": {
+					"$id": "#root/previous/description",
+					"title": "Description",
+					"type": "string",
+					"default": "",
+					"examples": [
+						"description"
+					],
+					"pattern": "^.*$"
+				},
+				"link": {
+					"$id": "#root/previous/link",
+					"title": "Link",
+					"type": "string",
+					"default": "",
+					"examples": [
+						"http://localhost/wordpress/category/category-091238-2/"
+					],
+					"pattern": "^.*$"
+				},
+				"name": {
+					"$id": "#root/previous/name",
+					"title": "Name",
+					"type": "string",
+					"default": "",
+					"examples": [
+						"Nueva Categoría 1234567789"
+					],
+					"pattern": "^.*$"
+				},
+				"slug": {
+					"$id": "#root/previous/slug",
+					"title": "Slug",
+					"type": "string",
+					"default": "",
+					"examples": [
+						"category-091238-2"
+					],
+					"pattern": "^.*$"
+				},
+				"taxonomy": {
+					"$id": "#root/previous/taxonomy",
+					"title": "Taxonomy",
+					"type": "string",
+					"default": "",
+					"examples": [
+						"category"
+					],
+					"pattern": "^.*$"
+				},
+				"parent": {
+					"$id": "#root/previous/parent",
+					"title": "Parent",
+					"type": "integer",
+					"examples": [
+						0
+					],
+					"default": 0
+				},
+				"meta": {
+					"$id": "#root/previous/meta",
+					"title": "Meta",
+					"type": "array",
+					"default": []
+				}
+			}
+		}
+
+	}
+}
