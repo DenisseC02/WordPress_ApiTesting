@@ -14,39 +14,39 @@ ${end_point}    blocks
   
 Create Block
     [Arguments]    ${body_create}
-    ${url}    get url    path=${end_point}
-    ${response}    Custom post    ${session}    ${url}    ${params}    ${body_create}    201    
-    Verify Schema    ${create_block_schema}    ${response}
-    ${id}    Get Key Value    ${response}    id
+    ${url}    get_url    path=${end_point}
+    ${response}    custom_post    ${session}    ${url}    ${params}    ${body_create}    201    
+    verify_schema    ${create_block_schema}    ${response}
+    ${id}    get_key_value    ${response}    id
     Set Global Variable    ${id}
-    ${url}    get url    path=${end_point}    id=${id}
-    ${response_get}    Custom get    ${session}    ${url}    ${params}
-    Verify Equal Ignore    ${response}    ${response_get}    ${ignore}
+    ${url}    get_url    path=${end_point}    id=${id}
+    ${response_get}    custom_get    ${session}    ${url}    ${params}
+    verify_equal_ignore    ${response}    ${response_get}    ${ignore}
 Read Block
     [Arguments]    ${new_status}
     ${url}    get url    path=${end_point}    id=${id}
-    ${response}    Custom get    ${session}    ${url}    ${params}    ${new_status}
-    Verify Schema    ${read_block_schema}    ${response}
+    ${response}    custom_get    ${session}    ${url}    ${params}    ${new_status}
+    verify_schema    ${read_block_schema}    ${response}
 
 Update Block
     [Arguments]    ${body_update} 
-    ${url}    get url    path=${end_point}    id=${id}
-    ${response}    Custom Put    ${session}    ${url}    ${params}    ${body_update}
-    Verify Schema    ${read_block_schema}    ${response}
-    ${response_get}    Custom get    ${session}    ${url}    ${params}
-    Verify Equal Ignore    ${response}    ${response_get}    ${ignore}
+    ${url}    get_url    path=${end_point}    id=${id}
+    ${response}    custom_put    ${session}    ${url}    ${params}    ${body_update}
+    verify_schema    ${read_block_schema}    ${response}
+    ${response_get}    custom_get    ${session}    ${url}    ${params}
+    verify_equal_ignore    ${response}    ${response_get}    ${ignore}
 Delete Block
-    ${url}    get url    path=${end_point}    id=${id}
-    ${response}    Custom Delete    ${session}    ${url}    ${delete}    
-    ${response_get}    Custom get    ${session}    ${url}    ${params}    404
-    Verify Subset Ignore    ${response_get}    ${verify_delete}    
+    ${url}    get_url    path=${end_point}    id=${id}
+    ${response}    custom_delete    ${session}    ${url}    ${delete}    
+    ${response_get}    custom_get    ${session}    ${url}    ${params}    404
+    verify_subset ignore    ${response_get}    ${verify_delete}    
 Create Session And Authentication
-    ${session}    ${params}     create session
+    ${session}    ${params}     create_session
     Set Global Variable    ${session} 
     Set Global Variable    ${params}
 Read all Blocks
     [Arguments]    ${extraurl}
-    ${url}    get url    path=${end_point}    filter=${extraurl}
-    ${response}    Custom get    ${session}    ${url}    ${params}
+    ${url}    get_url    path=${end_point}    filter=${extraurl}
+    ${response}    custom_get    ${session}    ${url}    ${params}
 Delete Session And Authentication
     Log    to do
