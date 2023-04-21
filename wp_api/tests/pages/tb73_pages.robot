@@ -3,7 +3,7 @@ Resource    ../../keywords/pages/run.robot
 Resource    ../../keywords/pages/crud.robot
 Test Setup    Create Session and params
 Test Teardown    Delete Created Pages
-Variables    ../../resources/data/json/pages.py
+Variables    ../../resources/data/bodies/pages.py
 Resource    ../../keywords/pages/update.robot
 
 *** Variables ***
