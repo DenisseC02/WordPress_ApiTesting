@@ -1,210 +1,210 @@
 {
-    "$schema": "http://json-schema.org/draft-04/schema#",
-    "type": "object",
-    "properties": {
-      "id": {
-        "type": "integer"
-      },
-      "date": {
-        "type": "string"
-      },
-      "date_gmt": {
-        "type": "string"
-      },
-      "guid": {
-        "type": "object",
-        "properties": {
-          "rendered": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "rendered"
-        ]
-      },
-      "modified": {
-        "type": "string"
-      },
-      "modified_gmt": {
-        "type": "string"
-      },
-      "slug": {
-        "type": "string"
-      },
-      "status": {
-        "type": "string"
-      },
-      "type": {
-        "type": "string"
-      },
-      "link": {
-        "type": "string"
-      },
-      "title": {
-        "type": "object",
-        "properties": {
-          "raw": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "raw"
-        ]
-      },
-      "content": {
-        "type": "object",
-        "properties": {
-          "raw": {
-            "type": "string"
-          },
-          "protected": {
-            "type": "boolean"
-          }
-        },
-        "required": [
-          "raw",
-          "protected"
-        ]
-      },
-      "template": {
-        "type": "string"
-      },
-      "_links": {
-        "type": "object",
-        "properties": {
-          "self": {
-            "type": "array",
-            "items": [
-              {
-                "type": "object",
-                "properties": {
-                  "href": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "href"
-                ]
-              }
-            ]
-          },
-          "collection": {
-            "type": "array",
-            "items": [
-              {
-                "type": "object",
-                "properties": {
-                  "href": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "href"
-                ]
-              }
-            ]
-          },
-          "about": {
-            "type": "array",
-            "items": [
-              {
-                "type": "object",
-                "properties": {
-                  "href": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "href"
-                ]
-              }
-            ]
-          },
-          "version-history": {
-            "type": "array",
-            "items": [
-              {
-                "type": "object",
-                "properties": {
-                  "count": {
-                    "type": "integer"
-                  },
-                  "href": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "count",
-                  "href"
-                ]
-              }
-            ]
-          },
-          "wp:attachment": {
-            "type": "array",
-            "items": [
-              {
-                "type": "object",
-                "properties": {
-                  "href": {
-                    "type": "string"
-                  }
-                },
-                "required": [
-                  "href"
-                ]
-              }
-            ]
-          },
-          "curies": {
-            "type": "array",
-            "items": [
-              {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "href": {
-                    "type": "string"
-                  },
-                  "templated": {
-                    "type": "boolean"
-                  }
-                },
-                "required": [
-                  "name",
-                  "href",
-                  "templated"
-                ]
-              }
-            ]
-          }
-        },
-        "required": [
-          "self",
-          "collection",
-          "about",
-          "version-history",
-          "wp:attachment",
-          "curies"
-        ]
-      }
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
     },
-    "required": [
-      "id",
-      "date",
-      "date_gmt",
-      "guid",
-      "modified",
-      "modified_gmt",
-      "slug",
-      "status",
-      "type",
-      "link",
-      "title",
-      "content",
-      "template",
-      "_links"
-    ]
-  }
+    "date": {
+      "type": "string"
+    },
+    "date_gmt": {
+      "type": "string"
+    },
+    "guid": {
+      "type": "object",
+      "properties": {
+        "rendered": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "rendered"
+      ]
+    },
+    "modified": {
+      "type": "string"
+    },
+    "modified_gmt": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "title": {
+      "type": "object",
+      "properties": {
+        "raw": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "raw"
+      ]
+    },
+    "content": {
+      "type": "object",
+      "properties": {
+        "raw": {
+          "type": "string"
+        },
+        "protected": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "raw",
+        "protected"
+      ]
+    },
+    "template": {
+      "type": "string"
+    },
+    "_links": {
+      "type": "object",
+      "properties": {
+        "self": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "href"
+              ]
+            }
+          ]
+        },
+        "collection": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "href"
+              ]
+            }
+          ]
+        },
+        "about": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "href"
+              ]
+            }
+          ]
+        },
+        "version-history": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "count": {
+                  "type": "integer"
+                },
+                "href": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "count",
+                "href"
+              ]
+            }
+          ]
+        },
+        "wp:attachment": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "href"
+              ]
+            }
+          ]
+        },
+        "curies": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "href": {
+                  "type": "string"
+                },
+                "templated": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "name",
+                "href",
+                "templated"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "self",
+        "collection",
+        "about",
+        "version-history",
+        "wp:attachment",
+        "curies"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "date",
+    "date_gmt",
+    "guid",
+    "modified",
+    "modified_gmt",
+    "slug",
+    "status",
+    "type",
+    "link",
+    "title",
+    "content",
+    "template",
+    "_links"
+  ]
+}
