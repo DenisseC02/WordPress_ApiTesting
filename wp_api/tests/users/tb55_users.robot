@@ -10,9 +10,8 @@ Test Setup    Create Session and params
 
 
 *** Test Cases ***
-Verify that is possible to create a user and then update it
+Verify that is not possible to create a user and then update the username
     ${id}  Create User And Get Key    ${create_user}   id
-    ${put_response_user}  Put User    ${update_user}    ${id}
-
-
+    ${put_response_user}  Put User And Get Key    ${user_admin_color}   ${id}   admin_color
+    Log    ${put_response_user}
 

@@ -22,7 +22,6 @@ Create user
     ${post_response_user}    custom_post    ${session}    ${url}     ${params}   ${body}     ${status_code}
     Log    ${post_response_user}
     verify_schema    ${path_create_schema}    ${post_response_user}
-#    [Return]    ${post_response_user}
 
 Create user and get key
     [Arguments]    ${body}   ${key}  ${status_code}=201
@@ -31,8 +30,8 @@ Create user and get key
     ${post_response_user}    custom_post    ${session}    ${url}     ${params}   ${body}     ${status_code}
     Log    ${post_response_user}
     verify_schema    ${path_create_schema}    ${post_response_user}
-    ${id}    get_key_value    ${post_response_user}    id
-    [Return]   ${id}
+    ${value}    get_key_value    ${post_response_user}    ${key}
+    [Return]   ${value}
 
 Create user with an expected error and get key
     [Arguments]    ${body}   ${key}  ${status_code}=500
@@ -71,6 +70,26 @@ Put user
     Log    ${put_response_user}
     verify_schema    ${path_update_schema}    ${put_response_user}
     [Return]    ${put_response_user}
+
+Put user and get key
+    [Arguments]    ${body}    ${id}   ${key}   ${status_code}=200
+    ${url}                  Get Users Endpoint
+    Log    ${url}
+    ${put_response_user}    custom_put    ${session}  ${url}/${id}  ${params}   ${body}   ${status_code}
+    Log    ${put_response_user}
+    verify_schema    ${path_update_schema}    ${put_response_user}
+    ${value}    get_key_value    ${put_response_user}    ${key}
+    [Return]   ${value}
+
+Put user error with data
+    [Arguments]    ${body}   ${key}   ${id}    ${status_code}=400
+    ${url}                  Get Users Endpoint
+    Log    ${url}
+    ${put_response_user}    custom_put    ${session}  ${url}/${id}  ${params}   ${body}   ${status_code}
+    Log    ${put_response_user}
+    verify_schema    ${path_error_user_put_username}    ${put_response_user}
+    ${value}    get_key_value    ${put_response_user}    ${key}
+    [Return]   ${value}
 
 Delete user
     [Arguments]    ${id}    ${status_code}=200

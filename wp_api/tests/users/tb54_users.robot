@@ -10,9 +10,7 @@ Test Setup    Create Session and params
 
 
 *** Test Cases ***
-Verify that is possible to create a user and then update it
+Verify that is not possible to create a user and then update the username
     ${id}  Create User And Get Key    ${create_user}   id
-    ${put_response_user}  Put User    ${update_user}    ${id}
-
-
-
+    ${put_response_user}  Put User Error With Data     ${update_username}    code   ${id}
+    Test Response Value      rest_user_invalid_argument   ${put_response_user}

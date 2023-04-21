@@ -12,7 +12,7 @@ Test Setup    Create Session and params
 *** Test Cases ***
 Verify that is not possible to create more than one user with the same email
     Create User    ${create_subscriber_user}
-    ${create_user2}    Create User With An Expected Error And Get Key   ${create_subscriber_user}   code
+    ${create_user2}    Create User With An Expected Error And Get Key   ${create_user}   code
     Test Response Value      existing_user_login    ${create_user2}
 
 
