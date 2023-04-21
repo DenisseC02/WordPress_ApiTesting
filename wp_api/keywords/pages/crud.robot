@@ -1,11 +1,6 @@
 *** Settings ***
-Library  libraries.process_data.url_assembler.UrlAssembler
-Library  libraries.requests.custom_request.CustomRequest
-Library  libraries.authentication.custom_session.CustomSession
-Library    libraries.process_data.process_data.ProcessData
-Library    libraries.assertions.verification.Verification
-Library    libraries.assertions.pages_verification.PagesVerification
-Variables    ../../resources/data/json/pages.py
+Resource    ../../resources/imports.robot
+Variables    ../../resources/data/bodies/pages.py
 *** Variables ***
 ${expected_status}    201
 ${end_point_pages}    pages
