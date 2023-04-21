@@ -3,6 +3,7 @@ Resource    ../../resources/imports.robot
 Resource    ../../keywords/categories/categories_crud.robot
 Resource    ../../keywords/categories/categories_crud_with_errors.robot
 Test Setup    Create New Session
+Test Teardown    Delete Category    ${ID}
 
 *** Variables ***
 ${body}=    ${body_complete}
@@ -13,7 +14,6 @@ Create a category and get it from list of categories
     Create Category    ${body}
     Get all Categories
     Search Category on List    ${ID}    ${response_get_all}    ${response_create}
-    Delete Category    ${ID}
 
 *** Keywords ***
 Search Category on List

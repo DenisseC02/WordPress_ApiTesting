@@ -2,7 +2,8 @@
 Resource    ../../resources/imports.robot
 Resource    ../../keywords/categories/categories_crud.robot
 Resource    ../../keywords/categories/categories_crud_with_errors.robot
-Test Setup    Create New Session
+Test Setup    Create_New_Session
+Test Teardown    Delete Category    ${ID}
 
 *** Variables ***
 ${body}=    ${body_complete}

@@ -2,7 +2,7 @@
 Resource    ../../resources/imports.robot
 Resource    ../../keywords/categories/categories_crud.robot
 Resource    ../../keywords/categories/categories_crud_with_errors.robot
-Test Setup    Create New Session
+Test Setup    Create_New_Session
 
 *** Variables ***
 ${body}    ${body_just_description}
@@ -14,5 +14,5 @@ Verify is not possible create a category without name
 
 *** Keywords ***
 Verify Error Message
-    ${message}    get key value    ${response_create_error}    message
+    ${message}    get_key_value    ${response_create_error}    message
     verify_equal_ignore    Missing parameter(s): name    ${message}
