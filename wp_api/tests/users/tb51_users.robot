@@ -9,7 +9,7 @@ Resource    wp_api/keywords/pages/run.robot
 Test Setup    Create Session and params
 
 *** Variables ***
-${expected result}      existing_user_login
+${expected result}           existing_user_login
 
 *** Test Cases ***
 Verify that is not possible to create more than one user with the same email
