@@ -8,9 +8,11 @@ Resource    wp_api/keywords/users/keywords.robot
 Resource    wp_api/keywords/pages/run.robot
 Test Setup    Create Session and params
 
+*** Variables ***
+${expected result}      existing_user_login
 
 *** Test Cases ***
 Verify that is not possible to create more than one user with the same email
-    Create User    ${create_subscriber_user}
+    Create User    ${create_user}
     ${create_user2}    Create User With An Expected Error And Get Key   ${create_user}   code
-    Test Response Value      existing_user_login    ${create_user2}
+    Test Response Value      ${expected result}    ${create_user2}
