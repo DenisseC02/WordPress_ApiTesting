@@ -1,0 +1,191 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "deleted": {
+      "type": "boolean"
+    },
+    "previous": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "date": {
+          "type": "string"
+        },
+        "date_gmt": {
+          "type": "string"
+        },
+        "guid": {
+          "type": "object",
+          "properties": {
+            "rendered": {
+              "type": "string"
+            },
+            "raw": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "rendered",
+            "raw"
+          ]
+        },
+        "modified": {
+          "type": "string"
+        },
+        "modified_gmt": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        },
+        "slug": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "link": {
+          "type": "string"
+        },
+        "title": {
+          "type": "object",
+          "properties": {
+            "raw": {
+              "type": "string"
+            },
+            "rendered": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "raw",
+            "rendered"
+          ]
+        },
+        "content": {
+          "type": "object",
+          "properties": {
+            "raw": {
+              "type": "string"
+            },
+            "rendered": {
+              "type": "string"
+            },
+            "protected": {
+              "type": "boolean"
+            },
+            "block_version": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "raw",
+            "rendered",
+            "protected",
+            "block_version"
+          ]
+        },
+        "excerpt": {
+          "type": "object",
+          "properties": {
+            "raw": {
+              "type": "string"
+            },
+            "rendered": {
+              "type": "string"
+            },
+            "protected": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "raw",
+            "rendered",
+            "protected"
+          ]
+        },
+        "author": {
+          "type": "integer"
+        },
+        "featured_media": {
+          "type": "integer"
+        },
+        "comment_status": {
+          "type": "string"
+        },
+        "ping_status": {
+          "type": "string"
+        },
+        "sticky": {
+          "type": "boolean"
+        },
+        "template": {
+          "type": "string"
+        },
+        "format": {
+          "type": "string"
+        },
+        "meta": {
+          "type": "array",
+          "items": {}
+        },
+        "categories": {
+          "type": "array",
+          "items": [
+            {
+              "type": "integer"
+            }
+          ]
+        },
+        "tags": {
+          "type": "array",
+          "items": {}
+        },
+        "permalink_template": {
+          "type": "string"
+        },
+        "generated_slug": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "date",
+        "date_gmt",
+        "guid",
+        "modified",
+        "modified_gmt",
+        "password",
+        "slug",
+        "status",
+        "type",
+        "link",
+        "title",
+        "content",
+        "excerpt",
+        "author",
+        "featured_media",
+        "comment_status",
+        "ping_status",
+        "sticky",
+        "template",
+        "format",
+        "meta",
+        "categories",
+        "tags",
+        "permalink_template",
+        "generated_slug"
+      ]
+    }
+  },
+  "required": [
+    "deleted",
+    "previous"
+  ]
+}
