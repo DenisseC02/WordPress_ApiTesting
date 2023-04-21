@@ -1,5 +1,4 @@
 *** Settings ***
-Variables   wp_api/resources/config/config.py
 Variables   wp_api/resources/data/bodies/users.py
 Library     libraries.requests.custom_request.CustomRequest
 Library     libraries.authentication.custom_session.CustomSession
