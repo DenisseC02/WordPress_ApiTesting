@@ -13,6 +13,3 @@ Test Setup    Create Session and params
 Verify that is possible to create a user and then update it
     ${id}  Create User And Get Key    ${create_user}   id
     ${put_response_user}  Put User    ${update_user}    ${id}
-
-
-
