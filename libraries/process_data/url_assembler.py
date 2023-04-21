@@ -2,7 +2,7 @@ from os import getenv
 
 
 class UrlAssembler:
-    """Assemble the end point URL"""
+    '''Assemble the end point URL'''
 
     def get_url(self, **kwargs):
         """Returns the URL"""

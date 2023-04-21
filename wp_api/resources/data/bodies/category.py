@@ -8,15 +8,15 @@ category_name2 = name_generator.generate_name('category', 5)
 body_complete = {
     'name': category_name,
     'description': name_generator.generate_name('this is a description ', 50),
-    "slug": category_name.lower(),
-    "meta": []
+    'slug': category_name.lower(),
+    'meta': []
 }
 
 body_complete2 = {
     'name': category_name2,
     'description': name_generator.generate_name('this is a description ', 50),
-    "slug": category_name2.lower(),
-    "meta": []
+    'slug': category_name2.lower(),
+    'meta': []
 }
 
 body_just_name = {
@@ -65,42 +65,42 @@ body_edit_description_dict = {
 }
 
 error_missing_name = {
-    "code": "rest_missing_callback_param",
-    "message": "Missing parameter(s): name",
-    "data": {
-        "status": 400,
-        "params": [
-            "name"
+    'code': 'rest_missing_callback_param',
+    'message': 'Missing parameter(s): name',
+    'data': {
+        'status': 400,
+        'params': [
+            'name'
         ]
     }
 }
 
 error_invalid_meta = {
-    "code": "rest_invalid_param",
-    "message": "Invalid parameter(s): meta",
-    "data": {
-        "status": 400,
-        "params": {
-            "meta": "Invalid parameter."
+    'code': 'rest_invalid_param',
+    'message': 'Invalid parameter(s): meta',
+    'data': {
+        'status': 400,
+        'params': {
+            'meta': 'Invalid parameter.'
         },
-        "details": []
+        'details': []
     }
 }
 
 error_invalid_parent = {
-    "code": "rest_invalid_param",
-    "message": "Invalid parameter(s): parent",
-    "data": {
-        "status": 400,
-        "params": {
-            "parent": "parent is not of type integer."
+    'code': 'rest_invalid_param',
+    'message': 'Invalid parameter(s): parent',
+    'data': {
+        'status': 400,
+        'params': {
+            'parent': 'parent is not of type integer.'
         },
-        "details": {
-            "parent": {
-                "code": "rest_invalid_type",
-                "message": "parent is not of type integer.",
-                "data": {
-                    "param": "parent"
+        'details': {
+            'parent': {
+                'code': 'rest_invalid_type',
+                'message': 'parent is not of type integer.',
+                'data': {
+                    'param': 'parent'
                 }
             }
         }
@@ -108,19 +108,19 @@ error_invalid_parent = {
 }
 
 error_invalid_description = {
-    "code": "rest_invalid_param",
-    "message": "Invalid parameter(s): description",
-    "data": {
-        "status": 400,
-        "params": {
-            "description": "description is not of type string."
+    'code': 'rest_invalid_param',
+    'message': 'Invalid parameter(s): description',
+    'data': {
+        'status': 400,
+        'params': {
+            'description': 'description is not of type string.'
         },
-        "details": {
-            "description": {
-                "code": "rest_invalid_type",
-                "message": "description is not of type string.",
-                "data": {
-                    "param": "description"
+        'details': {
+            'description': {
+                'code': 'rest_invalid_type',
+                'message': 'description is not of type string.',
+                'data': {
+                    'param': 'description'
                 }
             }
         }
@@ -128,24 +128,24 @@ error_invalid_description = {
 }
 
 error_parent_does_not_exist = {
-    "code": "rest_term_invalid",
-    "message": "Parent term does not exist.",
-    "data": {
-        "status": 400
+    'code': 'rest_term_invalid',
+    'message': 'Parent term does not exist.',
+    'data': {
+        'status': 400
     }
 }
 
 error_term_does_not_exist = {
-    "code": "rest_term_invalid",
-    "message": "Term does not exist.",
-    "data": {
-        "status": 404
+    'code': 'rest_term_invalid',
+    'message': 'Term does not exist.',
+    'data': {
+        'status': 404
     }
 }
 
 error_term_exist = {
-    "code": "term_exists",
-    "message": "A term with the name provided already exists with this parent."
+    'code': 'term_exists',
+    'message': 'A term with the name provided already exists with this parent.'
 }
 
 error_slug_exist = {
