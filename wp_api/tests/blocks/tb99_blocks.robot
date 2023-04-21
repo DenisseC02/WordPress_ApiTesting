@@ -5,11 +5,9 @@ Resource       wp_api/keywords/blocks/crud_blocks.robot
 Test Setup       Setup Testcase
 Test Teardown    Teardown Testcase
 *** Variables ***
-
 ${end_point}    blocks
+
 *** Test Cases ***
-
-
 Verify that a draft block can be deleted.
     Delete Block    
 

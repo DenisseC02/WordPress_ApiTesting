@@ -8,13 +8,10 @@ Test Teardown    Teardown testcase
 
 ${end_point}    blocks
 *** Test Cases ***
-
 Verify that a publish block can be edited.
     Update Block    ${body_update}
     
-
 *** Keywords ***
-
 Setup Testcase
     Create Session And Authentication
     Create Block    ${body_create}  

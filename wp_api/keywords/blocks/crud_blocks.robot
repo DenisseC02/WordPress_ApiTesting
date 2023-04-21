@@ -7,11 +7,9 @@ Library      libraries.process_data.process_data.ProcessData
 Variables    wp_api/resources/data/json/blocks.py
 
 *** Variables ***
-
 ${end_point}    blocks
 
-*** Keywords ***
-  
+*** Keywords *** 
 Create Block
     [Arguments]    ${body_create}
     ${url}    get_url    path=${end_point}
@@ -24,7 +22,7 @@ Create Block
     verify_equal_ignore    ${response}    ${response_get}    ${ignore}
 Read Block
     [Arguments]    ${new_status}
-    ${url}    get url    path=${end_point}    id=${id}
+    ${url}    get_url    path=${end_point}    id=${id}
     ${response}    custom_get    ${session}    ${url}    ${params}    ${new_status}
     verify_schema    ${read_block_schema}    ${response}
 

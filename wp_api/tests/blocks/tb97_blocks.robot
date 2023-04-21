@@ -12,10 +12,8 @@ ${end_point}    blocks
 Verify that a Block is created successfully with valid parameters
     Create Block    ${body_create}
     Read Block      200
-
 *** Keywords ***
 Setup Testcase
     Create Session And Authentication
-
 Teardown Testcase
     Delete Block
