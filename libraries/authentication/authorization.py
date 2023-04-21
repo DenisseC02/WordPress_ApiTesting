@@ -3,9 +3,9 @@ from abc import abstractmethod
 
 
 class Authorization(ABC):
-    """Parent authorization class"""
+    '''Parent authorization class'''
 
     @abstractmethod
     def authentication(self, *kwargs) -> tuple:
-        """Returns session authorization"""
+        '''Returns session authorization'''
         pass

@@ -12,6 +12,5 @@ class Api_Key(Authorization):
         if 'params' == add_to:
             params = {'key': key, 'token': token}
         else:
-            session.headers.update({'Authorization': f'key {key},'
-                                                     f' token {token}'})
+            session.headers.update({'Authorization': f'key {key},'f' token {token}'})
         return session, params
