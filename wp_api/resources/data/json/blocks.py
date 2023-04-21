@@ -5,18 +5,14 @@ body_create =  {
                 'title': 'My Block rogerpp',
                 'content': '[my-blockpp]',
                 'status': 'publish',
-                'my-block': {
-                    'title': 'My Block Title',
-                    'text': 'This is my block text.',
-                    'alignment': 'center',
-                    'size': 30,
-                    'isBold': False,
-                    'backgroundColor': '#ffffff',
-                    'textColor': '#000000',
-                    }
+                'password': '12345678'
                 }
 body_update = {
                 'title': 'My Block edited',
                 'content': '[my-block edited]',
                 'status': 'publish'
                 }
+delete = {'force': True}
+verify_delete =  {'message': 'Invalid post ID.'}
+ignore = ['guid','modified_gmt','slug',
+          'password',('content','block_version'),'_links']
