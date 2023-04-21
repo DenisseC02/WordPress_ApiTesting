@@ -44,6 +44,9 @@ Create Session And Authentication
     ${session}    ${params}     create session
     Set Global Variable    ${session} 
     Set Global Variable    ${params}
-
+Read all Blocks
+    [Arguments]    ${extraurl}
+    ${url}    get url    path=${end_point}    filter=${extraurl}
+    ${response}    Custom get    ${session}    ${url}    ${params}
 Delete Session And Authentication
     Log    to do

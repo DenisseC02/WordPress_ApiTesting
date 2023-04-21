@@ -46,9 +46,6 @@ class Verification(object):
             logger.info("*****Actual******")
             logger.info(actual_result)
             logger.info(list_ignore)
-            logger.info(type(list_ignore))
-            logger.info(type(actual_result))
-            logger.info(type(expected_result))
             assert_that(actual_result).is_equal_to(expected_result, ignore=list_ignore)
 
     def verify_subset_ignore(self, response, body, ignore=[]):
