@@ -23,7 +23,7 @@ class MakeRequest(object):
 
     def method_put(self, body, expected_status=200):
         '''Makes a put request'''
-        result = self.session.put(self.url, data=body, params=self.params)
+        result = self.session.put(self.url, json=body, params=self.params)
         assert_that(result.status_code).is_in(expected_status)
         return result
 

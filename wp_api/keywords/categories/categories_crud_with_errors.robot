@@ -34,6 +34,7 @@ Delete Category With Error
 Update Category With Error
     [Arguments]    ${id}    ${body}    ${status}
     ${url}    get_url    endpoint=${endpoint}
+    log     ${url}
     ${response_put}    custom_put    ${session}    ${url}/${ID}    ${params}    ${body}    ${status}
     log    Edit response: ${response_put}
     set global variable    ${response_put}

@@ -3,7 +3,7 @@ Resource        wp_api/keywords/posts/ini.robot
 Resource        wp_api/keywords/posts/crud.robot
 Resource        wp_api/keywords/posts/update.robot
 Test Setup      Create Session and params
-Variables       wp_api/resources/data/pages/posts.py
+Variables       wp_api/resources/data/bodies/posts.py
 
 *** Variables ***
 ${bad_status}    400
