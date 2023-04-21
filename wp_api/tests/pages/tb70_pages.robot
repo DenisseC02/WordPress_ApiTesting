@@ -6,7 +6,7 @@ Variables    ../../resources/data/bodies/pages.py
 
 *** Variables ***
 ${end_point_pages}    pages
-${parent_id}    13
+${parent_id}    2
 
 *** Test Cases ***
 Verify that a child page can be deleted without modifying pages with the same parent id

@@ -1,8 +1,6 @@
 *** Settings ***
-Library  libraries.process_data.url_assembler.UrlAssembler
-Library  libraries.requests.custom_request.CustomRequest
-Library    libraries.assertions.verification.Verification
-Variables    ../../resources/data/json/pages.py
+Resource    ../../resources/imports.robot
+Variables    ../../resources/data/bodies/pages.py
 
 *** Variables ***
 ${end_point_pages}    pages

@@ -1,6 +1,5 @@
 *** Settings ***
-Library  libraries.authentication.custom_session.CustomSession
-Library  libraries.process_data.url_assembler.UrlAssembler
+Resource    ../../resources/imports.robot
 
 *** Variables ***
 ${end_point_pages}    pages
