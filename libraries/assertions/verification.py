@@ -9,7 +9,7 @@ class Verification(object):
     """A Verification class"""
 
     def verify_schema(self, path_json_schema, response):
-        """Asserts the response corresponds to the schema """
+        '''Asserts the response corresponds to the schema'''
         with soft_assertions():
             with open(path_json_schema, 'r') as schema1:
                 schema = json.load(schema1)

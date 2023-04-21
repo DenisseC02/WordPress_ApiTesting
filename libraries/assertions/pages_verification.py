@@ -5,7 +5,7 @@ from assertpy import soft_assertions
 from assertpy import assert_that
 
 class PagesVerification:
-    """Assertions for pages"""
+    '''Assertions for pages'''
     def verify_same_parent(self, actual_result, expected_result):
         """Asserts that a list of pages have the same parent"""
         with soft_assertions():

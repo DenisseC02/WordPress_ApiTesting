@@ -15,6 +15,4 @@ ${expected result}      existing_user_login
 Verify that is not possible to create more than one user with the same email
     Create User    ${create_user}
     ${create_user2}    Create User With An Expected Error And Get Key   ${create_user}   code
-    Test Response Value      ${expected result}    ${create_user2}
-
-60, username, caracteres especiales en username, e email
+    verify_equal_ignore      ${expected result}    ${create_user2}
