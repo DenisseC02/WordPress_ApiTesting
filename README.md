@@ -87,7 +87,6 @@ After the setup, in this section will be explained robot framework.
 |
 └── wp_api                            (Project specific directory)
     ├── keywords                      (Set of robot keyword)       
-    |   ├── py_scripts                (Set of Python scripts for robot keywords)
     |   └── ... endpoint keywords     (Directories of keywords for each endpoint)
     ├── resources                     (Resources directory)
     |   ├── config                    (Additional configurations directory)
@@ -102,7 +101,8 @@ After the setup, in this section will be explained robot framework.
 ##### 3.2. Execution examples
 Using the integrated terminal execute the following commands:
 
-1. In progress...
+1. robot -d reports -L TRACE .\wp_api\tests
+
 
 ```
 ___

@@ -1,6 +1,5 @@
 *** Settings ***
-Variables   wp_api/resources/config/config.py
-Variables   wp_api/resources/data/json/users.py
+Variables   wp_api/resources/data/bodies/users.py
 Library     libraries.requests.custom_request.CustomRequest
 Library     libraries.authentication.custom_session.CustomSession
 Library     libraries.process_data.url_assembler.UrlAssembler
@@ -14,12 +13,12 @@ ${expected result}      rest_missing_callback_param
 *** Test Cases ***
 Verify that is not possible to create a user without a password
     ${post_response_user}    Create User With An Expected Error With Data    ${user_without_password}  code  400
-    verify_equal_ignore      ${expected result}   ${post_response_user}
+     verify_equal_ignore     ${expected result}   ${post_response_user}
 
 Verify that is not possible to create a user without a username
     ${post_response_user}    Create User With An Expected Error With Data    ${user_without_username}  code  400
-    verify_equal_ignore      ${expected result}   ${post_response_user}
+     verify_equal_ignore      ${expected result}   ${post_response_user}
 
 Verify that is not possible to create a user without an email
     ${post_response_user}    Create User With An Expected Error With Data    ${user_without_email}  code  400
-    verify_equal_ignore      ${expected result}   ${post_response_user}
+     verify_equal_ignore      ${expected result}   ${post_response_user}
