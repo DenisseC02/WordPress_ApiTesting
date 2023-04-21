@@ -2,7 +2,7 @@
 Resource    ../../keywords/pages/run.robot
 Resource    ../../keywords/pages/crud.robot
 Test Setup    Create Session and params
-Variables    ../../resources/data/json/pages.py
+Variables    ../../resources/data/bodies/pages.py
 
 *** Variables ***
 ${end_point_pages}    pages
