@@ -14,14 +14,18 @@ create_subscriber_user = {
     }
 
 update_user = {
-    'password': f"{password}",
-    'username': f"{username}",
-    'email': f"{email}",
-    'role': 'subscriber',
-    'first_name': f"{name}",
-    'last_name': f"{lastname}"
+    'password': f"updated_{password}",
+    'email': f"updated_{email}",
+    'role': 'administrator',
+    'first_name': f"updated_{name}",
+    'last_name': f"updated_{lastname}"
     }
 
+update_password = {'password': f"updated_{password}"}
+update_email = {'email': f"updated_{email}"}
+update_role = {'role': 'administrator'}
+update_firstname = {'first_name': f"updated_{name}"}
+update_lastname = {'last_name': f"updated_{lastname}"}
 
 user_without_password = {
     'username': f"{username}",
