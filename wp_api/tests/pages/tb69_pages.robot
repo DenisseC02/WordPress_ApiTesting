@@ -3,11 +3,11 @@ Resource    ../../keywords/pages/run.robot
 Resource    ../../keywords/pages/crud.robot
 Test Setup    Create Session and params
 Test Teardown    Delete Created Pages
-Variables    ../../resources/data/json/pages.py
+Variables    ../../resources/data/bodies/pages.py
 
 *** Variables ***
 ${end_point_pages}    pages
-${parent_id}    10
+${parent_id}    1
 
 *** Test Cases ***
 Verify child pages are listed filtering by parent id
