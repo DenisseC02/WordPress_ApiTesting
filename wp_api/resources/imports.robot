@@ -1,5 +1,4 @@
 *** Settings ***
-Variables    config/config.py
 Variables    data/bodies/category.py
 Library    libraries.process_data.url_assembler.UrlAssembler
 Library    libraries.process_data.process_data.ProcessData
