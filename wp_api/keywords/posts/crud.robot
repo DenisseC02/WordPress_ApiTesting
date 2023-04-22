@@ -12,6 +12,7 @@ ${expected_status}      201
 ${end_point_posts}      posts
 ${data_delete}          true
 ${post_status}
+
 *** Keywords ***
 Create new post
     [Arguments]    ${body}
@@ -53,19 +54,3 @@ Delete the post
     ${response_delete}    custom_get    ${session}    ${url}    ${params}     404
     Log    ${response_delete}
     verify_subset    ${post_status}    ${response_delete}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#

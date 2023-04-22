@@ -15,4 +15,4 @@ Create session and params
 Delete created pages
     [Teardown]
     ${url}      get_url     extra=${end_point_posts}      id=${id}
-    custom delete        ${session}       ${url}       ${params}
+    custom_delete        ${session}       ${url}       ${params}
