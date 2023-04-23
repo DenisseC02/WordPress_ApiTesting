@@ -7,14 +7,13 @@ ${end_point_pages}    pages
 
 *** Keywords ***
 Create new page
-    [Arguments]    ${body} 
+    [Arguments]    ${body}    ${ignore_list} 
     ${url}    get_url    end_point=${end_point_pages}
     Log    ${url}   
     ${response}    custom_post    ${session}    ${url}    ${params}    ${body}    ${expected_status}
-    Log    ${response}
     verify_schema    ${path_create_schema}    ${response}
     ${id}    get_key_value    ${response}    id
-    Set Global Variable    ${id}
+    Set Test Variable    ${id}
     ${url_get}    get_url    end_point=${end_point_pages}    id=${id}
     Log    ${url}
     ${response_get}    custom_get    ${session}    ${url_get}    ${params}    
@@ -29,7 +28,7 @@ Retrieve the page
     verify_schema    ${path_list_schema}    ${response}
 
 Update the page
-    [Arguments]    ${body}
+    [Arguments]    ${body}    ${ignore_list}
     ${url}    get_url    end_point=${end_point_pages}    id=${id}
     Log    ${url}
     ${response}    custom_put    ${session}    ${url}    ${params}    ${body}
@@ -41,7 +40,6 @@ Delete the page
     ${url}    get_url    end_point=${end_point_pages}    id=${id}
     Log    ${url}
     ${response}    custom_delete    ${session}    ${url}    ${params}
-    Log    ${response}
     verify_schema    ${path_delete_schema}    ${response}
     ${response_delete}    custom_get    ${session}    ${url}    ${params}
     Log    ${response_delete}

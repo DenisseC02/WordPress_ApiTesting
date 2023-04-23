@@ -1,25 +1,47 @@
 *** Settings ***
 Resource    ../../keywords/pages/run.robot
 Resource    ../../keywords/pages/crud.robot
-Test Setup    Create Session and params
-Test Teardown    Delete Created Pages
+Resource    ../../keywords/pages/update.robot
+Suite Setup    Create Session and params
+# Test Teardown    Delete Created Pages
 Variables    ../../resources/data/bodies/pages.py
+Library    ../../../venv/lib/site-packages/robot/libraries/Collections.py
 
 *** Variables ***
 ${end_point_pages}    pages
-${parent_id}    1
 
 *** Test Cases ***
 Verify child pages are listed filtering by parent id
-    Create new page    ${body_test7_post1}  
-    Create new page    ${body_test7_post2}
-    Create new page    ${body_test7_post3}
+    Create pages with the same parent id    ${body_parent1}    ${body_child11}    ${body_child12}
     Retrieve the page by parent id
 
+Verify that a child page can be deleted without modifying pages with the same parent id
+    Create pages with the same parent id    ${body_parent2}    ${body_child21}    ${body_child22}
+    Delete the page
+    Verify that the other page are listed by parent id
+
 *** Keywords ***
+Create pages with the same parent id
+    [Arguments]    ${body_parent}    ${body_child_1}    ${body_child_2}
+    Create parent page    ${body_parent}
+    ${parent_id}    get_key_value    ${response}    id
+    Set To Dictionary    ${body_child_1}    parent    ${parent_id}
+    Set To Dictionary    ${body_child_2}    parent    ${parent_id}
+    Create new page    ${body_child_1}    ${ignore_list}
+    Create new page    ${body_child_2}    ${ignore_list}
+
 Retrieve the page by parent id
     ${url}    get_url    end_point=${end_point_pages}
     Log    ${url}
+    ${parent_id}    get_key_value    ${response}    id
+    ${response_get}    custom_get    ${session}    ${url}    parent=${parent_id}    
+    Log    ${response}
+    verify_same_parent    ${response_get}    ${parent_id}
+
+Verify that the other page are listed by parent id
+    ${url}    get_url    end_point=${end_point_pages}
+    Log    ${url}
+    ${parent_id}    get_key_value    ${response}    id
     ${response}    custom_get    ${session}    ${url}    parent=${parent_id}    
     Log    ${response}
     verify_same_parent    ${response}    ${parent_id}

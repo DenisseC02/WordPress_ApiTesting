@@ -7,8 +7,8 @@ ${end_point_pages}    pages
 *** Keywords ***
 Create Session and params
     ${session}  ${params}  create_session
-    Set Global Variable     ${session}
-    Set Global Variable    ${params}
+    Set Suite Variable    ${session}
+    Set Suite Variable    ${params}
 
 Delete Created Pages
     [Teardown]    
