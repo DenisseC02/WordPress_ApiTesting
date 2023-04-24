@@ -6,18 +6,21 @@ Library    OperatingSystem
     
 *** Test Cases ***
 Verify If Its Possible To Upload Image, Audio And Video Files To Media Library
+    [Tags]    smoke
     Upload Audio, Image, Video and Verify That Exists in Media Library
 
 Verify if an image bigger than 1024x1024 pixels can be uploaded.
+    [Tags]    smoke
     Upload image > 1024x1024 pixels
     [Teardown]    Delete Media File     200    ${url}/${id}
 
 Verify if a pdf document bigger than 2MB can not be uploaded.
+    [Tags]    smoke
     Upload PDF document > 2MB
     
 
 Verify that is possible to add ALT TEXT to an existing image.
-
+    [Tags]    update
     Upload A Random Image
     Get The Actual Description Content
     Update ALT TEXT Field With the text     Hello from media test suite.    alt_text
