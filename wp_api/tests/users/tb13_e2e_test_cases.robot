@@ -7,7 +7,6 @@ Resource    wp_api/keywords/users/keywords.robot
 Resource    wp_api/keywords/pages/crud.robot
 Test Setup    Create Session and params
 
-
 *** Test Cases ***
 Verify that is not possible to create more than one user with the same email
     [Tags]    errors

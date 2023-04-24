@@ -75,7 +75,6 @@ Put user
     Log    ${url}
     ${put_response_user}    custom_put    ${session}  ${url}/${id}  ${params}   ${body}   ${status_code}
     Log    ${put_response_user}
-#    verify_schema    ${path_update_schema}    ${put_response_user}
     [Return]    ${put_response_user}
 
 Put user and get key
@@ -94,7 +93,6 @@ Put user error with data
     Log    ${url}
     ${put_response_user}    custom_put    ${session}  ${url}/${id}  ${params}   ${body}   ${status_code}
     Log    ${put_response_user}
-#    verify_schema    ${path_error_user_put_username}    ${put_response_user}
     ${value}    get_key_value    ${put_response_user}    ${key}
     [Return]   ${value}
 
