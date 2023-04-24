@@ -1,6 +1,7 @@
 *** Settings ***
 Resource    ../../keywords/pages/run.robot
 Resource    ../../keywords/pages/crud.robot
+Resource    ../../keywords/pages/update.robot
 Suite Setup    Create Session and params
 Test Teardown    Delete Created Pages
 Variables    ../../resources/data/bodies/pages.py
@@ -33,3 +34,8 @@ Verify that a new page can be created and update with a password
 Verify that a new page can be created and updated with a slug
    Create new page    ${body_test10_post}    ${ignore_list}
    Update the page    ${body_slug}    ${ignore_list} 
+
+Verify that the password can be successfully removed from a page
+    Create new page    ${body_test4_post}    ${ignore_list_password}
+    Update the page    ${body_test4_put}    ${ignore_list}
+    Verify that the page does not have password
