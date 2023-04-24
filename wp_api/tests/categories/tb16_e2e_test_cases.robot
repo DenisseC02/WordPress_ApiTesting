@@ -13,73 +13,87 @@ ${endpoint}=    categories
 
 *** Test Cases ***
 Verify is posible edit and delete a category
+    [Tags]    smoke
     Update existent category
     Delete Category    ${id}
     Log    Verify category was deleted:
     Get Category With error    ${id}    404
 
 Create a category and verify it exist on list of categories
+    [Tags]    smoke
     Create category for search
     Verify created category exists on list of categories
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible create a category without name
+    [Tags]    errors
     Create category without name
     Verify response returns an error message    ${error_missing_name}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possble Create Two Categories With The Same Name And Parent
+    [Tags]    errors
     Set body to create categories with same parent and name
     Create two categories with the same name and parent
     Verify response returns an error message    ${error_term_exist}
     Append To List    ${for_delete}    ${id}
 
 Delete inexistent category
+    [Tags]    errors
     Delete existent category
     Delete inexistent category
 
 Verify is possible create a category without description and add it with update
+    [Tags]    smoke
     ${id}    Create category without description
     Update category description    ${id}
     Verify category was updated    ${body_description}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid meta string
+    [Tags]    errors
     Update category with invalid parameter    ${body_edit_wrong_meta_string}
     Verify response returns an error message    ${error_invalid_meta}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid meta number
+    [Tags]    errors
     Update category with invalid parameter    ${body_edit_wrong_meta_number}
     Verify response returns an error message    ${error_invalid_meta}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid parent list
+    [Tags]    errors
     Update category with invalid parameter    ${body_edit_wrong_parent_list}
     Verify response returns an error message    ${error_invalid_parent}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid parent dict
+    [Tags]    errors
     Update category with invalid parameter    ${body_edit_wrong_parent_dict}
     Verify response returns an error message    ${error_invalid_parent}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid description int
+    [Tags]    errors
     Update category with invalid parameter    ${body_edit_description_int}
     Verify response returns an error message    ${error_invalid_description}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid description list
+    [Tags]    errors
     Update category with invalid parameter    ${body_edit_description_list}
     Verify response returns an error message    ${error_invalid_description}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid description dictionary
+    [Tags]    errors
     Update category with invalid parameter    ${body_edit_description_dict}
     Verify response returns an error message    ${error_invalid_description}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible create a category and edit it with inexistent parent
+    [Tags]    errors
     Delete Category    ${id}
     Set body with inexistent parent for edit    ${id}
     ${id_for_update}    Obtain existent category
@@ -88,11 +102,13 @@ Verify is not possible create a category and edit it with inexistent parent
     Append To List    ${for_delete}    ${id_for_update}
 
 Verify is not possible edit a category parent with its own id
+    [Tags]    smoke
     Edit Category with its own id as parent
     Verify parent is set automaticly as zero
     Append To List    ${for_delete}    ${id}
 
 Verify it is not possible edit a category with a slug that already exist
+    [Tags]    errors
     Obtain existent slug
     Edit category with existent slug
     Verify response returns an error message    ${error_slug_exist}
