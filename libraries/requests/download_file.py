@@ -15,3 +15,7 @@ class DownloadFile(object):
             file.write(response.content)
             download_location = file.name
         return download_location
+    
+    def delete_local_file(self, file_path):
+        self.file_path  = file_path
+        os.remove(file_path)

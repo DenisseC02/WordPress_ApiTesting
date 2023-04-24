@@ -2,7 +2,7 @@
 Documentation    WordPress MEDIA endpoint Testing.
 Resource    wp_api/keywords/media/media_keywords.robot
 Suite Setup    Create Test Suite Session
-Library    ../../../.apitesting/lib/python3.8/site-packages/robot/libraries/OperatingSystem.py
+Library    OperatingSystem
     
 *** Test Cases ***
 Verify If Its Possible To Upload Image, Audio And Video Files To Media Library
@@ -29,7 +29,7 @@ Verify if its possible download a media file as external user.
     Get Public Direct Link
     Download The File Using The Link
     Verify If The File Exists On Local Disk
-    [Teardown]    Delete Media File     200    ${url}/${id}
+    [Teardown]    Delete Remote and Local Files
 
 Verify if a ZIP compressed file can be uploaded to the library.
     [Tags]    update
@@ -92,6 +92,10 @@ Verify if Description Content Has Changed
 Download The File Using The Link
     ${download_dir}    download    ${result}
     Set Suite Variable    ${file_path}    ${download_dir}
+
+Delete Remote and Local Files
+    Delete Media File     200    ${url}/${id}
+    delete_local_file    ${file_path}    
 
 Verify If The File Exists On Local Disk
     File Should Exist    ${file_path}
