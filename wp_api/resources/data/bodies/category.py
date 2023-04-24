@@ -1,23 +1,7 @@
 from libraries.utils.name_generator import NameGenerator
 
-
 name_generator = NameGenerator()
-category_name = name_generator.generate_name('category', 5)
-category_name2 = name_generator.generate_name('category', 5)
-
-body_complete = {
-    'name': category_name,
-    'description': name_generator.generate_name('this is a description ', 50),
-    'slug': category_name.lower(),
-    'meta': []
-}
-
-body_complete2 = {
-    'name': category_name2,
-    'description': name_generator.generate_name('this is a description ', 50),
-    'slug': category_name2.lower(),
-    'meta': []
-}
+empty_list = []
 
 body_just_name = {
     'name': name_generator.generate_name('category', 5)

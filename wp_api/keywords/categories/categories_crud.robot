@@ -9,8 +9,8 @@ ${schemas_path}    wp_api/resources/data/schemas/categories
 *** Keywords ***
 Create New Session
     ${session}  ${params}    create_session
-    Set Global Variable    ${session}
-    Set Global Variable    ${params}
+    set test variable    ${session}
+    set test variable    ${params}
 
 Get Category
     [Arguments]    ${id}    ${status}
@@ -43,17 +43,17 @@ Create Category
     ${response_get}    Get Category    ${ID}    200
     Verify_Subset_Ignore    ${response_get}    ${body}
     [Return]    ${ID}    ${response_create}
-#    set global variable    ${response_create}
 
 Delete Category
-    [Arguments]    ${id}
+    [Arguments]    ${id_delete}
     ${url}    get_url    endpoint=${endpoint}
     Log    Endpoint used: ${url}
     Log    Method used: DELETE
     ${params}    create dictionary    force=true
-    ${response_delete}    custom_delete    ${session}    ${url}/${id}    ${params}
+    ${response_delete}    custom_delete    ${session}    ${url}/${id_delete}    ${params}
     Log    Response Delete: ${response_delete}
     Verify_Schema    ${schemas_path}/delete_category.json    ${response_delete}
+    [Return]    ${response_delete}
 
 
 Update Category
