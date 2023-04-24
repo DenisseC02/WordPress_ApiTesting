@@ -1,0 +1,304 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "_links": {
+      "type": "object",
+      "properties": {
+        "collection": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "href"
+              ]
+            }
+          ]
+        },
+        "self": {
+          "type": "array",
+          "items": [
+            {
+              "type": "object",
+              "properties": {
+                "href": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "href"
+              ]
+            }
+          ]
+        }
+      },
+      "required": [
+        "collection",
+        "self"
+      ]
+    },
+    "avatar_urls": {
+      "type": "object",
+      "properties": {
+        "24": {
+          "type": "string"
+        },
+        "48": {
+          "type": "string"
+        },
+        "96": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "24",
+        "48",
+        "96"
+      ]
+    },
+    "capabilities": {
+      "type": "object",
+      "properties": {
+        "delete_others_pages": {
+          "type": "boolean"
+        },
+        "delete_others_posts": {
+          "type": "boolean"
+        },
+        "delete_pages": {
+          "type": "boolean"
+        },
+        "delete_posts": {
+          "type": "boolean"
+        },
+        "delete_private_pages": {
+          "type": "boolean"
+        },
+        "delete_private_posts": {
+          "type": "boolean"
+        },
+        "delete_published_pages": {
+          "type": "boolean"
+        },
+        "delete_published_posts": {
+          "type": "boolean"
+        },
+        "edit_others_pages": {
+          "type": "boolean"
+        },
+        "edit_others_posts": {
+          "type": "boolean"
+        },
+        "edit_pages": {
+          "type": "boolean"
+        },
+        "edit_posts": {
+          "type": "boolean"
+        },
+        "edit_private_pages": {
+          "type": "boolean"
+        },
+        "edit_private_posts": {
+          "type": "boolean"
+        },
+        "edit_published_pages": {
+          "type": "boolean"
+        },
+        "edit_published_posts": {
+          "type": "boolean"
+        },
+        "editor": {
+          "type": "boolean"
+        },
+        "level_0": {
+          "type": "boolean"
+        },
+        "level_1": {
+          "type": "boolean"
+        },
+        "level_2": {
+          "type": "boolean"
+        },
+        "level_3": {
+          "type": "boolean"
+        },
+        "level_4": {
+          "type": "boolean"
+        },
+        "level_5": {
+          "type": "boolean"
+        },
+        "level_6": {
+          "type": "boolean"
+        },
+        "level_7": {
+          "type": "boolean"
+        },
+        "manage_categories": {
+          "type": "boolean"
+        },
+        "manage_links": {
+          "type": "boolean"
+        },
+        "moderate_comments": {
+          "type": "boolean"
+        },
+        "publish_pages": {
+          "type": "boolean"
+        },
+        "publish_posts": {
+          "type": "boolean"
+        },
+        "read": {
+          "type": "boolean"
+        },
+        "read_private_pages": {
+          "type": "boolean"
+        },
+        "read_private_posts": {
+          "type": "boolean"
+        },
+        "unfiltered_html": {
+          "type": "boolean"
+        },
+        "upload_files": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "delete_others_pages",
+        "delete_others_posts",
+        "delete_pages",
+        "delete_posts",
+        "delete_private_pages",
+        "delete_private_posts",
+        "delete_published_pages",
+        "delete_published_posts",
+        "edit_others_pages",
+        "edit_others_posts",
+        "edit_pages",
+        "edit_posts",
+        "edit_private_pages",
+        "edit_private_posts",
+        "edit_published_pages",
+        "edit_published_posts",
+        "editor",
+        "level_0",
+        "level_1",
+        "level_2",
+        "level_3",
+        "level_4",
+        "level_5",
+        "level_6",
+        "level_7",
+        "manage_categories",
+        "manage_links",
+        "moderate_comments",
+        "publish_pages",
+        "publish_posts",
+        "read",
+        "read_private_pages",
+        "read_private_posts",
+        "unfiltered_html",
+        "upload_files"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "extra_capabilities": {
+      "type": "object",
+      "properties": {
+        "editor": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "editor"
+      ]
+    },
+    "first_name": {
+      "type": "string"
+    },
+    "id": {
+      "type": "integer"
+    },
+    "last_name": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "locale": {
+      "type": "string"
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "persisted_preferences": {
+          "type": "array",
+          "items": {}
+        }
+      },
+      "required": [
+        "persisted_preferences"
+      ]
+    },
+    "name": {
+      "type": "string"
+    },
+    "nickname": {
+      "type": "string"
+    },
+    "registered_date": {
+      "type": "string"
+    },
+    "roles": {
+      "type": "array",
+      "items": [
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "slug": {
+      "type": "string"
+    },
+    "url": {
+      "type": "string"
+    },
+    "username": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "_links",
+    "avatar_urls",
+    "capabilities",
+    "description",
+    "email",
+    "extra_capabilities",
+    "first_name",
+    "id",
+    "last_name",
+    "link",
+    "locale",
+    "meta",
+    "name",
+    "nickname",
+    "registered_date",
+    "roles",
+    "slug",
+    "url",
+    "username"
+  ]
+}
