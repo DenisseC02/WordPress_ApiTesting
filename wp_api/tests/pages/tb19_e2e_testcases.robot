@@ -5,7 +5,7 @@ Resource    ../../keywords/pages/keywords.robot
 Variables    ../../resources/data/bodies/pages.py
 Suite Setup    Create Session and params
 Suite Teardown    Delete Created Pages
-# Suite Teardown    Delete Created Pages
+
 *** Variables ***
 ${end_point_pages}    pages
 ${bad_status}    404
