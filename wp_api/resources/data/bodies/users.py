@@ -3,7 +3,8 @@ from libraries.utils.random_generator import RandomGenerator
 
 name, lastname, username, email = RandomGenerator().generate_email()
 password = RandomGenerator().generate_password()
-role = RandomGenerator().generate_random_choice(['subscriber', 'administrator', 'contributor', 'author', 'editor', ''])
+roles = ['subscriber', 'administrator', 'contributor', 'author', 'editor', '']
+role = RandomGenerator().generate_random_choice(roles)
 admin_color = RandomGenerator().generate_random_choice(['fresh', 'light', 'modern', 'blue', 'coffee', 'ectoplasm',
                                                         'midnight', 'ocean', 'sunrise'])
 
@@ -12,7 +13,61 @@ create_user = {
     'password': f'{password}',
     'username': f'{username}',
     'email': f'{email}',
-    'role': f'{role}',
+    'roles': 'subscriber',
+    'first_name': f'{name}',
+    'last_name': f'{lastname}'
+    }
+
+create_subscriber_user = {
+    'password': f'{password}',
+    'username': f'{username}',
+    'email': f'{email}',
+    'roles': f'{roles[0]}',
+    'first_name': f'{name}',
+    'last_name': f'{lastname}'
+    }
+
+create_administrator_user = {
+    'password': f'{password}',
+    'username': f'{username}',
+    'email': f'{email}',
+    'roles': f'{roles[1]}',
+    'first_name': f'{name}',
+    'last_name': f'{lastname}'
+    }
+
+create_contributor_user = {
+    'password': f'{password}',
+    'username': f'{username}',
+    'email': f'{email}',
+    'roles': f'{roles[2]}',
+    'first_name': f'{name}',
+    'last_name': f'{lastname}'
+    }
+
+create_author_user = {
+    'password': f'{password}',
+    'username': f'{username}',
+    'email': f'{email}',
+    'roles': f'{roles[3]}',
+    'first_name': f'{name}',
+    'last_name': f'{lastname}'
+    }
+
+create_editor_user = {
+    'password': f'{password}',
+    'username': f'{username}',
+    'email': f'{email}',
+    'roles': f'{roles[4]}',
+    'first_name': f'{name}',
+    'last_name': f'{lastname}'
+    }
+
+create_without_role_user = {
+    'password': f'{password}',
+    'username': f'{username}',
+    'email': f'{email}',
+    'roles': f'{roles[4]}',
     'first_name': f'{name}',
     'last_name': f'{lastname}'
     }
@@ -27,7 +82,7 @@ update_user = {
 
 update_password = {'password': f'updated_{password}'}
 update_email = {'email': f'updated_{email}'}
-update_role = {'role': f'{role}'}
+update_role = {'roles': f'{role}'}
 update_firstname = {'first_name': f'updated_{name}'}
 update_lastname = {'last_name': f'updated_{lastname}'}
 update_username = {'username': f'updated_{username}'}
@@ -35,7 +90,7 @@ update_username = {'username': f'updated_{username}'}
 user_without_password = {
     'username': f'{username}',
     'email': f'{email}',
-    'role': f'{role}',
+    'roles': f'{role}',
     'first_name': f'{name}',
     'last_name': f'{lastname}'
     }
@@ -43,7 +98,7 @@ user_without_password = {
 user_without_username = {
     'password': f'{password}',
     'email': f'{email}',
-    'role': f'{role}',
+    'roles': f'{role}',
     'first_name': f'{name}',
     'last_name': f'{lastname}'
     }
@@ -51,7 +106,16 @@ user_without_username = {
 user_without_email = {
     'password': f'{password}',
     'username': f'{username}',
-    'role': f'{role}',
+    'roles': f'{role}',
+    'first_name': f'{name}',
+    'last_name': f'{lastname}'
+    }
+
+create_60_character_username = {
+    'password': f'{password}',
+    'username': 'zvm2WOuKQEmQxs8AeXCmio0NJJxS2oL221JHEk5tSl24dcJnVaXZBqfO5bsp2',
+    'email': f'{email}',
+    'roles': 'subscriber',
     'first_name': f'{name}',
     'last_name': f'{lastname}'
     }
@@ -60,13 +124,14 @@ user_admin_color = {
     'password': f'{password}',
     'username': f'{username}',
     'email': f'{email}',
-    'role': f'{role}',
+    'roles': f'{role}',
     'first_name': f'{name}',
     'last_name': f'{lastname}',
     'admin_color':  f'{admin_color}'
     }
 
-path_create_schema = r'wp_api\resources\data\schemas\users\create_user.json'
+create_subscriber_user_schema = r'wp_api\resources\data\schemas\users\create_subscriber_user.json'
+create_editor_user_schema = r'wp_api\resources\data\schemas\users\create_editor_user.json'
 path_delete_schema = r'wp_api\resources\data\schemas\users\delete_user.json'
 path_get_schema = r'wp_api\resources\data\schemas\users\get_user.json'
 path_update_schema = r'wp_api\resources\data\schemas\users\update_user.json'
