@@ -39,7 +39,7 @@ class Verification(object):
             logger.info(list_ignore)
             assert_that(actual_result).is_equal_to(expected_result, ignore=list_ignore)
 
-    def verify_subset_ignore(self, response, body, ignore=[],exp='',actual=''):
+    def verify_subset_ignore(self, response, body, ignore=[]):
         '''Asserts the expected is subset of actual ignoring params'''
         with soft_assertions():
             if ignore:
