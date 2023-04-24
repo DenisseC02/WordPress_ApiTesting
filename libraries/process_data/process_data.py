@@ -17,6 +17,7 @@ class ProcessData:
                 return element
 
     def delete_elements_from_list (self, elements, url, session, params):
+        '''Deletes a list of elements from the endpoint'''
         request = CustomRequest()
         for id in elements:
             new_url = url + '/' + str(id)
