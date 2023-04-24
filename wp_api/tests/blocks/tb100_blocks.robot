@@ -8,7 +8,6 @@ Test Teardown    Delete Block
 
 ${end_point}    blocks
 *** Test Cases ***
-
 Verify that the list of blocks is returned filtered by ids.
     Create Block    ${body_create}    
     Read all Blocks    ${extraurl}

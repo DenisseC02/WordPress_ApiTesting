@@ -9,11 +9,17 @@ ${end_point}    blocks
 
 *** Test Cases ***
 Verify that a draft block can be deleted.
-    Delete Block    
+    Create 1 draft Blocks
+    Get Blocks List    
+    Delete block ${id}
+VErify that a publish block can be deleted
+    Create 1 valid Blocks
+    Get Blocks List    
+    Delete block ${id}
 
 *** Keywords ***
 Setup Testcase
-    Create Session And Authentication
-    Create Block    ${body_create}    
+    Create Session And Authentication    
 Teardown Testcase
-    Delete Session And Authentication
+    Get Blocks List
+    Delete All The Blocks Created
