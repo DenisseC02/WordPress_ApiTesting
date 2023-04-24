@@ -1,0 +1,56 @@
+{
+	"variables": [],
+	"info": {
+		"name": "BASIC_AUTHENTICATION_CLIENT_CREDENTIALS",
+		"_postman_id": "407075a5-e186-4b93-148f-46d5e8b70197",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "BASIC_AUTHENTICATION_CLIENT_CREDENTIALS",
+			"request": {
+				"url": "http://<wp_base_url>/wp-json/wp/v2/users",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic base64encoded < clientid:clientsecret > ",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "test@test.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "name",
+							"value": "test",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
