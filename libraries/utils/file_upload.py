@@ -17,13 +17,10 @@ class FileUpload(object):
         headers = self._header_builder()
         body = self._body_builder()
         self.session.headers.update(headers)
-        logger.info(f'''<b>Updating headers:</b> {headers}\nUpdating body: b'{body[:50]}...\n<b>Session successfuly updated.</b>''',
-                    html=True
-                    )
         return self.session, body
 
     def _header_builder(self):
-        '''Builds header requiriment'''
+        '''Builds header requirement'''
         headers = dict()
         mimetype, encoding = mimetypes.guess_type(self.file_path)
         filename = os.path.basename(self.file_path)

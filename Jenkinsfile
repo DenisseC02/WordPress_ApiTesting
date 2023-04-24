@@ -2,6 +2,8 @@ pipeline {
   agent any
   environment {
     DOCKERHUBPASS=credentials('dockerusrpass')
+    REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
+    STAGE_INFO_FOR_MAIL="Stages report:"
   }
   stages {
     stage('Setup Environment') {
@@ -9,8 +11,8 @@ pipeline {
         docker { image 'python:3.8.16-bullseye' }
       }
       steps {
-        sh 'python -m pip install --upgrade pip'
-        sh 'pip install -r requirements.txt --no-cache'
+        sh 'sudo python -m pip install --upgrade pip'
+        sh 'sudo pip install -r requirements.txt --no-cache'
       }
     }
     // stage('Code Inspection') {
@@ -54,60 +56,59 @@ pipeline {
     // } 
     stage('Run Robot') {
       steps {
-        sh 'echo ${DOCKERHUBPASS_PSW} | docker login -u ${DOCKERHUBPASS_USR} --password-stdin '
-        sh 'echo docker build -t converter_dev .'
+        sh 'python -m robot -d wp_api/reports -L TRACE wp_api/tests'
       }
-      post {
-          success {
-            sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: passed"'
-          }
-          failure {
-            sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: failed"'
-          }
-      }
+      // post {
+      //     success {
+      //       sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: passed"'
+      //     }
+      //     failure {
+      //       sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: failed"'
+      //     }
+      // }
     }
-    stage('Publish') {
-      environment {
-        IMAGE_NAME='converter_dep'
-        IMAGE_TAG='${currentBuild.number}'
-      }
-      steps {
-        sh 'echo docker tag converter_dev:latest ${DOCKERHUBPASS_USR}/${IMAGE_NAME}:${IMAGE_TAG}' 
-        sh 'echo docker push ${DOCKERHUBPASS_USR}/${IMAGE_NAME}:${IMAGE_TAG}'
-      }
-      post {
-          success {
-            sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: passed"'
-          }
-          failure {
-            sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: failed"'
-          }
-      }
-    }
-    stage('Deploy to Dev') {
-      environment {
-        DOCKER_HOST='vagrant@192.168.57.135'
-        IMAGE_NAME='converter_dep'
-        IMAGE_TAG='${currentBuild.number}'
-        DOCKERHUBPASS_USR='${DOCKERHUBPASS_USR}'
-      }
-      steps {
-        sshagent(credentials: ['vagrant-ssh']) {
-          sh 'scp docker-compose.yaml ${DOCKER_HOST}:~/'
-          sh 'scp .env ${DOCKER_HOST}:~/'
-          sh 'ssh ${DOCKER_HOST} docker-compose up -d'
-        }
-      }
-      post {
-          success {
-            sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: passed"'
-          }
-          failure {
-            sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: failed"'
-          }
-      }
-    }
-  }
+  //   stage('Publish') {
+  //     environment {
+  //       IMAGE_NAME='converter_dep'
+  //       IMAGE_TAG='${currentBuild.number}'
+  //     }
+  //     steps {
+  //       sh 'echo docker tag converter_dev:latest ${DOCKERHUBPASS_USR}/${IMAGE_NAME}:${IMAGE_TAG}' 
+  //       sh 'echo docker push ${DOCKERHUBPASS_USR}/${IMAGE_NAME}:${IMAGE_TAG}'
+  //     }
+  //     post {
+  //         success {
+  //           sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: passed"'
+  //         }
+  //         failure {
+  //           sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: failed"'
+  //         }
+  //     }
+  //   }
+  //   stage('Deploy to Dev') {
+  //     environment {
+  //       DOCKER_HOST='vagrant@192.168.57.135'
+  //       IMAGE_NAME='converter_dep'
+  //       IMAGE_TAG='${currentBuild.number}'
+  //       DOCKERHUBPASS_USR='${DOCKERHUBPASS_USR}'
+  //     }
+  //     steps {
+  //       sshagent(credentials: ['vagrant-ssh']) {
+  //         sh 'scp docker-compose.yaml ${DOCKER_HOST}:~/'
+  //         sh 'scp .env ${DOCKER_HOST}:~/'
+  //         sh 'ssh ${DOCKER_HOST} docker-compose up -d'
+  //       }
+  //     }
+  //     post {
+  //         success {
+  //           sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: passed"'
+  //         }
+  //         failure {
+  //           sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: failed"'
+  //         }
+  //     }
+  //   }
+  // }
   post{
     always{
       sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>end"'
