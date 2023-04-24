@@ -1,0 +1,96 @@
+{
+    "deleted": true,
+    "previous": {
+        "id": 52,
+        "date": "2023-04-22T15:57:19",
+        "date_gmt": "2023-04-22T15:57:19",
+        "guid": {
+            "rendered": "http://localhost/wp-content/uploads/2023/04/seat-auto-32.jpg",
+            "raw": "http://localhost/wp-content/uploads/2023/04/seat-auto-32.jpg"
+        },
+        "modified": "2023-04-22T15:57:19",
+        "modified_gmt": "2023-04-22T15:57:19",
+        "slug": "seat-auto-32",
+        "status": "inherit",
+        "type": "attachment",
+        "link": "http://localhost/seat-auto-32/",
+        "title": {
+            "raw": "seat-auto-32",
+            "rendered": "seat-auto-32"
+        },
+        "author": 3,
+        "comment_status": "open",
+        "ping_status": "closed",
+        "template": "",
+        "meta": [],
+        "permalink_template": "http://localhost/?attachment_id=52",
+        "generated_slug": "seat-auto-32",
+        "description": {
+            "raw": "",
+            "rendered": "<p class=\"attachment\"><a href='http://localhost/wp-content/uploads/2023/04/seat-auto-32.jpg'><img width=\"300\" height=\"149\" src=\"http://localhost/wp-content/uploads/2023/04/seat-auto-32-300x149.jpg\" class=\"attachment-medium size-medium\" alt=\"\" decoding=\"async\" loading=\"lazy\" srcset=\"http://localhost/wp-content/uploads/2023/04/seat-auto-32-300x149.jpg 300w, http://localhost/wp-content/uploads/2023/04/seat-auto-32-768x382.jpg 768w, http://localhost/wp-content/uploads/2023/04/seat-auto-32.jpg 820w\" sizes=\"(max-width: 300px) 100vw, 300px\" /></a></p>\n"
+        },
+        "caption": {
+            "raw": "",
+            "rendered": ""
+        },
+        "alt_text": "",
+        "media_type": "image",
+        "mime_type": "image/jpeg",
+        "media_details": {
+            "width": 820,
+            "height": 408,
+            "file": "2023/04/seat-auto-32.jpg",
+            "filesize": 163143,
+            "sizes": {
+                "medium": {
+                    "file": "seat-auto-32-300x149.jpg",
+                    "width": 300,
+                    "height": 149,
+                    "filesize": 9331,
+                    "mime_type": "image/jpeg",
+                    "source_url": "http://localhost/wp-content/uploads/2023/04/seat-auto-32-300x149.jpg"
+                },
+                "thumbnail": {
+                    "file": "seat-auto-32-150x150.jpg",
+                    "width": 150,
+                    "height": 150,
+                    "filesize": 5356,
+                    "mime_type": "image/jpeg",
+                    "source_url": "http://localhost/wp-content/uploads/2023/04/seat-auto-32-150x150.jpg"
+                },
+                "medium_large": {
+                    "file": "seat-auto-32-768x382.jpg",
+                    "width": 768,
+                    "height": 382,
+                    "filesize": 37040,
+                    "mime_type": "image/jpeg",
+                    "source_url": "http://localhost/wp-content/uploads/2023/04/seat-auto-32-768x382.jpg"
+                },
+                "full": {
+                    "file": "seat-auto-32.jpg",
+                    "width": 820,
+                    "height": 408,
+                    "mime_type": "image/jpeg",
+                    "source_url": "http://localhost/wp-content/uploads/2023/04/seat-auto-32.jpg"
+                }
+            },
+            "image_meta": {
+                "aperture": "0",
+                "credit": "",
+                "camera": "",
+                "caption": "",
+                "created_timestamp": "0",
+                "copyright": "",
+                "focal_length": "0",
+                "iso": "0",
+                "shutter_speed": "0",
+                "title": "",
+                "orientation": "0",
+                "keywords": []
+            }
+        },
+        "post": null,
+        "source_url": "http://localhost/wp-content/uploads/2023/04/seat-auto-32.jpg",
+        "missing_image_sizes": []
+    }
+}

@@ -4,7 +4,7 @@ Library     libraries.requests.custom_request.CustomRequest
 Library     libraries.authentication.custom_session.CustomSession
 Library     libraries.process_data.url_assembler.UrlAssembler
 Resource    wp_api/keywords/users/keywords.robot
-Resource    wp_api/keywords/pages/run.robot
+Resource    wp_api/keywords/pages/crud.robot
 Test Setup    Create Session and params
 
 
