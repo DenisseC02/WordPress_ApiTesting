@@ -19,6 +19,8 @@ Create a category and edit with invalid meta number
 
 Create a category and edit with invalid parent list
     Create Category    ${body_complete}
+    log     ${body_edit_wrong_parent_list}
+    Log     ${ID}
     Update Category With Error    ${ID}    ${body_edit_wrong_parent_list}    400
     Verify_Equal_Ignore    ${error_invalid_parent}    ${response_put}
     Delete Category    ${ID}

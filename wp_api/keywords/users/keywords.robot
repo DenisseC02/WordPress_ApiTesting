@@ -1,11 +1,10 @@
 *** Settings ***
-Variables   wp_api/resources/config/config.py
 Library     libraries.requests.custom_request.CustomRequest
 Library     libraries.authentication.custom_session.CustomSession
 Library     libraries.process_data.url_assembler.UrlAssembler
 Library     libraries.assertions.verification.Verification
 Library     libraries.process_data.process_data.ProcessData
-Variables    ../../resources/data/json/users.py
+Variables    ../../resources/data/bodies/users.py
 
 *** Variables ***
 ${end_point_path}       users
