@@ -10,6 +10,4 @@ ignore = ['guid','modified_gmt','slug','password',('content','block_version'),'_
 update_id = {'id': 500}
 extraurl = '?_field=id'
 publish = {'status': 'publish'}
-
 id_filter = '?_field=id'
-
