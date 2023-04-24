@@ -18,8 +18,6 @@ Create New Media File
 Get Media Files 
     [Arguments]     ${new_status}    ${new_url}=${url} 
     ${response}     custom_get     session=${session}     url=${new_url}     params=${params}     expected_status=${new_status}
-    # ${schema}    Set Variable If    '${new_url}' == '${url}'        ${path_to_schema}[get_all]    ${path_to_schema}[get]
-    # verify_schema    ${schema}    ${response}
     [Return]    ${response}
 
 Update Media File Info 

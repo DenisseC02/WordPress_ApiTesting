@@ -10,7 +10,6 @@ Verify All The Media Library Content
 
 Verify That A File Can Be Uploaded To The Media Library
     Upload Specific Media File
-    
 
 Verify That Recently Uploaded Media File Exists In The Library
     Get Specific Media File by ID
