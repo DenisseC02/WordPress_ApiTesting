@@ -1,5 +1,5 @@
 *** Settings ***
-Variables    data/bodies/category.py
+Library    Collections
 Library    libraries.process_data.url_assembler.UrlAssembler
 Library    libraries.process_data.process_data.ProcessData
 Library    libraries.requests.custom_request.CustomRequest

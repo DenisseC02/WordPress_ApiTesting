@@ -22,3 +22,16 @@ class NameGenerator:
         '''Generate a random number from 100 to 999'''
         rand_num = str(random.randint(100, 999)).zfill(3)
         return rand_num
+
+    def create_body_category(self):
+        '''Generate a random category body'''
+        category_name = self.generate_name('category', 5)
+        body_complete = {
+            'name': category_name,
+            'description': self.generate_name(
+                'this is a description ',
+                50),
+            'slug': category_name.lower(),
+            'meta': []
+        }
+        return body_complete
