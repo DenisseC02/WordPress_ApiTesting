@@ -12,4 +12,12 @@ Update the page with wrong values
     Log    ${url}
     ${response}    custom_put    ${session}    ${url}    ${params}    ${body}    ${status}
     verify_subset    ${code}    ${response}
-    
+
+Create parent page
+    [Arguments]    ${body} 
+    ${url}    get_url    end_point=${end_point_pages}
+    Log    ${url}   
+    ${response}    custom_post    ${session}    ${url}    ${params}    ${body}    ${expected_status}
+    Log    ${response}
+    verify_schema    ${path_create_schema}    ${response}
+    Set Test Variable    ${response}
