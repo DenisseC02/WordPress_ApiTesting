@@ -1,7 +1,7 @@
-
-
 class BodyGenerator():
+    """generates bodies"""
     def block_body(self, type):
+        """return valid bodies"""
         if type == 'Valid' or type == 'valid':
             valid_block = {'title': 'My Block rogerpp','content': '[my-blockpp]','status': 'publish','password': '12345678'}
             return valid_block
@@ -28,6 +28,7 @@ class BodyGenerator():
         if type == 'password' or type == 'Password':
             return {'password': 'new password'}
     def data_generator(self, type):
+        """Returns invalid bodies"""
         if type == 'invalid status' or type == 'Invalid Status':
             return {'status': 'wodjcshsj'}, 400
         if type == 'invalid date' or type == 'Invalid Date':
