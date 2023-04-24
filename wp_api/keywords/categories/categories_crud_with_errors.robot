@@ -46,4 +46,3 @@ Update Category With Error
     ${response_put}    custom_put    ${session}    ${url}/${ID}    ${params}    ${body}    ${status}
     log    Response Put: ${response_put}
     [Return]    ${response_put}
-#    set global variable    ${response_put}
