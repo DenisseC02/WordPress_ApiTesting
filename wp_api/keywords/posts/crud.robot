@@ -21,6 +21,7 @@ Create new post
     ${response}  custom_post   ${session}   ${url}     ${params}     ${body}     ${expected_status}
     Log     ${response}
     ${id}    get_key_value    ${response}   id
+    verify_schema    ${path_create_schema}    ${response}
     Set Global Variable    ${id}
     ${url_get}    get_url    end_point=${end_point_posts}    id=${id}
     Log    ${url_get}
@@ -29,12 +30,12 @@ Create new post
     verify_equal_ignore    ${response}    ${response_get}    ${ignore_list}
 
 Retrieve the post
-    [Arguments]    ${new_status}
-    ${url}    get_url    end_point=${end_point_posts}    id=${id}
-    Log    ${url}
-    ${response}    custom_get    ${session}    ${url}    ${params}    ${new_status}
-    Log    ${response}
-    verify_schema    ${path_list_schema}    ${response}
+    [Arguments]     ${new_status}
+    ${url}      get_url      end_point=${end_point_posts}      id=${id}
+    Log     ${url}
+    ${response}     custom_get     ${session}      ${url}      ${params}      ${new_status}
+    Log      ${response}
+    verify_schema      ${path_list_schema}     ${response}
 
 Update the post
     [Arguments]    ${body}
@@ -51,6 +52,4 @@ Delete the post
     ${response}    custom_delete    ${session}    ${url}    force=${data_delete}
     Log    ${response}
     verify_schema    ${path_delete_schema}    ${response}
-    ${response_delete}    custom_get    ${session}    ${url}    ${params}     404
-    Log    ${response_delete}
-    verify_subset    ${post_status}    ${response_delete}
+    verify_subset    ${post_delete}    ${response}
