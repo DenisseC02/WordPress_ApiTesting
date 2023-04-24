@@ -1,3 +1,7 @@
+from libraries.requests.custom_request import CustomRequest
+from robot.api import logger
+
+
 class ProcessData:
     '''Process the response'''
 
@@ -11,3 +15,12 @@ class ProcessData:
         for element in elements:
             if element[key] == value:
                 return element
+
+    def delete_elements_from_list (self, elements, url, session, params):
+        '''Deletes a list of elements from the endpoint'''
+        request = CustomRequest()
+        for id in elements:
+            new_url = url + '/' + str(id)
+            response = request.custom_delete(session, new_url, params)
+            logger.info('****Deleted Element****')
+            logger.info(response)
