@@ -108,7 +108,7 @@ pipeline {
   //         }
   //     }
   //   }
-  // }
+  }
   post{
     always{
       sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>end"'
