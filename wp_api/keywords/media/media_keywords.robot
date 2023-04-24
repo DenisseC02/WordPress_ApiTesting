@@ -2,20 +2,24 @@
 Resource    wp_api/resources/imports.robot
 Resource    media_crud.robot
 Library    libraries.utils.random_dictionary_value.DictionaryRandomVaule
+Library    libraries.requests.download_file.DownloadFile
+
 
 *** Keywords ***
 Create Test Suite Session  
     ${session}    ${params}    create_session
-    Set Global Variable    ${session}
-    Set Global Variable    ${params}
+    Set Suite Variable    ${session}
+    Set Suite Variable    ${params}
+    ${url}    Generate Endpoint Url    media
     Logging   Test Suite Session has been created succesfully    ''
-    Generate Endpoint Url and Set as Global Variable    media
+    [Return]    ${session}    ${params}    ${url} 
 
-Generate Endpoint Url and Set as Global Variable 
-    [Arguments]    ${param}
-    ${url}    get_url    extra_path=${param}
-    Set Global Variable    ${url}
+Generate Endpoint Url 
+    [Arguments]    ${endpoint}
+    ${url}    get_url    extra_path=${endpoint}
+    Set Suite Variable    ${url}
     Logging    Endpoint URL was generated succesfully    ${url}
+    [Return]    ${url}
 
 Logging
     [Arguments]    ${message}    ${var}

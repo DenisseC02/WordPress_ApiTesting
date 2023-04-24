@@ -20,17 +20,16 @@ image_files = {
     'image_01':'/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/image_sm-01.jpg',
     'image_02': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/image_ss-01.jpeg',
     'image_03': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/image_ss-01.png',
-    'image_04': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/image_ss-01.webp',
     'image_05': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/image_ss-02.jpg',
     'image_06': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/image_ss-03.jpg',
     'image_07': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/image_ss-04.jpg'
 }
 video_files = {
-    'video_01': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/vide0_ss-01.mp4',
-    'video_02': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/video_sm-01.mp4'
+    'video_01': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/video_ss-01.mp4',
+    'video_02': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/video_ss-02.mp4'
 }
 audio_files = {
-    'audio_01': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/audio_m-01.mp3',
+    'audio_01': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/audio_s-02.mp3',
     'audio_02': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/audio_s-01.mp3'
 }
 other_files = {
@@ -39,5 +38,8 @@ other_files = {
     'file_03': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/json_s-01.json',
     'file_04': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/pdf_m-01.pdf',
     'file_05': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/xml_l-01.xml',
-    'file_06': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/zip_s-01.zip'    
+    'file_06': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/zip_s-01.zip',
+    'file_07': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/video_sm-02.mp4',
+    'file_08': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/audio_m-01.mp3',
+    'file_09': '/home/danisku/WordPress_ApiTesting/wp_api/resources/data/media/pdf_s-01.pdf'
 }
