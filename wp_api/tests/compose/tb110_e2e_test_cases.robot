@@ -14,21 +14,21 @@ Test Teardown    Teardown Testcase
 
 *** Test Cases ***
 Verify an administrator user can create a category with valid params
-    [Tags]    smoke
+    [Tags]    smoke    categories
     ${user}   ${password}   Create user with administrator role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create valid category
     Verify if category was created succefully
 
 Verify an editor can create a category with valid params
-    [Tags]    smoke
+    [Tags]    smoke    categories
     ${user}   ${password}   Create user with editor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create valid category
     Verify if category was created succefully
 
 Verify a subscriber user can not create a category with valid params
-    [Tags]    smoke
+    [Tags]    smoke    categories
     ${user}   ${password}   Create user with subscriber role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create category with invalid user
@@ -36,7 +36,7 @@ Verify a subscriber user can not create a category with valid params
     [Teardown]    Teardown Testcase without category
 
 Verify a contributor user can not create a category with valid params
-    [Tags]    smoke
+    [Tags]    smoke    categories
     ${user}   ${password}   Create user with contributor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create category with invalid user
@@ -44,7 +44,7 @@ Verify a contributor user can not create a category with valid params
     [Teardown]    Teardown Testcase without category
 
 Verify an author user can not create a category with valid params
-    [Tags]    smoke
+    [Tags]    smoke    categories
     ${user}   ${password}   Create user with author role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create category with invalid user
@@ -52,21 +52,21 @@ Verify an author user can not create a category with valid params
     [Teardown]    Teardown Testcase without category
 
 Verify an administrator user can update a category with valid params
-    [Tags]    smoke
+    [Tags]    smoke    categories
     ${user}   ${password}   Create user with administrator role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Obtain existent category
     Update existent category
 
 Verify an editor user can update a category with valid params
-    [Tags]    smoke
+    [Tags]    smoke    categories
     ${user}   ${password}   Create user with editor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Obtain existent category
     Update existent category
 
 Verify a subscriber user can not update a category with valid params
-    [Tags]    smoke
+    [Tags]    smoke    categories
     Obtain existent category
     ${user}   ${password}   Create user with subscriber role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -74,7 +74,7 @@ Verify a subscriber user can not update a category with valid params
     Verify response returns an error message    ${error_user_update}
 
 Verify a contributor user can not update a category with valid params
-    [Tags]    smoke
+    [Tags]    smoke    categories
     Obtain existent category
     ${user}   ${password}   Create user with contributor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -82,7 +82,7 @@ Verify a contributor user can not update a category with valid params
     Verify response returns an error message    ${error_user_update}
 
 Verify an author user can not update a category with valid params
-    [Tags]    smoke
+    [Tags]    smoke    categories
     Obtain existent category
     ${user}   ${password}   Create user with author role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -90,7 +90,7 @@ Verify an author user can not update a category with valid params
     Verify response returns an error message    ${error_user_update}
 
 Verify an administrator user can delete a category
-    [Tags]    smoke
+    [Tags]    smoke    categories
     ${user}   ${password}   Create user with administrator role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Obtain existent category
@@ -99,7 +99,7 @@ Verify an administrator user can delete a category
     [Teardown]    Teardown Testcase without category
 
 Verify an editor user can delete a category
-    [Tags]    smoke
+    [Tags]    smoke    categories
     Obtain existent category
     ${user}   ${password}   Create user with editor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -108,7 +108,7 @@ Verify an editor user can delete a category
     [Teardown]    Teardown Testcase without category
 
 Verify a subscriber user can not delete a category
-    [Tags]    smoke
+    [Tags]    smoke    categories
     Obtain existent category
     ${user}   ${password}   Create user with subscriber role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -117,7 +117,7 @@ Verify a subscriber user can not delete a category
     [Teardown]    Teardown Testcase without category
 
 Verify a contributor user can not delete a category
-    [Tags]    smoke
+    [Tags]    smoke    categories
     Obtain existent category
     ${user}   ${password}   Create user with contributor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -126,7 +126,7 @@ Verify a contributor user can not delete a category
     [Teardown]    Teardown Testcase without category
 
 Verify an author user can not delete a category
-    [Tags]    smoke
+    [Tags]    smoke    categories
     Obtain existent category
     ${user}   ${password}   Create user with author role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -151,8 +151,6 @@ Verify if category was created succefully
     verify_equal_ignore    ${response_get}    ${category}
 
 Teardown Testcase
-#    Get Blocks List
-#    Delete All The Blocks Created
     Delete Created User    ${admin_session}   ${response_user}
     Delete Category    ${category_id}    ${admin_session}
 
