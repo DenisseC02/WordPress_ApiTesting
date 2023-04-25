@@ -1,5 +1,4 @@
 import json
-from libraries.process_data.decode import Decode
 
 
 class ParserData(object):
@@ -26,7 +25,7 @@ class ParserData(object):
 
     def _key(self, key=None):
         '''Returns the value of requested key'''
-        decoded_response = Decode().decode_response(self.response)
+        decoded_response = self.response.content.decode('utf-8')
         data = json.loads(decoded_response)
         if isinstance(data, list):
             return [item[key] for item in data]

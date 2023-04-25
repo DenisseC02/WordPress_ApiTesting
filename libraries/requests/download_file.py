@@ -1,14 +1,12 @@
 import os
 import requests
-from robot.api import logger
 
 
 class DownloadFile(object):
-
-    def __init__(self) -> None:
-        pass
+    '''Downloads and deletes file on demand'''
 
     def download(self, file_url):
+        '''Returns the local path of downloaded file'''
         self.file_url = file_url
         response = requests.get(self.file_url)
         with open(os.path.basename(self.file_url), 'wb') as file:
@@ -17,5 +15,6 @@ class DownloadFile(object):
         return download_location
     
     def delete_local_file(self, file_path):
+        '''Deletes  a file from a path'''
         self.file_path  = file_path
         os.remove(file_path)
