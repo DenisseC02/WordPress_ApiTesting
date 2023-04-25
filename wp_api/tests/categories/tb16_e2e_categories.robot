@@ -1,5 +1,6 @@
 *** Settings ***
 Variables    wp_api/resources/data/bodies/category.py
+Library    wp_api.resources.data.bodies.category_body_generator.CategoryBodyGenerator
 Resource    ../../resources/imports.robot
 Resource    ../../keywords/categories/categories_crud.robot
 Resource    ../../keywords/categories/categories_crud_with_errors.robot

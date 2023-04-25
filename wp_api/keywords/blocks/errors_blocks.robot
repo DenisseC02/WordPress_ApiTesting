@@ -1,4 +1,4 @@
-*** Settings *** 
+*** Settings ***
 Library      libraries.requests.custom_request.CustomRequest
 Library      libraries.authentication.custom_session.CustomSession
 Library      libraries.process_data.url_assembler.UrlAssembler
@@ -10,7 +10,7 @@ Variables    wp_api/resources/data/bodies/blocks.py
 *** Variables ***
 ${end_point}    blocks
 
-*** Keywords *** 
+*** Keywords ***
 Create Block with "${type}"
     ${body_data}    ${status}    data_generator    ${type}
     ${url}    get_url    path=${end_point}
