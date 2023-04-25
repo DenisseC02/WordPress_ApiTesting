@@ -82,7 +82,7 @@ update_user = {
 
 update_password = {'password': f'updated_{password}'}
 update_email = {'email': f'updated_{email}'}
-update_role = {'roles': f'{role}'}
+update_role = {'roles': 'administrator'}
 update_firstname = {'first_name': f'updated_{name}'}
 update_lastname = {'last_name': f'updated_{lastname}'}
 update_username = {'username': f'updated_{username}'}

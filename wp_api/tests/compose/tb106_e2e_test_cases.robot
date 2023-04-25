@@ -7,17 +7,29 @@ Variables   wp_api/resources/data/bodies/blocks.py
 Resource    wp_api/keywords/blocks/crud_blocks.robot
 Resource    wp_api/keywords/users/keywords.robot
 Resource    wp_api/keywords/pages/crud.robot
-Test Setup    Create Session and params
+Test Setup    Setup Test
 Force Tags    compose
+Test Teardown    Teardown Testcase
 
 *** Test Cases ***
-Verify that is possible to create a user and...
+Verify that a Block is created with valid parameters with an administrator user
     [Tags]    smoke
-    ${user}   ${password}   Create User And Return Credentials    ${create_administrator_user}
+    ${user}   ${password}   Create user with administrator role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Valid Blocks
     Get Blocks List
     List Should Contain the 1 Blocks Created
 
-#    Put User    ${update_user}    ${id}
-#    Delete User    ${id}
+Verify that a Block is created with valid parameters with an editor user
+    [Tags]    smoke
+    ${user}   ${password}   Create user with editor role and return credentials
+    Create Custom Session And Params   ${user}    ${password}
+    Create 1 Valid Blocks
+    Get Blocks List
+    List Should Contain the 1 Blocks Created
+
+*** Keywords ***
+Teardown Testcase
+    Get Blocks List
+    Delete All The Blocks Created
+    Delete Created User    ${admin_session}   ${response_user}

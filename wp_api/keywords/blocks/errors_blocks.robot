@@ -4,7 +4,7 @@ Library      libraries.authentication.custom_session.CustomSession
 Library      libraries.process_data.url_assembler.UrlAssembler
 Library      libraries.assertions.verification.Verification
 Library      libraries.process_data.process_data.ProcessData
-Library      wp_api.resources.data.bodies.block_body_generator.BodyGenerator
+Library      wp_api.resources.data.bodies.body_generator.BodyGenerator
 Variables    wp_api/resources/data/bodies/blocks.py
 
 *** Variables ***
