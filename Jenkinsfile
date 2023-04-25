@@ -1,18 +1,23 @@
 pipeline {
-  agent any
+    agent {
+        docker { 
+            image 'python:3.8.16-bullseye'
+            args '-u root'
+        }
+    }
   environment {
     DOCKERHUBPASS=credentials('dockerusrpass')
-    REPO_NAME = "${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
+    REPO_NAME="${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
     STAGE_INFO_FOR_MAIL="Stages report:"
+    PYTHONPATH='/var/jenkins_home/workspace/ApiTesting_feature_ci_jenkins_dv'
   }
   stages {
     stage('Setup Environment') {
-      agent {
-        docker { image 'python:3.8.16-bullseye' }
-      }
       steps {
-        sh 'sudo python -m pip install --upgrade pip'
-        sh 'sudo pip install -r requirements.txt --no-cache'
+        sh 'python -m pip install --upgrade pip'
+        sh 'pip install -r requirements.txt --no-cache'
+        //sh 'export PYTHONPATH=$(pwd) && export PATH=$PATH:$PYTHONPATH'
+        //sh 'export robot.pythonpath=$PYTHONPATH'
       }
     }
     // stage('Code Inspection') {
@@ -54,9 +59,11 @@ pipeline {
     //     }
     //   }
     // } 
-    stage('Run Robot') {
+    stage('Smoke Testing') {
       steps {
-        sh 'python -m robot -d wp_api/reports -L TRACE wp_api/tests'
+            sh 'echo $PYTHONPATH'
+            sh 'robot -d wp_api/reports --loglevel TRACE wp_api/tests'
+            //sh 'python -m robot -d wp_api/reports -L TRACE wp_api/tests'
       }
       // post {
       //     success {

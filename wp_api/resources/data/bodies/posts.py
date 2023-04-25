@@ -31,9 +31,9 @@ body_child21 = {'title':'Robot page','content':'Page to delete', 'status':'publi
 body_child22 = {'title':'New robot title','content':'This page was created by robot', 'status':'publish'}
 code = {'code': 'rest_invalid_param'}
 ignore_list = [('guid','raw'), 'password', ('title', 'raw'), ('content','raw'), ('content','block_version'), ('excerpt','raw'), 'permalink_template', 'generated_slug', '_links']
-path_create_schema = r'wp_api\resources\data\schemas\posts\create_post.json'
-path_list_schema = r'wp_api\resources\data\schemas\posts\list_post.json'
-path_update_schema = r'wp_api\resources\data\schemas\posts\update_post.json'
-path_delete_schema = r'wp_api\resources\data\schemas\posts\delete_post.json'
+path_create_schema = 'wp_api/resources/data/schemas/posts/create_post.json'
+path_list_schema = 'wp_api/resources/data/schemas/posts/list_post.json'
+path_update_schema = 'wp_api/resources/data/schemas/posts/update_post.json'
+path_delete_schema = 'wp_api/resources/data/schemas/posts/delete_post.json'
 post_delete = {'deleted': True}
 

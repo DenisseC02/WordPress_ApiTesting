@@ -28,7 +28,7 @@ Get Specific Media File By ID
     Get Media Files    200    ${url}/${id}
 
 Upload Specific Media File
-    Create New Media File     ${image_files}[image_03]
+    Create New Media File     ${image_files}[image_03]    201
 
 Update Alt Text to Media File
     ${params}    Set Variable    alt_text=Modern Red Car
