@@ -40,3 +40,11 @@ class CustomSession:
         data_args = data.get(authentication_method)
         session, params = authorization().authentication(*data_args)
         return session, params
+
+    def create_custom_session(self, user, password):
+        '''Returns created custom session on demand'''
+        authentication_method = getenv('AUTHENTICATION_METHOD')
+        authorization = authentication_type[authentication_method]
+        data_args = data.get(authentication_method)
+        session, params = authorization().authentication(user, password)
+        return session, params

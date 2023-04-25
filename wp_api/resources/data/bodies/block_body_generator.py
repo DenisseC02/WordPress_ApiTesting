@@ -27,6 +27,7 @@ class BodyGenerator():
             return {'slug': 'edited slug'}
         if type == 'password' or type == 'Password':
             return {'password': 'new password'}
+
     def data_generator(self, type):
         """Returns invalid bodies"""
         if type == 'invalid status' or type == 'Invalid Status':

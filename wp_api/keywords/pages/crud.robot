@@ -12,6 +12,12 @@ Create Session and params
     Set Suite Variable    ${session}
     Set Suite Variable    ${params}
 
+Create Custom Session and params
+    [Arguments]    ${user}   ${password}
+    ${session}  ${params}  Create Custom Session   ${user}   ${password}
+    Set Suite Variable    ${session}
+    Set Suite Variable    ${params}
+
 Create new page
     [Arguments]    ${body}
     ${url}    get_url    end_point=${end_point_pages}
