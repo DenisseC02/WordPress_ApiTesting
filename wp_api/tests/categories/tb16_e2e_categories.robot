@@ -157,12 +157,6 @@ Verify created category exists on list of categories
     ${category}    search_element_in_list    id    ${id}    ${all_categories}
     verify_equal_ignore    ${category}    ${new_category}
 
-Verify response returns an error message
-    [Arguments]    ${body_error}
-    ${code_error}    get_key_value    ${body_error}    code
-    ${code_error_from_response}    get_key_value    ${response}    code
-    verify_equal_ignore    ${code_error}    ${code_error_from_response}
-
 Obtain First Category
     ${all_categories}    Get all Categories
     ${category}    get_key_value    ${all_categories}    ${0}
