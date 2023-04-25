@@ -36,22 +36,6 @@ Verify that a Block is created with valid parameters with an author user
     Get Blocks List
     List Should Contain the 1 Blocks Created
 
-#Verify that a Block is created with valid parameters with an contributor user
-#    [Tags]    smoke
-#    ${user}   ${password}   Create user with contributor role and return credentials
-#    Create Custom Session And Params   ${user}    ${password}
-#    Create 1 Valid Blocks
-#    Get Blocks List
-#    List Should Contain the 1 Blocks Created
-#
-#Verify that a Block is created with valid parameters with an subscriber user
-#    [Tags]    smoke
-#    ${user}   ${password}   Create user with subscriber role and return credentials
-#    Create Custom Session And Params   ${user}    ${password}
-#    Create 1 Valid Blocks
-#    Get Blocks List
-#    List Should Contain the 1 Blocks Created
-
 Verify that a Block is created as a draft with an administrator user
     [Tags]    smoke
     ${user}   ${password}   Create user with administrator role and return credentials
@@ -75,22 +59,6 @@ Verify that a Block is created as a draft with an author user
     Create 1 Draft Blocks
     Get Blocks List
     List Should Contain the 1 Blocks Created
-
-#Verify that a Block is created as a draft with an contributor user
-#    [Tags]    smoke
-#    ${user}   ${password}   Create user with contributor role and return credentials
-#    Create Custom Session And Params   ${user}    ${password}
-#    Create 1 Draft Blocks
-#    Get Blocks List
-#    List Should Contain the 1 Blocks Created
-#
-#Verify that a Block is created as a draft with an subscriber user
-#    [Tags]    smoke
-#    ${user}   ${password}   Create user with subscriber role and return credentials
-#    Create Custom Session And Params   ${user}    ${password}
-#    Create 1 Draft Blocks
-#    Get Blocks List
-#    List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a private with an administrator user
     [Tags]    smoke
@@ -116,22 +84,6 @@ Verify that a Block is created as a private with an author user
     Get Blocks List
     List Should Contain the 1 Blocks Created
 
-#Verify that a Block is created as a private with an contributor user
-#    [Tags]    smoke
-#    ${user}   ${password}   Create user with contributor role and return credentials
-#    Create Custom Session And Params   ${user}    ${password}
-#    Create 1 Private Blocks
-#    Get Blocks List
-#    List Should Contain the 1 Blocks Created
-#
-#Verify that a Block is created as a private with an subscriber user
-#    [Tags]    smoke
-#    ${user}   ${password}   Create user with subscriber role and return credentials
-#    Create Custom Session And Params   ${user}    ${password}
-#    Create 1 Private Blocks
-#    Get Blocks List
-#    List Should Contain the 1 Blocks Created
-
 Verify that a Block is created as a pending with an administrator user
     [Tags]    smoke
     ${user}   ${password}   Create user with administrator role and return credentials
@@ -155,22 +107,6 @@ Verify that a Block is created as a pending with an author user
     Create 1 Pending Blocks
     Get Blocks List
     List Should Contain the 1 Blocks Created
-
-#Verify that a Block is created as a pending with an contributor user
-#    [Tags]    smoke
-#    ${user}   ${password}   Create user with contributor role and return credentials
-#    Create Custom Session And Params   ${user}    ${password}
-#    Create 1 Pending Blocks
-#    Get Blocks List
-#    List Should Contain the 1 Blocks Created
-#
-#Verify that a Block is created as a pending with an subscriber user
-#    [Tags]    smoke
-#    ${user}   ${password}   Create user with subscriber role and return credentials
-#    Create Custom Session And Params   ${user}    ${password}
-#    Create 1 Pending Blocks
-#    Get Blocks List
-#    List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a future with an administrator user
     [Tags]    smoke
@@ -196,22 +132,6 @@ Verify that a Block is created as a future with an author user
     Get Blocks List
     List Should Contain the 1 Blocks Created
 
-#Verify that a Block is created as a future with an contributor user
-#    [Tags]    smoke
-#    ${user}   ${password}   Create user with contributor role and return credentials
-#    Create Custom Session And Params   ${user}    ${password}
-#    Create 1 Future Blocks
-#    Get Blocks List
-#    List Should Contain the 1 Blocks Created
-#
-#Verify that a Block is created as a future with an subscriber user
-#    [Tags]    smoke
-#    ${user}   ${password}   Create user with subscriber role and return credentials
-#    Create Custom Session And Params   ${user}    ${password}
-#    Create 1 Future Blocks
-#    Get Blocks List
-#    List Should Contain the 1 Blocks Created
-
 Verify that a Block is created as a empty with an administrator user
     [Tags]    smoke
     ${user}   ${password}   Create user with administrator role and return credentials
@@ -235,22 +155,6 @@ Verify that a Block is created as a empty with an author user
     Create 1 Empty Blocks
     Get Blocks List
     List Should Contain the 1 Blocks Created
-
-#Verify that a Block is created as a empty with an contributor user
-#    [Tags]    smoke
-#    ${user}   ${password}   Create user with contributor role and return credentials
-#    Create Custom Session And Params   ${user}    ${password}
-#    Create 1 Empty Blocks
-#    Get Blocks List
-#    List Should Contain the 1 Blocks Created
-#
-#Verify that a Block is created as a empty with an subscriber user
-#    [Tags]    smoke
-#    ${user}   ${password}   Create user with subscriber role and return credentials
-#    Create Custom Session And Params   ${user}    ${password}
-#    Create 1 Empty Blocks
-#    Get Blocks List
-#    List Should Contain the 1 Blocks Created
 
 *** Keywords ***
 Teardown Testcase

@@ -11,23 +11,11 @@ Variables    wp_api/resources/data/bodies/blocks.py
 ${end_point}    blocks
 
 *** Keywords ***
-#Create Block
-#    [Arguments]    ${body_create}
-#    ${url}    get_url    path=${end_point}
-#    ${response}    custom_post    ${session}    ${url}    ${params}    ${body_create}    201
-#    verify_schema    ${create_block_schema}    ${response}
-#    ${id}    get_key_value    ${response}    id
-#    Set Global Variable    ${id}
-#    ${url}    get_url    path=${end_point}    id=${id}
-#    ${response_get}    custom_get    ${session}    ${url}    ${params}
-#    verify_equal_ignore    ${response}    ${response_get}    ${ignore}
-
 Create Block
     [Arguments]    ${body_create}
     ${url}    get_url    path=${end_point}
     ${response}    custom_post    ${session}    ${url}    ${params}    ${body_create}    201
     log     ${response}
-#    verify_schema    ${create_block_schema}    ${response}
     ${id}    get_key_value    ${response}    id
     Set Global Variable    ${id}
     ${url}    get_url    path=${end_point}    id=${id}
@@ -86,9 +74,6 @@ Delete block ${id}
     ${response}    custom_delete    ${session}    ${url}    ${delete}    
     ${response_get}    custom_get    ${session}    ${url}    ${params}    404
     verify_subset ignore    ${response_get}    ${verify_delete}
-
-Delete Session And Authentication
-    Log    to do
 
 Update Id Block
     [Arguments]    ${publish}     ${id}
