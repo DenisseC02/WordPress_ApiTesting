@@ -1,4 +1,4 @@
-*** Settings *** 
+*** Settings ***
 Variables      wp_api/resources/data/bodies/blocks.py
 Resource       wp_api/keywords/blocks/crud_blocks.robot
 Resource       wp_api/keywords/blocks/errors_blocks.robot
@@ -169,4 +169,3 @@ Setup Testcase
 Teardown Testcase
     Get Blocks List
     Delete All The Blocks Created
-

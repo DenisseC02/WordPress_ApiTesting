@@ -74,6 +74,7 @@ Delete block ${id}
     ${response}    custom_delete    ${session}    ${url}    ${delete}    
     ${response_get}    custom_get    ${session}    ${url}    ${params}    404
     verify_subset ignore    ${response_get}    ${verify_delete}
+
 Delete Session And Authentication
     Log    to do
 
@@ -90,6 +91,7 @@ Create ${blocks} ${type} Blocks
     FOR    ${block}    IN RANGE    ${blocks}
         Create Block    ${data_block} 
     END
+
 List Should Contain The ${blocks} Blocks Created
     log    ${ids}
     Verify List Is Len    ${ids}    ${blocks}

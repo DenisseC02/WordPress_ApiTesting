@@ -23,6 +23,15 @@ Create user
     verify_schema    ${create_subscriber_user_schema}    ${post_response_user}
     [Return]    ${post_response_user}
 
+Create user and return credentials
+    [Arguments]    ${body}   ${status_code}=201
+    ${url}                   Get Users Endpoint
+    Log    ${url}
+    ${post_response_user}    custom_post    ${session}    ${url}     ${params}   ${body}     ${status_code}
+    Log    ${post_response_user}
+#    verify_schema    ${create_subscriber_user_schema}    ${post_response_user}
+    [Return]    ${body['username']}     ${body['password']}
+
 Create user with specific role
     [Arguments]    ${body}   ${status_code}=201
     ${url}                   Get Users Endpoint

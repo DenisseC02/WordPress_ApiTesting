@@ -116,5 +116,3 @@ Upload Audio, Image, Video and Verify That Exists in Media Library
         Create New Media File    ${file}    201
         Delete Media File     200    ${url}/${id}
     END
-
-

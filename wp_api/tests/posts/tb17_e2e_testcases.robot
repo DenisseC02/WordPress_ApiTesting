@@ -17,7 +17,7 @@ Verify the posts can be created and published
 Verify the post can be saved as a draft
     [Tags]    smoke
     Create new post    ${body_tb87_post}
-    Update the post   ${body_tb87_put}
+    Update the post    ${body_tb87_put}
 
 Verify that a user can successfully publish a draft post
     [Tags]    smoke
