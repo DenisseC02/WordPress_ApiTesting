@@ -1,4 +1,4 @@
-*** Settings *** 
+*** Settings ***
 Variables      wp_api/resources/data/bodies/blocks.py
 Resource       wp_api/keywords/blocks/crud_blocks.robot
 Resource       wp_api/keywords/blocks/errors_blocks.robot
@@ -63,16 +63,13 @@ Verify blocks are not created with wrong date_gmt
     Get Blocks List
     List Should Contain the 0 Blocks Created
 
-Verify blocks are not created with wrong name
-    [Tags]    errors
-    log    to do
-
 Verify that a draft block can be deleted.
-    [Tags]    bugs    happy_path
+    [Tags]    bugs    smoke
     Create 1 draft Blocks
     Delete block ${id}
     Get Blocks List    
-    List Should Contain the 0 Blocks Created    
+    List Should Contain the 0 Blocks Created
+
 Verify that a publish block can be deleted
     [Tags]    smoke
     Create 1 valid Blocks
@@ -86,6 +83,7 @@ Verify that a furure block can be deleted
     Delete block ${id}
     Get Blocks List    
     List Should Contain the 0 Blocks Created
+
 Verify that a pending block can be deleted
     [Tags]    bugs    smoke
     Create 1 pending Blocks
@@ -169,4 +167,3 @@ Setup Testcase
 Teardown Testcase
     Get Blocks List
     Delete All The Blocks Created
-

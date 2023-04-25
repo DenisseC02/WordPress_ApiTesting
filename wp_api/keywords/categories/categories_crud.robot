@@ -13,7 +13,7 @@ Create New Session
     set test variable    ${params}
 
 Get Category
-    [Arguments]    ${id}    ${status}
+    [Arguments]    ${id}    ${status}=200
     ${url}    get_url    endpoint=${endpoint}
     Log    Endpoint used: ${url}
     Log    Method used: GET
@@ -23,6 +23,7 @@ Get Category
     [Return]    ${response_get}
 
 Get all Categories
+    [Arguments]    ${session}=${session}
     ${url}    get_url    endpoint=${endpoint}
     Log    Endpoint used: ${url}
     Log    Method used: GET
@@ -32,25 +33,38 @@ Get all Categories
     [Return]    ${response_get_all}
 
 Create Category
-    [Arguments]    ${body}
+    [Arguments]    ${body}    ${status}=201
     ${url}    get_url    endpoint=${endpoint}
     Log    Endpoint used: ${url}
     Log    Method used: POST
-    ${response_create}  custom_post  ${session}  ${url}  ${params}  ${body}    201
-    Verify_Schema    ${schemas_path}/create_category.json    ${response_create}
+    ${response_create}  custom_post  ${session}  ${url}  ${params}  ${body}    ${status}
     log    Response Post: ${response_create}
+    Verify_Schema    ${schemas_path}/create_category.json    ${response_create}
+    ${ID}    get_key_value    ${response_create}    id
+    ${response_get}    Get Category    ${ID}    200
+    Verify_Subset_Ignore    ${response_get}    ${body}
+    [Return]    ${ID}    ${response_create}
+
+Create Category succefully
+    [Arguments]    ${session}    ${body}    ${status}=201
+    ${url}    get_url    endpoint=${endpoint}
+    Log    Endpoint used: ${url}
+    Log    Method used: POST
+    ${response_create}  custom_post  ${session}  ${url}  ${params}  ${body}    ${status}
+    log    Response Post: ${response_create}
+    Verify_Schema    ${schemas_path}/create_category.json    ${response_create}
     ${ID}    get_key_value    ${response_create}    id
     ${response_get}    Get Category    ${ID}    200
     Verify_Subset_Ignore    ${response_get}    ${body}
     [Return]    ${ID}    ${response_create}
 
 Delete Category
-    [Arguments]    ${id_delete}
+    [Arguments]    ${id_delete}    ${session}=${session}    ${status}=200
     ${url}    get_url    endpoint=${endpoint}
     Log    Endpoint used: ${url}
     Log    Method used: DELETE
     ${params}    create dictionary    force=true
-    ${response_delete}    custom_delete    ${session}    ${url}/${id_delete}    ${params}
+    ${response_delete}    custom_delete    ${session}    ${url}/${id_delete}    ${params}    ${status}
     Log    Response Delete: ${response_delete}
     Verify_Schema    ${schemas_path}/delete_category.json    ${response_delete}
     [Return]    ${response_delete}

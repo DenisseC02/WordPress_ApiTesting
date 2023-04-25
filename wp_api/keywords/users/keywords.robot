@@ -5,6 +5,7 @@ Library     libraries.process_data.url_assembler.UrlAssembler
 Library     libraries.assertions.verification.Verification
 Library     libraries.process_data.process_data.ProcessData
 Variables    ../../resources/data/bodies/users.py
+Library     wp_api.resources.data.bodies.body_generator.BodyGenerator
 
 *** Variables ***
 ${end_point_path}       users
@@ -23,10 +24,26 @@ Create user
     verify_schema    ${create_subscriber_user_schema}    ${post_response_user}
     [Return]    ${post_response_user}
 
-Create user with specific role
-    [Arguments]    ${body}   ${status_code}=201
+Get body ${role} user
+    ${body}     user_body   ${role}
+    [Return]    ${body}
+
+Create user with ${role} role and return credentials
     ${url}                   Get Users Endpoint
     Log    ${url}
+    ${body}     Get body ${role} user
+    ${response_user}    custom_post    ${session}    ${url}     ${params}   ${body}     201
+    Log    ${response_user}
+    ${id}    get_key_value   ${response_user}    id
+    Set Test Variable    ${id}
+    Set Test Variable    ${response_user}
+    [Return]    ${body['username']}     ${body['password']}
+
+Create user with specific role
+    [Arguments]    ${body}   ${role}   ${status_code}=201
+    ${url}                   Get Users Endpoint
+    Log    ${url}
+    ${body}     Get Body User Role    ${role}
     ${post_response_user}    custom_post    ${session}    ${url}     ${params}   ${body}     ${status_code}
     Log    ${post_response_user}
     [Return]    ${post_response_user}
@@ -107,7 +124,7 @@ Delete user
     [Return]    ${del_response_user}
 
 Delete created user
-    [Arguments]    ${response}    ${status_code}=200
+    [Arguments]    ${session}   ${response}    ${status_code}=200
     ${url}                  Get Users Endpoint
     Log     ${url}
     ${params_del}   Create Dictionary    force=true     reassign=1
@@ -138,3 +155,10 @@ Verify the role
 Verify parameter to long error
     [Arguments]    ${response}
     verify_equal_ignore    user_login_too_long  ${response}
+
+Setup test
+    ${session}  ${params}  create_session
+    Set Suite Variable    ${session}
+    ${admin_session}      Set Variable    ${session}
+    Set Suite Variable    ${params}
+    Set Suite Variable    ${admin_session}

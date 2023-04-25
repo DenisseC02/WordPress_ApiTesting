@@ -3,7 +3,7 @@ Documentation    WordPress MEDIA endpoint Testing.
 Resource    wp_api/keywords/media/media_keywords.robot
 Suite Setup    Create Test Suite Session
 Library    OperatingSystem
-    
+
 *** Test Cases ***
 Verify If Its Possible To Upload Image, Audio And Video Files To Media Library
     [Tags]    smoke
@@ -116,5 +116,3 @@ Upload Audio, Image, Video and Verify That Exists in Media Library
         Create New Media File    ${file}    201
         Delete Media File     200    ${url}/${id}
     END
-
-
