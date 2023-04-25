@@ -10,26 +10,27 @@ Resource    wp_api/keywords/pages/crud.robot
 Resource    wp_api/keywords/categories/common_keywords.robot
 Test Setup    Setup Test
 Test Teardown    Teardown Testcase
+Force Tags    INTEGRATION    USERS_CATEGORIES
 
 *** Keywords ***
 
 *** Test Cases ***
 Verify an administrator user can create a category with valid params
-    [Tags]    smoke    categories
+    [Tags]    CREATE
     ${user}   ${password}   Create user with administrator role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create valid category
     Verify if category was created succefully
 
 Verify an editor can create a category with valid params
-    [Tags]    smoke    categories
+    [Tags]    CREATE
     ${user}   ${password}   Create user with editor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create valid category
     Verify if category was created succefully
 
 Verify a subscriber user can not create a category with valid params
-    [Tags]    smoke    categories
+    [Tags]    CREATE
     ${user}   ${password}   Create user with subscriber role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create category with invalid user
@@ -37,7 +38,7 @@ Verify a subscriber user can not create a category with valid params
     [Teardown]    Teardown Testcase without category
 
 Verify a contributor user can not create a category with valid params
-    [Tags]    smoke    categories
+    [Tags]    CREATE
     ${user}   ${password}   Create user with contributor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create category with invalid user
@@ -45,7 +46,7 @@ Verify a contributor user can not create a category with valid params
     [Teardown]    Teardown Testcase without category
 
 Verify an author user can not create a category with valid params
-    [Tags]    smoke    categories
+    [Tags]    CREATE
     ${user}   ${password}   Create user with author role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create category with invalid user
@@ -53,21 +54,21 @@ Verify an author user can not create a category with valid params
     [Teardown]    Teardown Testcase without category
 
 Verify an administrator user can update a category with valid params
-    [Tags]    smoke    categories
+    [Tags]    UPDATE
     ${user}   ${password}   Create user with administrator role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Obtain existent category
     Update existent category
 
 Verify an editor user can update a category with valid params
-    [Tags]    smoke    categories
+    [Tags]    UPDATE
     ${user}   ${password}   Create user with editor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Obtain existent category
     Update existent category
 
 Verify a subscriber user can not update a category with valid params
-    [Tags]    smoke    categories
+    [Tags]    UPDATE
     Obtain existent category
     ${user}   ${password}   Create user with subscriber role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -75,7 +76,7 @@ Verify a subscriber user can not update a category with valid params
     Verify response returns an error message    ${error_user_update}
 
 Verify a contributor user can not update a category with valid params
-    [Tags]    smoke    categories
+    [Tags]    UPDATE
     Obtain existent category
     ${user}   ${password}   Create user with contributor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -83,7 +84,7 @@ Verify a contributor user can not update a category with valid params
     Verify response returns an error message    ${error_user_update}
 
 Verify an author user can not update a category with valid params
-    [Tags]    smoke    categories
+    [Tags]    UPDATE
     Obtain existent category
     ${user}   ${password}   Create user with author role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -91,7 +92,7 @@ Verify an author user can not update a category with valid params
     Verify response returns an error message    ${error_user_update}
 
 Verify an administrator user can delete a category
-    [Tags]    smoke    categories
+    [Tags]    DELETE
     ${user}   ${password}   Create user with administrator role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Obtain existent category
@@ -100,7 +101,7 @@ Verify an administrator user can delete a category
     [Teardown]    Teardown Testcase without category
 
 Verify an editor user can delete a category
-    [Tags]    smoke    categories
+    [Tags]    DELETE
     Obtain existent category
     ${user}   ${password}   Create user with editor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -109,7 +110,7 @@ Verify an editor user can delete a category
     [Teardown]    Teardown Testcase without category
 
 Verify a subscriber user can not delete a category
-    [Tags]    smoke    categories
+    [Tags]    DELETE
     Obtain existent category
     ${user}   ${password}   Create user with subscriber role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -118,7 +119,7 @@ Verify a subscriber user can not delete a category
     [Teardown]    Teardown Testcase without category
 
 Verify a contributor user can not delete a category
-    [Tags]    smoke    categories
+    [Tags]    DELETE
     Obtain existent category
     ${user}   ${password}   Create user with contributor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
@@ -127,7 +128,7 @@ Verify a contributor user can not delete a category
     [Teardown]    Teardown Testcase without category
 
 Verify an author user can not delete a category
-    [Tags]    smoke    categories
+    [Tags]    DELETE
     Obtain existent category
     ${user}   ${password}   Create user with author role and return credentials
     Create Custom Session And Params   ${user}    ${password}
