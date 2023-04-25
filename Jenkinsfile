@@ -10,6 +10,12 @@ pipeline {
     REPO_NAME="${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
     STAGE_INFO_FOR_MAIL="Stages report:"
     PYTHONPATH='/var/jenkins_home/workspace/ApiTesting_feature_ci_jenkins_dv'
+    USER='powadmin'
+    PASSWORD='Control.1234'
+    AUTHENTICATION_METHOD='basic'
+    HOST='http://192.168.0.21'
+    PORT='80'
+    END_POINT='wp-json/wp/v2'
   }
   stages {
     stage('Setup Environment') {
@@ -62,17 +68,14 @@ pipeline {
     stage('Smoke Testing') {
       steps {
             sh 'echo $PYTHONPATH'
-            sh 'robot -d wp_api/reports --loglevel TRACE wp_api/tests'
+            sh 'robot -d wp_api/reports --loglevel TRACE -i smoke wp_api/tests'
             //sh 'python -m robot -d wp_api/reports -L TRACE wp_api/tests'
       }
-      // post {
-      //     success {
-      //       sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: passed"'
-      //     }
-      //     failure {
-      //       sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: failed"'
-      //     }
-      // }
+        post {
+            always {
+                archiveArtifacts artifacts: 'wp_api/reports/log.html', fingerprint: true
+            }
+        }
     }
   //   stage('Publish') {
   //     environment {
@@ -119,7 +122,7 @@ pipeline {
   post{
     always{
       sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>end"'
-      sh 'echo docker system prune -a --volumes -f'
+      //sh 'echo docker system prune -a --volumes -f'
       emailext( 
           to: 'danisku@gmail.com',
           subject: "Deployment of ${REPO_NAME} - Build #${currentBuild.number} - Pipeline: ${env.JOB_NAME} - Status: ${currentBuild.currentResult}",
