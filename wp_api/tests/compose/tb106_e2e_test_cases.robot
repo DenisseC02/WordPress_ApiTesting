@@ -9,15 +9,18 @@ Resource    wp_api/keywords/users/keywords.robot
 Resource    wp_api/keywords/pages/crud.robot
 Test Setup    Create Session and params
 Force Tags    compose
+Test Teardown    Teardown Testcase
 
 *** Test Cases ***
-Verify that is possible to create a user and...
+Verify that a Block is created with valid parameters with an editor user
     [Tags]    smoke
-    ${user}   ${password}   Create User And Return Credentials    ${create_administrator_user}
+    ${user}   ${password}   Create user with role and return credentials    administrator
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Valid Blocks
     Get Blocks List
     List Should Contain the 1 Blocks Created
 
-#    Put User    ${update_user}    ${id}
-#    Delete User    ${id}
+*** Keywords ***
+Teardown Testcase
+    Get Blocks List
+    Delete All The Blocks Created

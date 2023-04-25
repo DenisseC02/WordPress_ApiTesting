@@ -5,6 +5,7 @@ Library     libraries.process_data.url_assembler.UrlAssembler
 Library     libraries.assertions.verification.Verification
 Library     libraries.process_data.process_data.ProcessData
 Variables    ../../resources/data/bodies/users.py
+Library     wp_api.resources.data.bodies.body_generator.BodyGenerator
 
 *** Variables ***
 ${end_point_path}       users
@@ -23,19 +24,25 @@ Create user
     verify_schema    ${create_subscriber_user_schema}    ${post_response_user}
     [Return]    ${post_response_user}
 
-Create user and return credentials
-    [Arguments]    ${body}   ${status_code}=201
+Get body user role
+    [Arguments]    ${role}
+    ${body}     user_body   ${role}
+    [Return]    ${body}
+
+Create user with role and return credentials
+    [Arguments]    ${role}    ${status_code}=201
     ${url}                   Get Users Endpoint
     Log    ${url}
+    ${body}     Get Body User Role    ${role}
     ${post_response_user}    custom_post    ${session}    ${url}     ${params}   ${body}     ${status_code}
     Log    ${post_response_user}
-#    verify_schema    ${create_subscriber_user_schema}    ${post_response_user}
     [Return]    ${body['username']}     ${body['password']}
 
 Create user with specific role
-    [Arguments]    ${body}   ${status_code}=201
+    [Arguments]    ${body}   ${role}   ${status_code}=201
     ${url}                   Get Users Endpoint
     Log    ${url}
+    ${body}     Get Body User Role    ${role}
     ${post_response_user}    custom_post    ${session}    ${url}     ${params}   ${body}     ${status_code}
     Log    ${post_response_user}
     [Return]    ${post_response_user}
