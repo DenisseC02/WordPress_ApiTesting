@@ -13,7 +13,7 @@ body_just_description = {
 
 body_long_description = {
     'description': name_generator.generate_name('this is a description ',
-                                                500000)
+                                                4299)
 }
 
 body_edit_wrong_meta_number = {
