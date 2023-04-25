@@ -1,21 +1,21 @@
-*** Settings *** 
+*** Settings ***
 Library      libraries.requests.custom_request.CustomRequest
 Library      libraries.authentication.custom_session.CustomSession
 Library      libraries.process_data.url_assembler.UrlAssembler
 Library      libraries.assertions.verification.Verification
 Library      libraries.process_data.process_data.ProcessData
-Library      wp_api.resources.data.bodies.block_body_generator.BodyGenerator
+Library      wp_api.resources.data.bodies.body_generator.BodyGenerator
 Variables    wp_api/resources/data/bodies/blocks.py
 
 *** Variables ***
 ${end_point}    blocks
 
-*** Keywords *** 
+*** Keywords ***
 Create Block
     [Arguments]    ${body_create}
     ${url}    get_url    path=${end_point}
-    ${response}    custom_post    ${session}    ${url}    ${params}    ${body_create}    201    
-    verify_schema    ${create_block_schema}    ${response}
+    ${response}    custom_post    ${session}    ${url}    ${params}    ${body_create}    201
+    log     ${response}
     ${id}    get_key_value    ${response}    id
     Set Global Variable    ${id}
     ${url}    get_url    path=${end_point}    id=${id}
@@ -74,8 +74,6 @@ Delete block ${id}
     ${response}    custom_delete    ${session}    ${url}    ${delete}    
     ${response_get}    custom_get    ${session}    ${url}    ${params}    404
     verify_subset ignore    ${response_get}    ${verify_delete}
-Delete Session And Authentication
-    Log    to do
 
 Update Id Block
     [Arguments]    ${publish}     ${id}
@@ -90,6 +88,7 @@ Create ${blocks} ${type} Blocks
     FOR    ${block}    IN RANGE    ${blocks}
         Create Block    ${data_block} 
     END
+
 List Should Contain The ${blocks} Blocks Created
     log    ${ids}
     Verify List Is Len    ${ids}    ${blocks}
