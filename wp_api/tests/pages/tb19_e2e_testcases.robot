@@ -1,5 +1,6 @@
 *** Settings ***
 Library    ../../../venv/lib/site-packages/robot/libraries/Collections.py
+Resource    ../../resources/imports.robot
 Resource    ../../keywords/pages/crud.robot
 Resource    ../../keywords/pages/keywords.robot
 Variables    ../../resources/data/bodies/pages.py

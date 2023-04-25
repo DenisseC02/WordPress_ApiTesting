@@ -6,5 +6,4 @@ Library    libraries.requests.custom_request.CustomRequest
 Library    libraries.authentication.custom_session.CustomSession
 Library    libraries.assertions.verification.Verification
 Library    libraries.utils.name_generator.NameGenerator
-Library    libraries.assertions.pages_verification.PagesVerification
 Library    libraries.utils.file_upload.FileUpload
