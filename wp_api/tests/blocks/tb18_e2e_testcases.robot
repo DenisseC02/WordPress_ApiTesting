@@ -68,7 +68,7 @@ Verify blocks are not created with wrong name
     log    to do
 
 Verify that a draft block can be deleted.
-    [Tags]    bugs    happy_path
+    [Tags]    bugs    smoke
     Create 1 draft Blocks
     Delete block ${id}
     Get Blocks List    
