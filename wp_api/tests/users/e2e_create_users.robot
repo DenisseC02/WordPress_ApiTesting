@@ -10,24 +10,24 @@ Force Tags    USERS  CREATE_USERS
 
 *** Test Cases ***
 Verify that is not possible to create more than one user with the same email
-    [Tags]    errors
+    [Tags]    ERRORS
     ${id}   Create User And Get Key    ${create_user}       id
     ${user_with_same_email}    Create User With An Expected Error And Get Key   ${create_user}   code
     Verify Existing User Error   ${user_with_same_email}
     Delete User    ${id}
 
 Verify that is not possible to create a user without a password
-    [Tags]    errors
+    [Tags]    ERRORS
     ${post_response_user}    Create User With An Expected Error With Data    ${user_without_password}  code  400
     Verify Missing Parameter Error      ${post_response_user}
 
 Verify that is not possible to create a user without a username
-    [Tags]    errors
+    [Tags]    ERRORS
     ${post_response_user}    Create User With An Expected Error With Data    ${user_without_username}  code  400
     Verify Missing Parameter Error      ${post_response_user}
 
 Verify that is not possible to create a user without an email
-    [Tags]    errors
+    [Tags]    ERRORS
     ${post_response_user}    Create User With An Expected Error With Data    ${user_without_email}  code  400
     Verify Missing Parameter Error      ${post_response_user}
 
@@ -42,30 +42,25 @@ Verify that is possible to create a user with subscriber role
     Delete User    ${id}
 
 Verify that possible to create a user with adminstrator role
-    [Tags]    smoke
     ${post_response}   Create User with specific role    ${create_administrator_user}   administrator
     Verify The Role    ${post_response}     role=administrator
     Delete User    ${id}
 
 Verify that possible to create a user with contributor role
-    [Tags]    smoke
     ${post_response}   Create User with specific role    ${create_contributor_user}   contributor
     Verify The Role    ${post_response}     role=contributor
     Delete User    ${id}
 
 Verify that possible to create a user with author role
-    [Tags]    smoke
     ${post_response}   Create User with specific role    ${create_author_user}    author
     Verify The Role    ${post_response}     role=author
     Delete User    ${id}
 
 Verify that possible to create a user with editor role
-    [Tags]    smoke
     ${post_response}   Create User with specific role    ${create_editor_user}   editor
     Verify The Role    ${post_response}     role=editor
     Delete User    ${id}
 
 Verify that is not posible create a username with more than 60 characters
-    [Tags]    errors
     ${value}   Create user with an expected error and get key    ${create_60_character_username}     code      500
     Verify Parameter To Long Error     ${value}

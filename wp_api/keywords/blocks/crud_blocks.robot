@@ -38,6 +38,12 @@ Read Block
     ${url}    get_url    path=${end_point}    id=${id}
     ${response}    custom_get    ${session}    ${url}    ${params}    ${new_status}    ${filter}    ${key}
     RETURN    ${response}
+
+Get Block
+    ${url}    get_url    path=${end_point}    id=${id}
+    ${response}    custom_get    ${session}    ${url}    ${params}
+    verify_schema    ${read_block_schema}    ${response}
+
     
 Update Block
     [Arguments]    ${body_update}
@@ -97,7 +103,7 @@ Update Id Block
 Create ${blocks} ${type} Blocks
     ${data_block}    block_body    ${type}    
     FOR    ${block}    IN RANGE    ${blocks}
-        Create Block    ${data_block} 
+        Create Block    ${data_block}
     END
 
 Create ${blocks} ${type} Blocks Integration
@@ -120,6 +126,7 @@ Update The ${feature} Of The Block
     ${params}    block_body    ${feature}
     Set Test Variable    ${params}
     Update Block    ${params}
+
 Verify That The ${feature} Is Updated
     FOR    ${id}    IN    @{ids}
         ${data}    Read Block    200    key    ${feature}

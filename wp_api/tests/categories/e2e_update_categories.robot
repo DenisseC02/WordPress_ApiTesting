@@ -21,41 +21,49 @@ Verify is possible create a category without description and add it with update
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid meta string
+    [Tags]    ERRORS
     Update category with invalid parameter    ${body_edit_wrong_meta_string}
     Verify response returns an error message    ${error_invalid_meta}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid meta number
+    [Tags]    ERRORS
     Update category with invalid parameter    ${body_edit_wrong_meta_number}
     Verify response returns an error message    ${error_invalid_meta}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid parent list
+    [Tags]    ERRORS
     Update category with invalid parameter    ${body_edit_wrong_parent_list}
     Verify response returns an error message    ${error_invalid_parent}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid parent dict
+    [Tags]    ERRORS
     Update category with invalid parameter    ${body_edit_wrong_parent_dict}
     Verify response returns an error message    ${error_invalid_parent}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid description int
+    [Tags]    ERRORS
     Update category with invalid parameter    ${body_edit_description_int}
     Verify response returns an error message    ${error_invalid_description}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid description list
+    [Tags]    ERRORS
     Update category with invalid parameter    ${body_edit_description_list}
     Verify response returns an error message    ${error_invalid_description}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid description dictionary
+    [Tags]    ERRORS
     Update category with invalid parameter    ${body_edit_description_dict}
     Verify response returns an error message    ${error_invalid_description}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible create a category and edit it with inexistent parent
+    [Tags]    ERRORS
     Delete Category    ${id}
     Set body with inexistent parent for edit    ${id}
     ${id_for_update}    Obtain existent category
@@ -69,6 +77,7 @@ Verify is not possible edit a category parent with its own id
     Append To List    ${for_delete}    ${id}
 
 Verify it is not possible edit a category with a slug that already exist
+    [Tags]    ERRORS
     Obtain existent slug
     Edit category with existent slug
     Verify response returns an error message    ${error_slug_exist}

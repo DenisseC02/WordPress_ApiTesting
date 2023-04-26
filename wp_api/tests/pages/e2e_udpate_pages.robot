@@ -43,22 +43,22 @@ Verify that the password can be successfully removed from a page
     Verify that the page does not have password 
 
 Verify that a page is not edited with wrong status value
-    [Tags]    errors
+    [Tags]    ERRORS
     Create new page    ${body_test10_post}   
     Update the page with wrong values    ${body_test10_put}    ${wrong_values_status}
 
 Verify that a page is not edited with wrong parent value
-    [Tags]    errors
+    [Tags]    ERRORS
     Create new page    ${body_test11_post}   
     Update the page with wrong values    ${body_test11_put}    ${wrong_values_status}
 
 Verify that a page is not edited with comment status value
-    [Tags]    errors
+    [Tags]    ERRORS
     Create new page    ${body_test12_post}
     Update the page with wrong values    ${body_test12_put}    ${wrong_values_status}
 
 Verify that a page is not edited with featured media value
-    [Tags]    errors
+    [Tags]    ERRORS
     Create new page    ${body_test13_post}
     Update the page with wrong values    ${body_test13_put}    ${wrong_values_status}
 

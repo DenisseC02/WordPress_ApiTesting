@@ -29,16 +29,6 @@ class Verification(object):
             logger.info(actual_result)
             assert_that(expected_result).is_subset_of(actual_result)
 
-    def verify_equal_ignore(self, actual_result, expected_result, list_ignore=[]):
-        '''Asserts the actual is equal to expected ignoring params'''
-        with soft_assertions():
-            logger.info('*****Expected******')
-            logger.info(expected_result)
-            logger.info('*****Actual******')
-            logger.info(actual_result)
-            logger.info(list_ignore)
-            assert_that(actual_result).is_equal_to(expected_result, ignore=list_ignore)
-
     def verify_subset_ignore(self, response, body, ignore=[]):
         '''Asserts the expected is subset of actual ignoring params'''
         with soft_assertions():
@@ -80,3 +70,13 @@ class Verification(object):
             logger.info(actual_result)
             for post in actual_result:
                 assert_that(post['status']).is_equal_to(expected_result)
+
+    def verify_equal_ignore(self, actual_result, expected_result, list_ignore=[]):
+        '''Asserts the actual is equal to expected ignoring params'''
+        with soft_assertions():
+            logger.info('*****Expected******')
+            logger.info(expected_result)
+            logger.info('*****Actual******')
+            logger.info(actual_result)
+            logger.info(list_ignore)
+            assert_that(actual_result).is_equal_to(expected_result, ignore=list_ignore)

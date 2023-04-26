@@ -20,10 +20,12 @@ Create a category and verify it exist on list of categories
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible create a category without name
+    [Tags]    ERRORS
     Create category without name
     Verify response returns an error message    ${error_missing_name}
 
 Verify is not possble Create Two Categories With The Same Name And Parent
+    [Tags]    ERRORS
     Set body to create categories with same parent and name
     Create two categories with the same name and parent
     Verify response returns an error message    ${error_term_exist}

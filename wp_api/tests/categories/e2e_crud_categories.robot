@@ -7,14 +7,8 @@ Resource    ../../keywords/categories/categories_crud_with_errors.robot
 Test Setup    Setup Test Case
 Force Tags    SMOKE    CATEGORIES    CATEGORIES_CRUD
 
-*** Variables ***
-${body_name}=    ${body_just_name}
-${body_description}=    ${body_just_description}
-${endpoint}=    categories
-
 *** Test Cases ***
 Verify is posible create list edit and delete a category
-    [Tags]    CREATE_CATEGORIES    UPDATE_CATEGORIES    DELETE_CATEGORIES
     Create new category
     Get Category    ${id}
     Update existent category

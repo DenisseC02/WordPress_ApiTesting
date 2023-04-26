@@ -10,7 +10,7 @@ Resource    wp_api/keywords/pages/crud.robot
 Resource    wp_api/keywords/categories/common_keywords.robot
 Test Setup    Setup Test User and Categories
 Test Teardown    Teardown Testcase
-Force Tags    SMOKE    INTEGRATION    USERS    CATEGORIES    USERS_CATEGORIES    DELETE
+Force Tags    INTEGRATION    USERS    CATEGORIES    USERS_CATEGORIES    DELETE
 
 *** Test Cases ***
 Verify an administrator user can delete a category

@@ -9,7 +9,7 @@ Test Setup    Setup Test
 
 *** Test Cases ***
 Verify that is not possible to edit the username
-    [Tags]    errors
+    [Tags]    ERRORS
     ${id}  Create User And Get Key    ${create_user}   id
     ${put_response_user}  Put User Error With Data     ${update_username}    code   ${id}
     Verify Invalid Argument Error     ${put_response_user}

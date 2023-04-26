@@ -41,7 +41,7 @@ To setup the environment, please reffer to the following steps:
   - _Linux users:_ [Follow installation procedure](https://docs.python-guide.org/starting/install3/linux/) described in this documentation.
 2. Setup a Virtual Environment in Python.
   It can be created using the tools of your choice for example: [pipenv](https://pypi.org/project/pipenv/), [pyenv](https://github.com/pyenv/pyenv), [virtualenv](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjaq9_2mrD-AhV4RLgEHQeWAOYQFnoECBEQAQ&url=https%3A%2F%2Fvirtualenv.pypa.io%2F&usg=AOvVaw3Q9Mzr-1q6xjEJO-UW0ylq) (can be installed via pip, look for official documentation).
-3. Install libraries and dependencies for the project to run, open a terminal window in the same location (or a Bash terminal if you are using Windowws) and type the following command:
+3. Install libraries and dependencies for the project to run, open a terminal window in the same location (or a Bash terminal if you are using Windows) and type the following command:
 - $ `pip install -r requirements.txt` (See [Appendix](#Appendix) for detailed information)   
 4. Install Docker and Docker Compose.
   Reffer to official links containing installation procedures according to your platform:
@@ -61,7 +61,7 @@ The following variables are required to set as environment variables
 | Variable name | Type | Default value | Description |
 | - | - | - | - |
 | HOST | String | http://localhost | REST API URL. **Required** |
-| END_POINT | String | wp-json/wp/v2 | End point base. **Required**   |
+| END_POINT_PATH | String | wp-json/wp/v2 | End point base. **Required**   |
 | PORT | Integer | 80 | API port. **Required** |
 | AUTHENTICATION_METHOD | String | basic | By default is  "Basic Authorization" for request. Other types of authorization are: Token, API Key, Oath2. **Required**  |
 | USER | String | (blank) | Username for basic athorization, must be specified username before running test cases. Blank by default to protect sensitive data. **Required**, to test WordPress you need to provide. |
