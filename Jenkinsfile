@@ -8,22 +8,14 @@ pipeline {
   environment {
     DOCKERHUBPASS=credentials('dockerusrpass')
     REPO_NAME="${GIT_URL.split('/')[-2]}/${GIT_URL.split('/')[-1].replace('.git', '')}"
-    STAGE_INFO_FOR_MAIL="Stages report:"
     PYTHONPATH='/var/jenkins_home/workspace/ApiTesting_feature_ci_jenkins_dv'
-    USER='powadmin'
-    PASSWORD='Control.1234'
-    AUTHENTICATION_METHOD='basic'
     HOST='http://192.168.0.21'
-    PORT='80'
-    END_POINT='wp-json/wp/v2'
   }
   stages {
     stage('Setup Environment') {
       steps {
         sh 'python -m pip install --upgrade pip'
         sh 'pip install -r requirements.txt --no-cache'
-        //sh 'export PYTHONPATH=$(pwd) && export PATH=$PATH:$PYTHONPATH'
-        //sh 'export robot.pythonpath=$PYTHONPATH'
       }
     }
     // stage('Code Inspection') {
@@ -67,9 +59,29 @@ pipeline {
     // } 
     stage('Smoke Testing') {
       steps {
+            script {
+                load "/var/jenkins_home/envfile.groovy"
+            }
             sh 'echo $PYTHONPATH'
             sh 'robot -d wp_api/reports --loglevel TRACE -i smoke wp_api/tests'
-            //sh 'python -m robot -d wp_api/reports -L TRACE wp_api/tests'
+      }
+        post {
+            always {
+                archiveArtifacts artifacts: 'wp_api/reports/log.html', fingerprint: true
+                archiveArtifacts artifacts: 'wp_api/reports/report.html', fingerprint: true
+                archiveArtifacts artifacts: 'wp_api/reports/output.xml', fingerprint: true
+                sh 'robotmetrics -I wp_api/reports'
+
+            }
+        }
+    }
+    stage('Regression Testing') {
+      steps {
+            script {
+                load "/var/jenkins_home/envfile.groovy"
+            }
+            sh 'echo $PYTHONPATH'
+            sh 'robot -d wp_api/reports --loglevel TRACE wp_api/tests'
       }
         post {
             always {
@@ -77,52 +89,10 @@ pipeline {
             }
         }
     }
-  //   stage('Publish') {
-  //     environment {
-  //       IMAGE_NAME='converter_dep'
-  //       IMAGE_TAG='${currentBuild.number}'
-  //     }
-  //     steps {
-  //       sh 'echo docker tag converter_dev:latest ${DOCKERHUBPASS_USR}/${IMAGE_NAME}:${IMAGE_TAG}' 
-  //       sh 'echo docker push ${DOCKERHUBPASS_USR}/${IMAGE_NAME}:${IMAGE_TAG}'
-  //     }
-  //     post {
-  //         success {
-  //           sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: passed"'
-  //         }
-  //         failure {
-  //           sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: failed"'
-  //         }
-  //     }
-  //   }
-  //   stage('Deploy to Dev') {
-  //     environment {
-  //       DOCKER_HOST='vagrant@192.168.57.135'
-  //       IMAGE_NAME='converter_dep'
-  //       IMAGE_TAG='${currentBuild.number}'
-  //       DOCKERHUBPASS_USR='${DOCKERHUBPASS_USR}'
-  //     }
-  //     steps {
-  //       sshagent(credentials: ['vagrant-ssh']) {
-  //         sh 'scp docker-compose.yaml ${DOCKER_HOST}:~/'
-  //         sh 'scp .env ${DOCKER_HOST}:~/'
-  //         sh 'ssh ${DOCKER_HOST} docker-compose up -d'
-  //       }
-  //     }
-  //     post {
-  //         success {
-  //           sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: passed"'
-  //         }
-  //         failure {
-  //           sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: failed"'
-  //         }
-  //     }
-  //   }
   }
   post{
     always{
-      //sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>end"'
-      //sh 'echo docker system prune -a --volumes -f'
+      sh 'echo docker system prune -a --volumes -f'
       emailext( 
           to: 'danielv.quarksocial@gmail.com',
           subject: "Deployment of ${REPO_NAME} - Build #${currentBuild.number} - Pipeline: ${env.JOB_NAME} - Status: ${currentBuild.currentResult}",
