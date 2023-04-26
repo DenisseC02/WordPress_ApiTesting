@@ -16,7 +16,7 @@ Verify if an image bigger than 1024x1024 pixels can be uploaded.
     [Teardown]    Delete Media File     200    ${url}/${id}
 
 Verify that a pdf document bigger than 2MB can not be uploaded.
-    [Tags]    smoke
+    [Tags]    smoke    known
     Upload PDF document > 2MB
     
 
