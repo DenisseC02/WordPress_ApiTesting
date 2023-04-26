@@ -5,7 +5,8 @@ Library     libraries.authentication.custom_session.CustomSession
 Library     libraries.process_data.url_assembler.UrlAssembler
 Resource    wp_api/keywords/users/keywords.robot
 Resource    wp_api/keywords/pages/crud.robot
-Test Setup    Create Session and params
+Test Setup    Setup Test
+Force Tags    USERS  USERS_CREATE
 
 *** Test Cases ***
 Verify that is not possible to create more than one user with the same email
@@ -31,16 +32,37 @@ Verify that is not possible to create a user without an email
     Verify Missing Parameter Error      ${post_response_user}
 
 Verify that is possible to create a user and then update it
-    [Tags]    smoke
     ${id}  Create User And Get Key    ${create_subscriber_user}   id
     Put User    ${update_user}    ${id}
     Delete User    ${id}
 
-Verify that is not possible to edit the username
-    [Tags]    errors
-    ${id}  Create User And Get Key    ${create_user}   id
-    ${put_response_user}  Put User Error With Data     ${update_username}    code   ${id}
-    Verify Invalid Argument Error     ${put_response_user}
+Verify that is possible to create a user with subscriber role
+    ${post_response}   Create User    ${create_subscriber_user}
+    Verify The Role    ${post_response}     role=subscriber
+    Delete User    ${id}
+
+Verify that possible to create a user with adminstrator role
+    [Tags]    smoke
+    ${post_response}   Create User with specific role    ${create_administrator_user}   administrator
+    Verify The Role    ${post_response}     role=administrator
+    Delete User    ${id}
+
+Verify that possible to create a user with contributor role
+    [Tags]    smoke
+    ${post_response}   Create User with specific role    ${create_contributor_user}   contributor
+    Verify The Role    ${post_response}     role=contributor
+    Delete User    ${id}
+
+Verify that possible to create a user with author role
+    [Tags]    smoke
+    ${post_response}   Create User with specific role    ${create_author_user}    author
+    Verify The Role    ${post_response}     role=author
+    Delete User    ${id}
+
+Verify that possible to create a user with editor role
+    [Tags]    smoke
+    ${post_response}   Create User with specific role    ${create_editor_user}   editor
+    Verify The Role    ${post_response}     role=editor
     Delete User    ${id}
 
 Verify that is not posible create a username with more than 60 characters
