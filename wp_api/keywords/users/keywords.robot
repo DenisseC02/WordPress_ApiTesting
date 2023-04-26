@@ -125,7 +125,6 @@ Delete user
     ${params_del}  Create Dictionary    force=true     reassign=1
     Log     ${params_del}
     ${del_response_user}    custom_delete    ${session}  ${url}/${id}  ${params_del}  ${status_code}
-#    verify_schema    ${path_delete_schema}    ${del_response_user}
     [Return]    ${del_response_user}
 
 Delete created user
