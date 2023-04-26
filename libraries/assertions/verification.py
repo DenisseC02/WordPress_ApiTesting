@@ -70,3 +70,13 @@ class Verification(object):
             logger.info(actual_result)
             for page in actual_result:
                 assert_that(page['parent']).is_equal_to(int(expected_result))
+
+    def verify_posts_status(self, actual_result, expected_result):
+        '''Asserts that a list of posts have the same status'''
+        with soft_assertions():
+            logger.info('*****Expected******')
+            logger.info('Post status: {}'.format(expected_result))
+            logger.info('*****Actual******')
+            logger.info(actual_result)
+            for post in actual_result:
+                assert_that(post['status']).is_equal_to(expected_result)
