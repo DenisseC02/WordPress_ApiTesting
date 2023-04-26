@@ -1,13 +1,9 @@
 import os
 import mimetypes
-from robot.api import logger
 
 
 class FileUpload(object):
     '''Build header and body to upload a file'''
-
-    def __init__(self):
-        pass
 
     def update_session(self, session, file_path, expected_status=200):
         '''Returns updated session with required headers and body'''

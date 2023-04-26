@@ -53,9 +53,30 @@ class Verification(object):
             assert_that(body).is_subset_of(response)
 
     def Verify_list_is_len(self, list, leng):
+        '''Asserts that a list has a specific lenght'''
         with soft_assertions():
             logger.info('*****Expected******')
             logger.info(leng)
             logger.info('*****Actual******')
             logger.info(list)
             assert_that(list).is_length(int(leng))
+    
+    def verify_same_parent(self, actual_result, expected_result):
+        '''Asserts that a list of pages have the same parent'''
+        with soft_assertions():
+            logger.info('*****Expected******')
+            logger.info('Parent ID: {}'.format(expected_result))
+            logger.info('*****Actual******')
+            logger.info(actual_result)
+            for page in actual_result:
+                assert_that(page['parent']).is_equal_to(int(expected_result))
+
+    def verify_posts_status(self, actual_result, expected_result):
+        '''Asserts that a list of posts have the same status'''
+        with soft_assertions():
+            logger.info('*****Expected******')
+            logger.info('Post status: {}'.format(expected_result))
+            logger.info('*****Actual******')
+            logger.info(actual_result)
+            for post in actual_result:
+                assert_that(post['status']).is_equal_to(expected_result)
