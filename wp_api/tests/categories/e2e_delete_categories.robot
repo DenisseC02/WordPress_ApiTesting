@@ -14,7 +14,6 @@ ${endpoint}=    categories
 
 *** Test Cases ***
 Delete inexistent category
-    [Tags]    DELETE_CATEGORIES
     Delete existent category
     Delete inexistent category
 
