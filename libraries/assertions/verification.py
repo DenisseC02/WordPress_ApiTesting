@@ -17,7 +17,7 @@ class Verification(object):
             logger.info(schema)
             logger.info('*****Actual******')
             logger.info(response)
-            result_validation=jsonschema.validate(response, schema)
+            result_validation = jsonschema.validate(response, schema)
             assert result_validation is None
    
     def verify_subset(self, expected_result, actual_result):
