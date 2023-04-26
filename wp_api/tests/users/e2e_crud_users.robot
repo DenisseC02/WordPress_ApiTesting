@@ -6,7 +6,7 @@ Library     libraries.process_data.url_assembler.UrlAssembler
 Resource    wp_api/keywords/users/keywords.robot
 Resource    wp_api/keywords/pages/crud.robot
 Test Setup    Setup Test
-Force Tags    USERS  CREATE_USERS
+Force Tags   SMOKE  USERS  USERS_CRUD
 
 *** Test Cases ***
 Verify that is possible to create a user with subscriber role

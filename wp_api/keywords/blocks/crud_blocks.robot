@@ -86,9 +86,6 @@ Delete block ${id}
     ${response_get}    custom_get    ${session}    ${url}    ${params}    404
     verify_subset ignore    ${response_get}    ${verify_delete}
 
-Delete Session And Authentication
-    Log    to do
-
 Update Id Block
     [Arguments]    ${publish}     ${id}
     ${url}    get_url    path=${end_point}    id=${id}
