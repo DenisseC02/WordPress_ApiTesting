@@ -121,10 +121,10 @@ pipeline {
   }
   post{
     always{
-      sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>end"'
+      //sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>end"'
       //sh 'echo docker system prune -a --volumes -f'
       emailext( 
-          to: 'danisku@gmail.com',
+          to: 'danielv.quarksocial@gmail.com',
           subject: "Deployment of ${REPO_NAME} - Build #${currentBuild.number} - Pipeline: ${env.JOB_NAME} - Status: ${currentBuild.currentResult}",
           body: "The deployment of ${REPO_NAME} is complete.<br> \
                   Details:<br>Build Number: ${currentBuild.number}<br> \
