@@ -4,16 +4,23 @@ Variables    wp_api/resources/data/bodies/media.py
 
 
 *** Keywords ***
-Create New Media File 
+Create New Media File
     [Arguments]     ${file}    ${expected_status}
     ${updated_session}    ${body}     update_session    session=${session}    file_path=${file}    expected_status=${expected_status}
     ${response}     custom_post     session=${updated_session}     url=${url}     params=${params}     body=${body}    expected_status=${expected_status}
     ${updated_session}    Set Variable    ${None}
     Pass Execution If  ${expected_status} == 500    File Can Not Be Uploaded
-    ${id}    get_key_value    ${response}    id 
+    ${id}    get_key_value    ${response}    id
     Set Suite Variable     ${id}
     ${response_get}    custom_get    session=${session}    url=${url}/${id}    params={}
     verify_equal_ignore    ${response}    ${response_get}    ${ignore_list}
+
+Create New Media File With Error
+    [Arguments]     ${file}    ${expected_status}
+    ${updated_session}    ${body}     update_session    session=${session}    file_path=${file}    expected_status=${expected_status}
+    ${response}     custom_post     session=${updated_session}     url=${url}     params=${params}     body=${body}    expected_status=${expected_status}
+    [Return]    ${response}
+
 
 Get Media Files 
     [Arguments]     ${new_status}    ${new_url}=${url} 

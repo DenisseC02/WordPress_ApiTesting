@@ -43,3 +43,10 @@ other_files = {
     'file_08': 'wp_api/resources/data/media/audio_m-01.mp3',
     'file_09': 'wp_api/resources/data/media/pdf_s-01.pdf'
 }
+
+error_user_create = {
+    'code': 'rest_cannot_create',
+    'message': 'Sorry, you are not allowed to create posts asthis user.',
+    'data': {'status': 403}
+}
+
