@@ -4,6 +4,7 @@ Resource        wp_api/keywords/posts/crud.robot
 Resource        wp_api/keywords/posts/update.robot
 Test Setup      Create Session and params
 Variables       wp_api/resources/data/bodies/posts.py
+Force Tags      POSTS  POSTS_CREATE
 
 *** Variables ***
 ${bad_status}    410

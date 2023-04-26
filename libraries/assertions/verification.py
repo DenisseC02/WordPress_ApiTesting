@@ -51,6 +51,7 @@ class Verification(object):
             logger.info('*****Actual******')
             logger.info(response)
             assert_that(body).is_subset_of(response)
+
     def Verify_list_is_len(self, list, leng):
         with soft_assertions():
             logger.info('*****Expected******')

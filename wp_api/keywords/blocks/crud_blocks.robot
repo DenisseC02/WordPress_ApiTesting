@@ -6,28 +6,27 @@ Library      libraries.assertions.verification.Verification
 Library      libraries.process_data.process_data.ProcessData
 Library      wp_api.resources.data.bodies.body_generator.BodyGenerator
 Variables    wp_api/resources/data/bodies/blocks.py
+Resource     wp_api/keywords/blocks/errors_blocks.robot
 
 *** Variables ***
 ${end_point}    blocks
 
 *** Keywords ***
-#Create Block
-#    [Arguments]    ${body_create}
-#    ${url}    get_url    path=${end_point}
-#    ${response}    custom_post    ${session}    ${url}    ${params}    ${body_create}    201
-#    verify_schema    ${create_block_schema}    ${response}
-#    ${id}    get_key_value    ${response}    id
-#    Set Global Variable    ${id}
-#    ${url}    get_url    path=${end_point}    id=${id}
-#    ${response_get}    custom_get    ${session}    ${url}    ${params}
-#    verify_equal_ignore    ${response}    ${response_get}    ${ignore}
-
 Create Block
     [Arguments]    ${body_create}
     ${url}    get_url    path=${end_point}
     ${response}    custom_post    ${session}    ${url}    ${params}    ${body_create}    201
-    log     ${response}
-#    verify_schema    ${create_block_schema}    ${response}
+    verify_schema    ${create_block_schema}    ${response}
+    ${id}    get_key_value    ${response}    id
+    Set Global Variable    ${id}
+    ${url}    get_url    path=${end_point}    id=${id}
+    ${response_get}    custom_get    ${session}    ${url}    ${params}
+    verify_equal_ignore    ${response}    ${response_get}    ${ignore}
+
+Create Block Integration
+    [Arguments]    ${body_create}
+    ${url}    get_url    path=${end_point}
+    ${response}    custom_post    ${session}    ${url}    ${params}    ${body_create}    201
     ${id}    get_key_value    ${response}    id
     Set Global Variable    ${id}
     ${url}    get_url    path=${end_point}    id=${id}
@@ -102,6 +101,18 @@ Create ${blocks} ${type} Blocks
     ${data_block}    block_body    ${type}    
     FOR    ${block}    IN RANGE    ${blocks}
         Create Block    ${data_block} 
+    END
+
+Create ${blocks} ${type} Blocks Integration
+    ${data_block}    block_body    ${type}
+    FOR    ${block}    IN RANGE    ${blocks}
+        Create Block Integration   ${data_block}
+    END
+
+Create ${blocks} ${type} Blocks Error
+    ${data_block}    block_body    ${type}
+    FOR    ${block}    IN RANGE    ${blocks}
+        Create Block Error    ${data_block}     403
     END
 
 List Should Contain The ${blocks} Blocks Created
