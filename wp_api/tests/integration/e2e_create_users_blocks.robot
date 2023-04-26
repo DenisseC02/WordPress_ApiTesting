@@ -51,7 +51,7 @@ Verify that a Block is created with valid parameters with an subscriber user
     Block Was Created    ${False}
 
 Verify that a Block is created as a draft with an administrator user
-    [Tags]    smoke
+    [Tags]    ADMINISTRATOR_ROLE
     ${user}   ${password}   Create user with administrator role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Draft Blocks Integration
@@ -59,7 +59,7 @@ Verify that a Block is created as a draft with an administrator user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a draft with an editor user
-    [Tags]    smoke
+    [Tags]    EDITOR_ROLE
     ${user}   ${password}   Create user with editor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Draft Blocks Integration
@@ -67,7 +67,7 @@ Verify that a Block is created as a draft with an editor user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a draft with an author user
-    [Tags]    smoke
+    [Tags]    AUTHOR_ROLE
     ${user}   ${password}   Create user with author role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Draft Blocks Integration
@@ -75,21 +75,21 @@ Verify that a Block is created as a draft with an author user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a draft with an contributor user
-    [Tags]    smoke
+    [Tags]    CONTRIBUTOR_ROLE
     ${user}   ${password}   Create user with contributor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Draft Blocks Error
     Block Was Created    ${False}
 
 Verify that a Block is created as a draft with an subscriber user
-    [Tags]    smoke
+    [Tags]    SUBSCRIBER_ROLE
     ${user}   ${password}   Create user with subscriber role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Draft Blocks Error
     Block Was Created    ${False}
 
 Verify that a Block is created as a private with an administrator user
-    [Tags]    smoke
+    [Tags]    ADMINISTRATOR_ROLE
     ${user}   ${password}   Create user with administrator role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Private Blocks Integration
@@ -97,7 +97,7 @@ Verify that a Block is created as a private with an administrator user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a private with an editor user
-    [Tags]    smoke
+    [Tags]    EDITOR_ROLE
     ${user}   ${password}   Create user with editor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Private Blocks Integration
@@ -105,7 +105,7 @@ Verify that a Block is created as a private with an editor user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a private with an author user
-    [Tags]    smoke
+    [Tags]    AUTHOR_ROLE
     ${user}   ${password}   Create user with author role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Private Blocks Integration
@@ -113,21 +113,21 @@ Verify that a Block is created as a private with an author user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a private with an contributor user
-    [Tags]    smoke
+    [Tags]    CONTRIBUTOR_ROLE
     ${user}   ${password}   Create user with contributor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Private Blocks Error
     Block Was Created    ${False}
 
 Verify that a Block is created as a private with an subscriber user
-    [Tags]    smoke
+    [Tags]    SUBSCRIBER_ROLE
     ${user}   ${password}   Create user with subscriber role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Private Blocks Error
     Block Was Created    ${False}
 
 Verify that a Block is created as a pending with an administrator user
-    [Tags]    smoke
+    [Tags]    ADMINISTRATOR_ROLE
     ${user}   ${password}   Create user with administrator role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Pending Blocks Integration
@@ -135,7 +135,7 @@ Verify that a Block is created as a pending with an administrator user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a pending with an editor user
-    [Tags]    smoke
+    [Tags]    EDITOR_ROLE
     ${user}   ${password}   Create user with editor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Pending Blocks Integration
@@ -143,7 +143,7 @@ Verify that a Block is created as a pending with an editor user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a pending with an author user
-    [Tags]    smoke
+    [Tags]    AUTHOR_ROLE
     ${user}   ${password}   Create user with author role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Pending Blocks Integration
@@ -151,21 +151,21 @@ Verify that a Block is created as a pending with an author user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a pending with an contributor user
-    [Tags]    smoke
+    [Tags]    CONTRIBUTOR_ROLE
     ${user}   ${password}   Create user with contributor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Pending Blocks Error
     Block Was Created    ${False}
 
 Verify that a Block is created as a pending with an subscriber user
-    [Tags]    smoke
+    [Tags]    SUBSCRIBER_ROLE
     ${user}   ${password}   Create user with subscriber role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Pending Blocks Error
     Block Was Created    ${False}
 
 Verify that a Block is created as a future with an administrator user
-    [Tags]    smoke
+    [Tags]    ADMINISTRATOR_ROLE
     ${user}   ${password}   Create user with administrator role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Future Blocks Integration
@@ -173,7 +173,7 @@ Verify that a Block is created as a future with an administrator user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a future with an editor user
-    [Tags]    smoke
+    [Tags]    EDITOR_ROLE
     ${user}   ${password}   Create user with editor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Future Blocks Integration
@@ -181,7 +181,7 @@ Verify that a Block is created as a future with an editor user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a future with an author user
-    [Tags]    smoke
+    [Tags]    AUTHOR_ROLE
     ${user}   ${password}   Create user with author role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Future Blocks Integration
@@ -189,21 +189,21 @@ Verify that a Block is created as a future with an author user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a future with an contributor user
-    [Tags]    smoke
+    [Tags]    CONTRIBUTOR_ROLE
     ${user}   ${password}   Create user with contributor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Future Blocks Error
     Block Was Created    ${False}
 
 Verify that a Block is created as a future with an subscriber user
-    [Tags]    smoke
+    [Tags]    SUBSCRIBER_ROLE
     ${user}   ${password}   Create user with subscriber role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Future Blocks Error
     Block Was Created    ${False}
 
 Verify that a Block is created as a empty with an administrator user
-    [Tags]    smoke
+    [Tags]    ADMINISTRATOR_ROLE
     ${user}   ${password}   Create user with administrator role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Empty Blocks Integration
@@ -211,7 +211,7 @@ Verify that a Block is created as a empty with an administrator user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a empty with an editor user
-    [Tags]    smoke
+    [Tags]    EDITOR_ROLE
     ${user}   ${password}   Create user with editor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Empty Blocks Integration
@@ -219,7 +219,7 @@ Verify that a Block is created as a empty with an editor user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a empty with an author user
-    [Tags]    smoke
+    [Tags]    AUTHOR_ROLE
     ${user}   ${password}   Create user with author role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Empty Blocks Integration
@@ -227,14 +227,14 @@ Verify that a Block is created as a empty with an author user
     List Should Contain the 1 Blocks Created
 
 Verify that a Block is created as a empty with an contributor user
-    [Tags]    smoke
+    [Tags]    CONTRIBUTOR_ROLE
     ${user}   ${password}   Create user with contributor role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Empty Blocks Error
     Block Was Created    ${False}
 
 Verify that a Block is created as a empty with an subscriber user
-    [Tags]    smoke
+    [Tags]    SUBSCRIBER_ROLE
     ${user}   ${password}   Create user with subscriber role and return credentials
     Create Custom Session And Params   ${user}    ${password}
     Create 1 Empty Blocks Error

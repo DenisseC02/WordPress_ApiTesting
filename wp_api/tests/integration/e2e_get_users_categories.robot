@@ -12,8 +12,6 @@ Test Setup    Setup Test User and Categories
 Test Teardown    Teardown Testcase
 Force Tags    SMOKE    INTEGRATION    USERS    CATEGORIES    USERS_CATEGORIES    GET
 
-*** Keywords ***
-
 *** Test Cases ***
 Verify an administrator user can list a category
     [Tags]    ADMINISTRATOR_ROLE

@@ -12,8 +12,6 @@ Test Setup    Setup Test User and Categories
 Test Teardown    Teardown Testcase
 Force Tags    SMOKE    INTEGRATION    USERS    CATEGORIES    USERS_CATEGORIES    UPDATE
 
-*** Keywords ***
-
 *** Test Cases ***
 Verify an administrator user can update a category with valid params
     [Tags]    ADMINISTRATOR_ROLE

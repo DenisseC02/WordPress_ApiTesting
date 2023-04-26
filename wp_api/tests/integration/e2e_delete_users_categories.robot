@@ -12,8 +12,6 @@ Test Setup    Setup Test User and Categories
 Test Teardown    Teardown Testcase
 Force Tags    SMOKE    INTEGRATION    USERS    CATEGORIES    USERS_CATEGORIES    DELETE
 
-*** Keywords ***
-
 *** Test Cases ***
 Verify an administrator user can delete a category
     [Tags]    ADMINISTRATOR_ROLE

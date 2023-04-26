@@ -12,8 +12,6 @@ Test Setup    Setup Test User and Categories
 Test Teardown    Teardown Testcase
 Force Tags    SMOKE    INTEGRATION    USERS    CATEGORIES    USERS_CATEGORIES    CREATE
 
-*** Keywords ***
-
 *** Test Cases ***
 Verify an administrator user can create a category with valid params
     ${user}   ${password}   Create user with administrator role and return credentials
