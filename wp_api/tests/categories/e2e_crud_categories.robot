@@ -5,7 +5,7 @@ Resource    ../../resources/imports.robot
 Resource    ../../keywords/categories/categories_crud.robot
 Resource    ../../keywords/categories/categories_crud_with_errors.robot
 Test Setup    Setup Test Case
-Force Tags    SMOKE    CATEGORIES    CATEGORIES_
+Force Tags    SMOKE    CATEGORIES    CATEGORIES_CRUD
 
 *** Variables ***
 ${body_name}=    ${body_just_name}
