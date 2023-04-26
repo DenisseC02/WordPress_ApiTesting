@@ -340,7 +340,6 @@
         "author",
         "replies",
         "version-history",
-        "predecessor-version",
         "wp:attachment",
         "wp:term",
         "curies"
