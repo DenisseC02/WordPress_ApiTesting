@@ -3,6 +3,7 @@ Documentation    WordPress MEDIA endpoint Testing.
 Resource    wp_api/keywords/media/media_keywords.robot
 Suite Setup    Create Test Suite Session
 Library    OperatingSystem
+Force Tags    MEDIA
 
 *** Test Cases ***
 Verify If Its Possible To Upload Image, Audio And Video Files To Media Library
@@ -14,7 +15,7 @@ Verify if an image bigger than 1024x1024 pixels can be uploaded.
     Upload image > 1024x1024 pixels
     [Teardown]    Delete Media File     200    ${url}/${id}
 
-Verify if a pdf document bigger than 2MB can not be uploaded.
+Verify that a pdf document bigger than 2MB can not be uploaded.
     [Tags]    smoke
     Upload PDF document > 2MB
     

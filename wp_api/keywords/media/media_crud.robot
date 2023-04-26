@@ -9,7 +9,7 @@ Create New Media File
     ${updated_session}    ${body}     update_session    session=${session}    file_path=${file}    expected_status=${expected_status}
     ${response}     custom_post     session=${updated_session}     url=${url}     params=${params}     body=${body}    expected_status=${expected_status}
     ${updated_session}    Set Variable    ${None}
-    Pass Execution If  ${expected_status} == 500    File Can Not Be Uploaded
+    Skip If  ${expected_status} == 500    Known issue, files bigger than 2MB can not be uploaded
     ${id}    get_key_value    ${response}    id 
     Set Suite Variable     ${id}
     ${response_get}    custom_get    session=${session}    url=${url}/${id}    params={}

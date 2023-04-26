@@ -1,8 +1,9 @@
 *** Settings ***
 Documentation    WordPress MEDIA endpoint CRUD Testing (Image file).
-Resource    media_keywords.robot
+Resource    wp_api/keywords/media/media_keywords.robot
 
 Suite Setup    Create Test Suite Session
+Force Tags    MEDIA    MEDIA_CRUD
 
 *** Test Cases ***
 Verify All The Media Library Content
