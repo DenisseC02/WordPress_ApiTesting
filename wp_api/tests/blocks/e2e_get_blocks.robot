@@ -2,7 +2,6 @@
 Variables      wp_api/resources/data/bodies/blocks.py
 Resource       wp_api/keywords/blocks/crud_blocks.robot
 Resource       wp_api/keywords/blocks/errors_blocks.robot
-
 Test Setup       Setup Testcase
 Test Teardown    Teardown Testcase
 Force Tags    BLOCKS    BLOCKS_GET

@@ -1,8 +1,8 @@
 *** Settings ***
 Documentation    WordPress MEDIA endpoint Testing.
 Resource    wp_api/keywords/media/media_keywords.robot
-Suite Setup    Create Test Suite Session
 Library    OperatingSystem
+Suite Setup    Create Test Suite Session
 Force Tags    MEDIA    MEDIA_CREATE
 
 *** Test Cases ***

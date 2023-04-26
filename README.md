@@ -60,16 +60,16 @@ The following variables are required to set as environment variables
 
 | Variable name | Type | Default value | Description |
 | - | - | - | - |
-| HOST | String | http://localhost | REST API URL. **Required** |
-| END_POINT_PATH | String | wp-json/wp/v2 | End point base. **Required**   |
+| HOST | String | http://192.168.0.2 | REST API URL. **Required** |
+| ENDPOINT_PATH | String | wp-json/wp/v2 | Endpoint path. **Required**   |
 | PORT | Integer | 80 | API port. **Required** |
 | AUTHENTICATION_METHOD | String | basic | By default is  "Basic Authorization" for request. Other types of authorization are: Token, API Key, Oath2. **Required**  |
-| USER | String | (blank) | Username for basic athorization, must be specified username before running test cases. Blank by default to protect sensitive data. **Required**, to test WordPress you need to provide. |
-| PASSWORD | String | (blank) | Password for basic athorization, must be specified username before running test cases. Blank by default to protect sensitive data. **Required** |
-| KEY | String | (blank) | Key for API Key athorization, must be specified username before running test cases. Blank by default to protect sensitive data. (Optional)|
-| VALUE | String | (blank) | Value for API Key athorization, must be specified username before running test cases. Blank by default to protect sensitive data. (Optional) |
-| ADD_TO | String | header | Specifies wheter to add to header or as query param (Optional) |
-| TOKEN | String | (blank) | JWT Token generated for bearer token athorization, must be specified username before running test cases. Blank by default to protect sensitive data. (Optional) |
+| USER | String | (blank) | Username for basic authorization, must be specified username before running test cases. Blank by default to protect sensitive data. **Required**, to test WordPress you need to provide. |
+| PASSWORD | String | (blank) | Password for basic authorization, must be specified username before running test cases. Blank by default to protect sensitive data. **Required** |
+| KEY | String | (blank) | Key for API Key authorization, must be specified username before running test cases. Blank by default to protect sensitive data. (Optional)|
+| VALUE | String | (blank) | Value for API Key authorization, must be specified username before running test cases. Blank by default to protect sensitive data. (Optional) |
+| ADD_TO | String | header | Specifies where is added, to header or as query param (Optional) |
+| TOKEN | String | (blank) | JWT Token generated for bearer token authorization, must be specified username before running test cases. Blank by default to protect sensitive data. (Optional) |
 | CLIENT_ID | String | (blank) | Must be provided in order to use Oath2 authorization. (Optional) |
 | CLIENT_SECRET | String | (blank) | Must be provided in order to use Oath2 authorization. (Optional) |
 
