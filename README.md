@@ -101,8 +101,13 @@ After the setup, in this section will be explained robot framework.
 ##### 3.2. Execution examples
 Using the integrated terminal execute the following commands:
 
-1. robot -d reports -L TRACE .\wp_api\tests
-
-
+1. This command can be used to execute all the test case from the "tests" directory, saves the output in the current directory and `--loglevel TRACE` is used for the details level in the output reports, `TRACE` indicates to generate a very verbouse logs report.
 ```
+robot -d reports -L TRACE ./wp_api/tests
+```
+Use this command to generate a graphic report:
+```
+robotmetrics -I wp_api/reports/
+```
+'-I' is a flag that specifies the input directory for the command, and 'wp_api/reports/' is the path to the directory where the 'robotmetrics' command will look for input files.
 ___

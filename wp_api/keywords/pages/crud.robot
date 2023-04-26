@@ -72,4 +72,4 @@ Delete page
     Log    ${url}
     ${response}    custom_delete    ${session}    ${url}    force=${force}
     ${response_get}    custom_get    ${session}    ${url}    ${params}    404
-    verify_subset ignore    ${response_get}    ${delete_message}
+    verify_subset_ignore    ${response_get}    ${delete_message}

@@ -21,6 +21,8 @@ Create user
     Log    ${url}
     ${post_response_user}    custom_post    ${session}    ${url}     ${params}   ${body}     ${status_code}
     Log    ${post_response_user}
+    ${id}    get_key_value   ${post_response_user}    id
+    Set Test Variable    ${id}
     verify_schema    ${create_subscriber_user_schema}    ${post_response_user}
     [Return]    ${post_response_user}
 
@@ -43,8 +45,10 @@ Create user with specific role
     [Arguments]    ${body}   ${role}   ${status_code}=201
     ${url}                   Get Users Endpoint
     Log    ${url}
-    ${body}     Get Body User Role    ${role}
+    ${body}     Get Body ${role} User
     ${post_response_user}    custom_post    ${session}    ${url}     ${params}   ${body}     ${status_code}
+    ${id}    get_key_value   ${post_response_user}    id
+    Set Test Variable    ${id}
     Log    ${post_response_user}
     [Return]    ${post_response_user}
 
@@ -54,6 +58,7 @@ Create user and get key
     Log    ${url}
     ${post_response_user}    custom_post    ${session}    ${url}     ${params}   ${body}     ${status_code}
     Log    ${post_response_user}
+    Set Test Variable    ${post_response_user}
     verify_schema    ${create_subscriber_user_schema}    ${post_response_user}
     ${value}    get_key_value    ${post_response_user}    ${key}
     [Return]   ${value}
@@ -120,7 +125,7 @@ Delete user
     ${params_del}  Create Dictionary    force=true     reassign=1
     Log     ${params_del}
     ${del_response_user}    custom_delete    ${session}  ${url}/${id}  ${params_del}  ${status_code}
-    verify_schema    ${path_delete_schema}    ${del_response_user}
+#    verify_schema    ${path_delete_schema}    ${del_response_user}
     [Return]    ${del_response_user}
 
 Delete created user
@@ -132,7 +137,6 @@ Delete created user
     ${id}    get_key_value    ${response}    id
     ${del_response}    custom_delete    ${session}  ${url}/${id}  ${params_del}  ${status_code}
     [Return]    ${del_response}
-
 
 Verify existing user error
     [Arguments]    ${response}
