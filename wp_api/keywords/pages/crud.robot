@@ -12,6 +12,12 @@ Create Session and params
     Set Suite Variable    ${session}
     Set Suite Variable    ${params}
 
+Create Custom Session and params
+    [Arguments]    ${user}   ${password}
+    ${session}  ${params}  Create Custom Session   ${user}   ${password}
+    Set Suite Variable    ${session}
+    Set Suite Variable    ${params}
+
 Create new page
     [Arguments]    ${body}
     ${url}    get_url    end_point=${end_point_pages}
@@ -66,4 +72,4 @@ Delete page
     Log    ${url}
     ${response}    custom_delete    ${session}    ${url}    force=${force}
     ${response_get}    custom_get    ${session}    ${url}    ${params}    404
-    verify_subset ignore    ${response_get}    ${delete_message}
+    verify_subset_ignore    ${response_get}    ${delete_message}

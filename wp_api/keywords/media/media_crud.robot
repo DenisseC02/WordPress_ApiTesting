@@ -3,7 +3,7 @@ Resource    media_keywords.robot
 Variables    wp_api/resources/data/bodies/media.py
 
 
-*** Keywords *** 
+*** Keywords ***
 Create New Media File 
     [Arguments]     ${file}    ${expected_status}
     ${updated_session}    ${body}     update_session    session=${session}    file_path=${file}    expected_status=${expected_status}

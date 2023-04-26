@@ -138,3 +138,21 @@ error_slug_exist = {
                ' is already in use by another term.',
     'data': None
 }
+
+error_user_create = {
+    'code': 'rest_cannot_create',
+    'data': {'status': 403},
+    'message': 'Sorry, you are not allowed to create terms in this taxonomy.'
+}
+
+error_user_update = {
+    'code': 'rest_cannot_update',
+    'message': 'Sorry, you are not allowed to edit this term.',
+    'data': {'status': 403}
+}
+
+error_user_delete = {
+    'code': 'rest_cannot_delete',
+    'data': {'status': 403},
+    'message': 'Sorry, you are not allowed to delete this term.'
+}

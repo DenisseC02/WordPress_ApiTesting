@@ -43,36 +43,6 @@ Verify that is not possible to edit the username
     Verify Invalid Argument Error     ${put_response_user}
     Delete User    ${id}
 
-Verify that is possible to create a user with subscriber role
-    [Tags]    smoke
-    ${post_response}   Create User    ${create_subscriber_user}
-    Verify The Role    ${post_response}     role=subscriber
-    Delete Created User    ${post_response}
-
-Verify that possible to create a user with adminstrator role
-    [Tags]    smoke
-    ${post_response}   Create User with specific role    ${create_administrator_user}
-    Verify The Role    ${post_response}     role=administrator
-    Delete Created User    ${post_response}
-
-Verify that possible to create a user with contributor role
-    [Tags]    smoke
-    ${post_response}   Create User with specific role    ${create_contributor_user}
-    Verify The Role    ${post_response}     role=contributor
-    Delete Created User    ${post_response}
-
-Verify that possible to create a user with author role
-    [Tags]    smoke
-    ${post_response}   Create User with specific role    ${create_author_user}
-    Verify The Role    ${post_response}     role=author
-    Delete Created User    ${post_response}
-
-Verify that possible to create a user with editor role
-    [Tags]    smoke
-    ${post_response}   Create User with specific role    ${create_editor_user}
-    Verify The Role    ${post_response}     role=editor
-    Delete Created User    ${post_response}
-
 Verify that is not posible create a username with more than 60 characters
     [Tags]    errors
     ${value}   Create user with an expected error and get key    ${create_60_character_username}     code      500

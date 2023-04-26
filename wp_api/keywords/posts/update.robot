@@ -1,8 +1,5 @@
 *** Settings ***
-Library  libraries.process_data.url_assembler.UrlAssembler
-Library  libraries.requests.custom_request.CustomRequest
-Library    libraries.assertions.verification.Verification
-Variables    wp_api/resources/data/bodies/posts.py
+Resource    ../../resources/imports.robot
 
 *** Variables ***
 ${end_point_posts}    posts
