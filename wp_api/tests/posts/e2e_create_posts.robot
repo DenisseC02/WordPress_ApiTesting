@@ -47,4 +47,3 @@ Create new post withouth parameters
 
 Verify that the post was not create
     verify_subset    ${message_response}    ${response}
-    
