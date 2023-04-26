@@ -1,5 +1,4 @@
 *** Settings ***
-Force Tags    CATEGORIES
 Variables    wp_api/resources/data/bodies/category.py
 Library    wp_api.resources.data.bodies.category_body_generator.CategoryBodyGenerator
 Resource    ../../resources/imports.robot
@@ -7,6 +6,7 @@ Resource    ../../keywords/categories/categories_crud.robot
 Resource    ../../keywords/categories/categories_crud_with_errors.robot
 Test Setup    Setup Test Case
 Test Teardown    Delete Categories
+Force Tags    CATEGORIES    CATEGORIES_UPDATE
 
 *** Variables ***
 ${body_name}=    ${body_just_name}
@@ -15,56 +15,47 @@ ${endpoint}=    categories
 
 *** Test Cases ***
 Verify is possible create a category without description and add it with update
-    [Tags]    UPDATE_CATEGORIES
     ${id}    Create category without description
     Update category description    ${id}
     Verify category was updated    ${body_description}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid meta string
-    [Tags]    UPDATE_CATEGORIES
     Update category with invalid parameter    ${body_edit_wrong_meta_string}
     Verify response returns an error message    ${error_invalid_meta}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid meta number
-    [Tags]    UPDATE_CATEGORIES
     Update category with invalid parameter    ${body_edit_wrong_meta_number}
     Verify response returns an error message    ${error_invalid_meta}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid parent list
-    [Tags]    UPDATE_CATEGORIES
     Update category with invalid parameter    ${body_edit_wrong_parent_list}
     Verify response returns an error message    ${error_invalid_parent}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid parent dict
-    [Tags]    UPDATE_CATEGORIES
     Update category with invalid parameter    ${body_edit_wrong_parent_dict}
     Verify response returns an error message    ${error_invalid_parent}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid description int
-    [Tags]    UPDATE_CATEGORIES
     Update category with invalid parameter    ${body_edit_description_int}
     Verify response returns an error message    ${error_invalid_description}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid description list
-    [Tags]    UPDATE_CATEGORIES
     Update category with invalid parameter    ${body_edit_description_list}
     Verify response returns an error message    ${error_invalid_description}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible edit a category with invalid description dictionary
-    [Tags]    UPDATE_CATEGORIES
     Update category with invalid parameter    ${body_edit_description_dict}
     Verify response returns an error message    ${error_invalid_description}
     Append To List    ${for_delete}    ${id}
 
 Verify is not possible create a category and edit it with inexistent parent
-    [Tags]    UPDATE_CATEGORIES
     Delete Category    ${id}
     Set body with inexistent parent for edit    ${id}
     ${id_for_update}    Obtain existent category
@@ -73,13 +64,11 @@ Verify is not possible create a category and edit it with inexistent parent
     Append To List    ${for_delete}    ${id_for_update}
 
 Verify is not possible edit a category parent with its own id
-    [Tags]    UPDATE_CATEGORIES
     Edit Category with its own id as parent
     Verify parent is set automaticly as zero
     Append To List    ${for_delete}    ${id}
 
 Verify it is not possible edit a category with a slug that already exist
-    [Tags]    UPDATE_CATEGORIES
     Obtain existent slug
     Edit category with existent slug
     Verify response returns an error message    ${error_slug_exist}
