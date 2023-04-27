@@ -41,12 +41,15 @@ pipeline {
             script {
                 load "/var/jenkins_home/envfile.groovy"
             }
-            sh 'echo $PYTHONPATH'
+            sh 'if [ ! -d "wp_api/reports/regression" ]; then mkdir -p wp_api/reports/regression; fi'
             sh 'robot -d wp_api/reports --loglevel TRACE wp_api/tests'
       }
         post {
             always {
-                archiveArtifacts artifacts: 'wp_api/reports/log.html', fingerprint: true
+                archiveArtifacts artifacts: 'wp_api/reports/regression/log.html', fingerprint: true
+                archiveArtifacts artifacts: 'wp_api/reports/regression/report.html', fingerprint: true
+                archiveArtifacts artifacts: 'wp_api/reports/regression/output.xml', fingerprint: true
+                sh 'robotmetrics -I wp_api/reports/regression'
             }
         }
     }
