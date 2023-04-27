@@ -17,7 +17,7 @@ Verify the Post can be created and published
     Retrieve the post    200
 
 Verify that a Post cannot be created withouth parameters
-    [Tags]    errors
+    [Tags]    ERRORS
     Create new post withouth parameters    ${body_tb89_post}    ${bad_status}
     Verify that the post was not create
 

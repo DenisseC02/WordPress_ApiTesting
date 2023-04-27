@@ -49,3 +49,14 @@ Delete existent category with invalid user
 
 Verify category was deleted
     Get Category With error    ${category_id}    404
+
+Verify if category is correct
+    Verify_equal_ignore    ${response}    ${category}
+
+Get Category With Valid User
+    ${response}    Get Category    ${category_id}
+    set suite variable    ${response}
+
+Get Category With Invalid User
+    ${response}    Get Category    ${category_id}    403
+    set suite variable    ${response}

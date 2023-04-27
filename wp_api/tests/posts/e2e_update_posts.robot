@@ -36,16 +36,16 @@ Verify that a new post can be created and updated with a slug
     Update the post    ${body_tb91_slug}
 
 Verify that a post cannot be edited with an invalid tag
-    [Tags]    errors
+    [Tags]    ERRORS
     Create new post     ${body_tb95_post}
     Update the post with wrong values     ${body_tb95_put}       ${bad_status}
 
 Verify that a post cannot be edited with an invalid status
-    [Tags]    errors
+    [Tags]    ERRORS
     Create new post     ${body_tb96_post}
     Update the post with wrong values     ${body_tb96_put}       ${bad_status}
 
 Verify that a post cannot be edited with an invalid comment status
-    [Tags]    errors
+    [Tags]    ERRORS
     Create new post     ${body_tb97_post}
     Update the post with wrong values     ${body_tb97_put}       ${bad_status}
