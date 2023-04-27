@@ -9,7 +9,7 @@ Resource    wp_api/keywords/users/keywords.robot
 Resource    wp_api/keywords/pages/crud.robot
 Test Setup       Setup Test User and Blocks
 Test Teardown    Teardown Testcase
-Force Tags    INTEGRATION   USERS   BLOCKS  CREATE_BLOCKS   USERS_BLOCKS
+Force Tags    INTEGRATION   USERS   BLOCKS  BLOCKS_CREATE   USERS_BLOCKS
 
 *** Test Cases ***
 Verify that a Block is created with valid parameters with an administrator user
