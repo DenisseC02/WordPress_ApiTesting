@@ -1,7 +1,6 @@
 *** Settings ***
 Resource        wp_api/keywords/posts/crud.robot
 Resource        wp_api/keywords/posts/update.robot
-Resource    ../../keywords/posts/crud.robot
 Variables       wp_api/resources/data/bodies/posts.py
 Suite Setup      Create Session and params
 Suite Teardown    Delete Posts Created
