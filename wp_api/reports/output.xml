@@ -1,0 +1,2303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.0.2 (Python 3.8.8 on win32)" generated="20230425 16:35:29.983" rpa="false" schemaversion="3">
+<suite id="s1" name="Tb110 E2E Users Categories" source="D:\jalasoft\API_testing2\proyecto_robot\WordPress_ApiTesting\wp_api\tests\compose\tb110_e2e_users_categories.robot">
+<test id="s1-t1" name="Verify an administrator user can create a category with valid params" line="18">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.789" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CEE4D00&gt;</msg>
+<msg timestamp="20230425 16:35:33.789" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.789" endtime="20230425 16:35:33.789"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.790" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CEE4D00&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.789" endtime="20230425 16:35:33.790"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.790" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CEE4D00&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.790" endtime="20230425 16:35:33.790"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.790" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.790" endtime="20230425 16:35:33.790"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.790" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CEE4D00&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.790" endtime="20230425 16:35:33.790"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.789" endtime="20230425 16:35:33.791"/>
+</kw>
+<kw name="Create user with administrator role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<kw name="Get users endpoint" library="keywords">
+<var>${url}</var>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${user_url}</var>
+<arg>endpoint=${end_point_path}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.791" level="INFO">${user_url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.791" endtime="20230425 16:35:33.791"/>
+</kw>
+<msg timestamp="20230425 16:35:33.791" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.791" endtime="20230425 16:35:33.792"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.792" level="INFO">http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.792" endtime="20230425 16:35:33.792"/>
+</kw>
+<kw name="Get body ${role} user" library="keywords" sourcename="Get body ${role} user">
+<var>${body}</var>
+<kw name="User Body" library="wp_api.resources.data.bodies.body_generator.BodyGenerator">
+<var>${body}</var>
+<arg>${role}</arg>
+<doc>return valid bodies</doc>
+<msg timestamp="20230425 16:35:33.792" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'administrator', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.792" endtime="20230425 16:35:33.792"/>
+</kw>
+<msg timestamp="20230425 16:35:33.792" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'administrator', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.792" endtime="20230425 16:35:33.792"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_user}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>201</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.798" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.792" endtime="20230425 16:35:33.799"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.799" endtime="20230425 16:35:33.799"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${id}</var>
+<arg>${response_user}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.799" endtime="20230425 16:35:33.799"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.799" endtime="20230425 16:35:33.799"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.799" endtime="20230425 16:35:33.799"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.791" endtime="20230425 16:35:33.799"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.800" endtime="20230425 16:35:33.800"/>
+</kw>
+<kw name="Create valid category" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.800" endtime="20230425 16:35:33.800"/>
+</kw>
+<kw name="Verify if category was created succefully" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.800" endtime="20230425 16:35:33.800"/>
+</kw>
+<kw name="Teardown Testcase" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.802" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.801" endtime="20230425 16:35:33.802"/>
+</kw>
+<kw name="Delete Category" library="categories_crud">
+<arg>${category_id}</arg>
+<arg>${admin_session}</arg>
+<msg timestamp="20230425 16:35:33.805" level="FAIL">Variable '${category_id}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.803" endtime="20230425 16:35:33.805"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.800" endtime="20230425 16:35:33.805">Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</kw>
+<tag>CREATE</tag>
+<tag>INTEGRATION</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.788" endtime="20230425 16:35:33.805">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</test>
+<test id="s1-t2" name="Verify an editor can create a category with valid params" line="25">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.807" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CF6F310&gt;</msg>
+<msg timestamp="20230425 16:35:33.807" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.807" endtime="20230425 16:35:33.807"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.807" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CF6F310&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.807" endtime="20230425 16:35:33.807"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.807" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CF6F310&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.807" endtime="20230425 16:35:33.807"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.808" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.807" endtime="20230425 16:35:33.808"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.808" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CF6F310&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.808" endtime="20230425 16:35:33.808"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.806" endtime="20230425 16:35:33.808"/>
+</kw>
+<kw name="Create user with editor role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<kw name="Get users endpoint" library="keywords">
+<var>${url}</var>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${user_url}</var>
+<arg>endpoint=${end_point_path}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.809" level="INFO">${user_url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.809" endtime="20230425 16:35:33.809"/>
+</kw>
+<msg timestamp="20230425 16:35:33.809" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.808" endtime="20230425 16:35:33.809"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.809" level="INFO">http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.809" endtime="20230425 16:35:33.809"/>
+</kw>
+<kw name="Get body ${role} user" library="keywords" sourcename="Get body ${role} user">
+<var>${body}</var>
+<kw name="User Body" library="wp_api.resources.data.bodies.body_generator.BodyGenerator">
+<var>${body}</var>
+<arg>${role}</arg>
+<doc>return valid bodies</doc>
+<msg timestamp="20230425 16:35:33.809" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'editor', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.809" endtime="20230425 16:35:33.810"/>
+</kw>
+<msg timestamp="20230425 16:35:33.810" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'editor', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.809" endtime="20230425 16:35:33.810"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_user}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>201</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.812" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.810" endtime="20230425 16:35:33.812"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.813" endtime="20230425 16:35:33.813"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${id}</var>
+<arg>${response_user}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.813" endtime="20230425 16:35:33.813"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.813" endtime="20230425 16:35:33.813"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.813" endtime="20230425 16:35:33.813"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.808" endtime="20230425 16:35:33.813"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.813" endtime="20230425 16:35:33.814"/>
+</kw>
+<kw name="Create valid category" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.814" endtime="20230425 16:35:33.814"/>
+</kw>
+<kw name="Verify if category was created succefully" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.814" endtime="20230425 16:35:33.814"/>
+</kw>
+<kw name="Teardown Testcase" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.816" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.814" endtime="20230425 16:35:33.816"/>
+</kw>
+<kw name="Delete Category" library="categories_crud">
+<arg>${category_id}</arg>
+<arg>${admin_session}</arg>
+<msg timestamp="20230425 16:35:33.818" level="FAIL">Variable '${category_id}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.816" endtime="20230425 16:35:33.818"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.814" endtime="20230425 16:35:33.818">Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</kw>
+<tag>CREATE</tag>
+<tag>INTEGRATION</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.806" endtime="20230425 16:35:33.819">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</test>
+<test id="s1-t3" name="Verify a subscriber user can not create a category with valid params" line="32">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.820" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CF6FA30&gt;</msg>
+<msg timestamp="20230425 16:35:33.821" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.820" endtime="20230425 16:35:33.821"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.821" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CF6FA30&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.821" endtime="20230425 16:35:33.821"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.821" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CF6FA30&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.821" endtime="20230425 16:35:33.821"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.821" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.821" endtime="20230425 16:35:33.822"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.822" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CF6FA30&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.822" endtime="20230425 16:35:33.822"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.820" endtime="20230425 16:35:33.822"/>
+</kw>
+<kw name="Create user with subscriber role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<kw name="Get users endpoint" library="keywords">
+<var>${url}</var>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${user_url}</var>
+<arg>endpoint=${end_point_path}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.823" level="INFO">${user_url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.822" endtime="20230425 16:35:33.823"/>
+</kw>
+<msg timestamp="20230425 16:35:33.823" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.822" endtime="20230425 16:35:33.823"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.823" level="INFO">http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.823" endtime="20230425 16:35:33.823"/>
+</kw>
+<kw name="Get body ${role} user" library="keywords" sourcename="Get body ${role} user">
+<var>${body}</var>
+<kw name="User Body" library="wp_api.resources.data.bodies.body_generator.BodyGenerator">
+<var>${body}</var>
+<arg>${role}</arg>
+<doc>return valid bodies</doc>
+<msg timestamp="20230425 16:35:33.823" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'subscriber', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.823" endtime="20230425 16:35:33.823"/>
+</kw>
+<msg timestamp="20230425 16:35:33.824" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'subscriber', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.823" endtime="20230425 16:35:33.824"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_user}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>201</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.826" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.824" endtime="20230425 16:35:33.826"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.826" endtime="20230425 16:35:33.827"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${id}</var>
+<arg>${response_user}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.827" endtime="20230425 16:35:33.827"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.827" endtime="20230425 16:35:33.827"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.827" endtime="20230425 16:35:33.827"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.822" endtime="20230425 16:35:33.827"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.827" endtime="20230425 16:35:33.827"/>
+</kw>
+<kw name="Create category with invalid user" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.828" endtime="20230425 16:35:33.828"/>
+</kw>
+<kw name="Verify response returns an error message" library="categories_crud_with_errors">
+<arg>${error_user_create}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.828" endtime="20230425 16:35:33.828"/>
+</kw>
+<kw name="Teardown Testcase without category" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.830" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.828" endtime="20230425 16:35:33.830"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.828" endtime="20230425 16:35:33.830">Variable '${response_user}' not found.</status>
+</kw>
+<tag>CREATE</tag>
+<tag>INTEGRATION</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.820" endtime="20230425 16:35:33.830">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Variable '${response_user}' not found.</status>
+</test>
+<test id="s1-t4" name="Verify a contributor user can not create a category with valid params" line="40">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.832" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CF1DA00&gt;</msg>
+<msg timestamp="20230425 16:35:33.832" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.832" endtime="20230425 16:35:33.832"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.832" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CF1DA00&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.832" endtime="20230425 16:35:33.832"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.833" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CF1DA00&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.833" endtime="20230425 16:35:33.833"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.833" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.833" endtime="20230425 16:35:33.833"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.833" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CF1DA00&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.833" endtime="20230425 16:35:33.833"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.832" endtime="20230425 16:35:33.833"/>
+</kw>
+<kw name="Create user with contributor role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<kw name="Get users endpoint" library="keywords">
+<var>${url}</var>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${user_url}</var>
+<arg>endpoint=${end_point_path}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.834" level="INFO">${user_url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.834" endtime="20230425 16:35:33.834"/>
+</kw>
+<msg timestamp="20230425 16:35:33.834" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.834" endtime="20230425 16:35:33.834"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.835" level="INFO">http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.835" endtime="20230425 16:35:33.835"/>
+</kw>
+<kw name="Get body ${role} user" library="keywords" sourcename="Get body ${role} user">
+<var>${body}</var>
+<kw name="User Body" library="wp_api.resources.data.bodies.body_generator.BodyGenerator">
+<var>${body}</var>
+<arg>${role}</arg>
+<doc>return valid bodies</doc>
+<msg timestamp="20230425 16:35:33.835" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'contributor', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.835" endtime="20230425 16:35:33.835"/>
+</kw>
+<msg timestamp="20230425 16:35:33.835" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'contributor', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.835" endtime="20230425 16:35:33.835"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_user}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>201</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.838" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.836" endtime="20230425 16:35:33.838"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.839" endtime="20230425 16:35:33.839"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${id}</var>
+<arg>${response_user}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.839" endtime="20230425 16:35:33.839"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.839" endtime="20230425 16:35:33.839"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.839" endtime="20230425 16:35:33.839"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.834" endtime="20230425 16:35:33.839"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.839" endtime="20230425 16:35:33.839"/>
+</kw>
+<kw name="Create category with invalid user" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.840" endtime="20230425 16:35:33.840"/>
+</kw>
+<kw name="Verify response returns an error message" library="categories_crud_with_errors">
+<arg>${error_user_create}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.840" endtime="20230425 16:35:33.840"/>
+</kw>
+<kw name="Teardown Testcase without category" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.842" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.840" endtime="20230425 16:35:33.842"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.840" endtime="20230425 16:35:33.842">Variable '${response_user}' not found.</status>
+</kw>
+<tag>CREATE</tag>
+<tag>INTEGRATION</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.831" endtime="20230425 16:35:33.842">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Variable '${response_user}' not found.</status>
+</test>
+<test id="s1-t5" name="Verify an author user can not create a category with valid params" line="48">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.844" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CF987C0&gt;</msg>
+<msg timestamp="20230425 16:35:33.844" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.844" endtime="20230425 16:35:33.844"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.845" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CF987C0&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.845" endtime="20230425 16:35:33.845"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.845" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CF987C0&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.845" endtime="20230425 16:35:33.845"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.845" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.845" endtime="20230425 16:35:33.845"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.846" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CF987C0&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.845" endtime="20230425 16:35:33.846"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.844" endtime="20230425 16:35:33.846"/>
+</kw>
+<kw name="Create user with author role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<kw name="Get users endpoint" library="keywords">
+<var>${url}</var>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${user_url}</var>
+<arg>endpoint=${end_point_path}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.847" level="INFO">${user_url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.847" endtime="20230425 16:35:33.847"/>
+</kw>
+<msg timestamp="20230425 16:35:33.847" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.846" endtime="20230425 16:35:33.847"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.847" level="INFO">http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.847" endtime="20230425 16:35:33.847"/>
+</kw>
+<kw name="Get body ${role} user" library="keywords" sourcename="Get body ${role} user">
+<var>${body}</var>
+<kw name="User Body" library="wp_api.resources.data.bodies.body_generator.BodyGenerator">
+<var>${body}</var>
+<arg>${role}</arg>
+<doc>return valid bodies</doc>
+<msg timestamp="20230425 16:35:33.847" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'author', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.847" endtime="20230425 16:35:33.847"/>
+</kw>
+<msg timestamp="20230425 16:35:33.848" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'author', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.847" endtime="20230425 16:35:33.848"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_user}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>201</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.850" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.848" endtime="20230425 16:35:33.851"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.851" endtime="20230425 16:35:33.851"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${id}</var>
+<arg>${response_user}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.851" endtime="20230425 16:35:33.851"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.851" endtime="20230425 16:35:33.851"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.851" endtime="20230425 16:35:33.851"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.846" endtime="20230425 16:35:33.851"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.852" endtime="20230425 16:35:33.852"/>
+</kw>
+<kw name="Create category with invalid user" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.852" endtime="20230425 16:35:33.852"/>
+</kw>
+<kw name="Verify response returns an error message" library="categories_crud_with_errors">
+<arg>${error_user_create}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.852" endtime="20230425 16:35:33.852"/>
+</kw>
+<kw name="Teardown Testcase without category" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.854" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.853" endtime="20230425 16:35:33.854"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.852" endtime="20230425 16:35:33.855">Variable '${response_user}' not found.</status>
+</kw>
+<tag>CREATE</tag>
+<tag>INTEGRATION</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.843" endtime="20230425 16:35:33.855">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Variable '${response_user}' not found.</status>
+</test>
+<test id="s1-t6" name="Verify an administrator user can update a category with valid params" line="56">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.857" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFA4AC0&gt;</msg>
+<msg timestamp="20230425 16:35:33.857" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.857" endtime="20230425 16:35:33.857"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.857" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFA4AC0&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.857" endtime="20230425 16:35:33.857"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.857" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFA4AC0&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.857" endtime="20230425 16:35:33.857"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.858" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.857" endtime="20230425 16:35:33.858"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.858" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFA4AC0&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.858" endtime="20230425 16:35:33.858"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.856" endtime="20230425 16:35:33.858"/>
+</kw>
+<kw name="Create user with administrator role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<kw name="Get users endpoint" library="keywords">
+<var>${url}</var>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${user_url}</var>
+<arg>endpoint=${end_point_path}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.859" level="INFO">${user_url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.859" endtime="20230425 16:35:33.859"/>
+</kw>
+<msg timestamp="20230425 16:35:33.859" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.858" endtime="20230425 16:35:33.859"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.859" level="INFO">http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.859" endtime="20230425 16:35:33.859"/>
+</kw>
+<kw name="Get body ${role} user" library="keywords" sourcename="Get body ${role} user">
+<var>${body}</var>
+<kw name="User Body" library="wp_api.resources.data.bodies.body_generator.BodyGenerator">
+<var>${body}</var>
+<arg>${role}</arg>
+<doc>return valid bodies</doc>
+<msg timestamp="20230425 16:35:33.860" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'administrator', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.860" endtime="20230425 16:35:33.860"/>
+</kw>
+<msg timestamp="20230425 16:35:33.860" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'administrator', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.859" endtime="20230425 16:35:33.860"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_user}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>201</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.862" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.860" endtime="20230425 16:35:33.863"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.863" endtime="20230425 16:35:33.863"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${id}</var>
+<arg>${response_user}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.863" endtime="20230425 16:35:33.863"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.863" endtime="20230425 16:35:33.863"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.863" endtime="20230425 16:35:33.863"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.858" endtime="20230425 16:35:33.863"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.864" endtime="20230425 16:35:33.864"/>
+</kw>
+<kw name="Obtain existent category" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.864" endtime="20230425 16:35:33.864"/>
+</kw>
+<kw name="Update existent category" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.864" endtime="20230425 16:35:33.864"/>
+</kw>
+<kw name="Teardown Testcase" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.866" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.865" endtime="20230425 16:35:33.866"/>
+</kw>
+<kw name="Delete Category" library="categories_crud">
+<arg>${category_id}</arg>
+<arg>${admin_session}</arg>
+<msg timestamp="20230425 16:35:33.868" level="FAIL">Variable '${category_id}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.867" endtime="20230425 16:35:33.868"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.864" endtime="20230425 16:35:33.869">Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</kw>
+<tag>INTEGRATION</tag>
+<tag>UPDATE</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.856" endtime="20230425 16:35:33.869">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</test>
+<test id="s1-t7" name="Verify an editor user can update a category with valid params" line="63">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.871" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFAC2E0&gt;</msg>
+<msg timestamp="20230425 16:35:33.871" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.871" endtime="20230425 16:35:33.871"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.871" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFAC2E0&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.871" endtime="20230425 16:35:33.871"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.871" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFAC2E0&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.871" endtime="20230425 16:35:33.871"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.872" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.871" endtime="20230425 16:35:33.872"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.872" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFAC2E0&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.872" endtime="20230425 16:35:33.872"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.870" endtime="20230425 16:35:33.872"/>
+</kw>
+<kw name="Create user with editor role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<kw name="Get users endpoint" library="keywords">
+<var>${url}</var>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${user_url}</var>
+<arg>endpoint=${end_point_path}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.873" level="INFO">${user_url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.873" endtime="20230425 16:35:33.873"/>
+</kw>
+<msg timestamp="20230425 16:35:33.873" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.872" endtime="20230425 16:35:33.873"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.873" level="INFO">http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.873" endtime="20230425 16:35:33.873"/>
+</kw>
+<kw name="Get body ${role} user" library="keywords" sourcename="Get body ${role} user">
+<var>${body}</var>
+<kw name="User Body" library="wp_api.resources.data.bodies.body_generator.BodyGenerator">
+<var>${body}</var>
+<arg>${role}</arg>
+<doc>return valid bodies</doc>
+<msg timestamp="20230425 16:35:33.874" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'editor', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.874" endtime="20230425 16:35:33.874"/>
+</kw>
+<msg timestamp="20230425 16:35:33.874" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'editor', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.873" endtime="20230425 16:35:33.874"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_user}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>201</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.876" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.874" endtime="20230425 16:35:33.877"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.877" endtime="20230425 16:35:33.877"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${id}</var>
+<arg>${response_user}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.877" endtime="20230425 16:35:33.877"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.877" endtime="20230425 16:35:33.877"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.877" endtime="20230425 16:35:33.877"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.872" endtime="20230425 16:35:33.877"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.878" endtime="20230425 16:35:33.878"/>
+</kw>
+<kw name="Obtain existent category" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.878" endtime="20230425 16:35:33.878"/>
+</kw>
+<kw name="Update existent category" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.878" endtime="20230425 16:35:33.878"/>
+</kw>
+<kw name="Teardown Testcase" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.880" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.879" endtime="20230425 16:35:33.880"/>
+</kw>
+<kw name="Delete Category" library="categories_crud">
+<arg>${category_id}</arg>
+<arg>${admin_session}</arg>
+<msg timestamp="20230425 16:35:33.882" level="FAIL">Variable '${category_id}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.880" endtime="20230425 16:35:33.882"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.878" endtime="20230425 16:35:33.882">Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</kw>
+<tag>INTEGRATION</tag>
+<tag>UPDATE</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.870" endtime="20230425 16:35:33.882">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</test>
+<test id="s1-t8" name="Verify a subscriber user can not update a category with valid params" line="70">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.884" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFB4D90&gt;</msg>
+<msg timestamp="20230425 16:35:33.884" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.884" endtime="20230425 16:35:33.884"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.885" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFB4D90&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.884" endtime="20230425 16:35:33.885"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.885" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFB4D90&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.885" endtime="20230425 16:35:33.885"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.885" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.885" endtime="20230425 16:35:33.885"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.885" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFB4D90&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.885" endtime="20230425 16:35:33.885"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.884" endtime="20230425 16:35:33.886"/>
+</kw>
+<kw name="Obtain existent category" library="common_keywords">
+<kw name="Create valid category" library="common_keywords">
+<kw name="Create Body Category" library="wp_api.resources.data.bodies.category_body_generator.CategoryBodyGenerator">
+<var>${body}</var>
+<doc>Generate a random category body</doc>
+<msg timestamp="20230425 16:35:33.886" level="INFO">${body} = {'name': 'category96332JXFJD', 'description': 'this is a description 94413123598549354358551057312343875202208294151074WTOOFASMCDDNDDTBLTGMPDGEZEJCQDCTAPOMRLPFKRYQTXLQOG', 'slug': 'category96332jxfjd'...</msg>
+<status status="PASS" starttime="20230425 16:35:33.886" endtime="20230425 16:35:33.886"/>
+</kw>
+<kw name="Create Category" library="categories_crud">
+<var>${category_id}</var>
+<var>${category}</var>
+<arg>${body}</arg>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${url}</var>
+<arg>endpoint=${endpoint}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.887" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.887" endtime="20230425 16:35:33.887"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Endpoint used: ${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.887" level="INFO">Endpoint used: http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.887" endtime="20230425 16:35:33.887"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Method used: POST</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.888" level="INFO">Method used: POST</msg>
+<status status="PASS" starttime="20230425 16:35:33.888" endtime="20230425 16:35:33.888"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_create}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>${status}</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.890" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.888" endtime="20230425 16:35:33.890"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response Post: ${response_create}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.891" endtime="20230425 16:35:33.891"/>
+</kw>
+<kw name="Verify Schema" library="libraries.assertions.verification.Verification">
+<arg>${schemas_path}/create_category.json</arg>
+<arg>${response_create}</arg>
+<doc>Asserts the response corresponds to the schema</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.891" endtime="20230425 16:35:33.891"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${ID}</var>
+<arg>${response_create}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.891" endtime="20230425 16:35:33.891"/>
+</kw>
+<kw name="Get Category" library="categories_crud">
+<var>${response_get}</var>
+<arg>${ID}</arg>
+<arg>200</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.891" endtime="20230425 16:35:33.891"/>
+</kw>
+<kw name="Verify Subset Ignore" library="libraries.assertions.verification.Verification">
+<arg>${response_get}</arg>
+<arg>${body}</arg>
+<doc>Asserts the expected is subset of actual ignoring params</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.891" endtime="20230425 16:35:33.891"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.886" endtime="20230425 16:35:33.891"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category_id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.891" endtime="20230425 16:35:33.891"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.891" endtime="20230425 16:35:33.891"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.886" endtime="20230425 16:35:33.891"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.886" endtime="20230425 16:35:33.892"/>
+</kw>
+<kw name="Create user with subscriber role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<status status="NOT RUN" starttime="20230425 16:35:33.892" endtime="20230425 16:35:33.892"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.892" endtime="20230425 16:35:33.892"/>
+</kw>
+<kw name="Update existent category with invalid user" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.892" endtime="20230425 16:35:33.892"/>
+</kw>
+<kw name="Verify response returns an error message" library="categories_crud_with_errors">
+<arg>${error_user_update}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.893" endtime="20230425 16:35:33.893"/>
+</kw>
+<kw name="Teardown Testcase" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.895" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.893" endtime="20230425 16:35:33.895"/>
+</kw>
+<kw name="Delete Category" library="categories_crud">
+<arg>${category_id}</arg>
+<arg>${admin_session}</arg>
+<msg timestamp="20230425 16:35:33.897" level="FAIL">Variable '${category_id}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.895" endtime="20230425 16:35:33.897"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.893" endtime="20230425 16:35:33.897">Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</kw>
+<tag>INTEGRATION</tag>
+<tag>UPDATE</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.883" endtime="20230425 16:35:33.897">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</test>
+<test id="s1-t9" name="Verify a contributor user can not update a category with valid params" line="78">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.899" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFC5670&gt;</msg>
+<msg timestamp="20230425 16:35:33.899" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.899" endtime="20230425 16:35:33.899"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.900" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFC5670&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.899" endtime="20230425 16:35:33.900"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.900" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFC5670&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.900" endtime="20230425 16:35:33.900"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.900" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.900" endtime="20230425 16:35:33.900"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.900" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFC5670&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.900" endtime="20230425 16:35:33.900"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.899" endtime="20230425 16:35:33.901"/>
+</kw>
+<kw name="Obtain existent category" library="common_keywords">
+<kw name="Create valid category" library="common_keywords">
+<kw name="Create Body Category" library="wp_api.resources.data.bodies.category_body_generator.CategoryBodyGenerator">
+<var>${body}</var>
+<doc>Generate a random category body</doc>
+<msg timestamp="20230425 16:35:33.902" level="INFO">${body} = {'name': 'category12478DBYVM', 'description': 'this is a description 36711391763028601545100555835054124274929806773711CFJRUVEKLXZAENUFDXEKYHRNRCEIBSUPKQXYAFOILUMHYSOEXO', 'slug': 'category12478dbyvm'...</msg>
+<status status="PASS" starttime="20230425 16:35:33.901" endtime="20230425 16:35:33.902"/>
+</kw>
+<kw name="Create Category" library="categories_crud">
+<var>${category_id}</var>
+<var>${category}</var>
+<arg>${body}</arg>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${url}</var>
+<arg>endpoint=${endpoint}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.903" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.903" endtime="20230425 16:35:33.903"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Endpoint used: ${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.903" level="INFO">Endpoint used: http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.903" endtime="20230425 16:35:33.903"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Method used: POST</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.903" level="INFO">Method used: POST</msg>
+<status status="PASS" starttime="20230425 16:35:33.903" endtime="20230425 16:35:33.903"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_create}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>${status}</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.906" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.903" endtime="20230425 16:35:33.906"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response Post: ${response_create}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.906" endtime="20230425 16:35:33.906"/>
+</kw>
+<kw name="Verify Schema" library="libraries.assertions.verification.Verification">
+<arg>${schemas_path}/create_category.json</arg>
+<arg>${response_create}</arg>
+<doc>Asserts the response corresponds to the schema</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.906" endtime="20230425 16:35:33.906"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${ID}</var>
+<arg>${response_create}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.907" endtime="20230425 16:35:33.907"/>
+</kw>
+<kw name="Get Category" library="categories_crud">
+<var>${response_get}</var>
+<arg>${ID}</arg>
+<arg>200</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.907" endtime="20230425 16:35:33.907"/>
+</kw>
+<kw name="Verify Subset Ignore" library="libraries.assertions.verification.Verification">
+<arg>${response_get}</arg>
+<arg>${body}</arg>
+<doc>Asserts the expected is subset of actual ignoring params</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.907" endtime="20230425 16:35:33.907"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.902" endtime="20230425 16:35:33.907"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category_id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.907" endtime="20230425 16:35:33.907"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.907" endtime="20230425 16:35:33.907"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.901" endtime="20230425 16:35:33.907"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.901" endtime="20230425 16:35:33.907"/>
+</kw>
+<kw name="Create user with contributor role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<status status="NOT RUN" starttime="20230425 16:35:33.908" endtime="20230425 16:35:33.908"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.908" endtime="20230425 16:35:33.908"/>
+</kw>
+<kw name="Update existent category with invalid user" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.908" endtime="20230425 16:35:33.908"/>
+</kw>
+<kw name="Verify response returns an error message" library="categories_crud_with_errors">
+<arg>${error_user_update}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.908" endtime="20230425 16:35:33.908"/>
+</kw>
+<kw name="Teardown Testcase" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.910" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.909" endtime="20230425 16:35:33.911"/>
+</kw>
+<kw name="Delete Category" library="categories_crud">
+<arg>${category_id}</arg>
+<arg>${admin_session}</arg>
+<msg timestamp="20230425 16:35:33.912" level="FAIL">Variable '${category_id}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.911" endtime="20230425 16:35:33.912"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.909" endtime="20230425 16:35:33.912">Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</kw>
+<tag>INTEGRATION</tag>
+<tag>UPDATE</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.898" endtime="20230425 16:35:33.913">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</test>
+<test id="s1-t10" name="Verify an author user can not update a category with valid params" line="86">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.915" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFD3C70&gt;</msg>
+<msg timestamp="20230425 16:35:33.915" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.915" endtime="20230425 16:35:33.915"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.915" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFD3C70&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.915" endtime="20230425 16:35:33.915"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.915" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFD3C70&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.915" endtime="20230425 16:35:33.915"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.916" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.915" endtime="20230425 16:35:33.916"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.916" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFD3C70&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.916" endtime="20230425 16:35:33.916"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.914" endtime="20230425 16:35:33.916"/>
+</kw>
+<kw name="Obtain existent category" library="common_keywords">
+<kw name="Create valid category" library="common_keywords">
+<kw name="Create Body Category" library="wp_api.resources.data.bodies.category_body_generator.CategoryBodyGenerator">
+<var>${body}</var>
+<doc>Generate a random category body</doc>
+<msg timestamp="20230425 16:35:33.917" level="INFO">${body} = {'name': 'category23127QDLFD', 'description': 'this is a description 67223777846782004436791864364613885432214407848074OILHCXQIOUEQSBPADOUDPZVNKEICTUCZQFEPOKOPYBCNYMWPIV', 'slug': 'category23127qdlfd'...</msg>
+<status status="PASS" starttime="20230425 16:35:33.917" endtime="20230425 16:35:33.917"/>
+</kw>
+<kw name="Create Category" library="categories_crud">
+<var>${category_id}</var>
+<var>${category}</var>
+<arg>${body}</arg>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${url}</var>
+<arg>endpoint=${endpoint}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.918" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.917" endtime="20230425 16:35:33.918"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Endpoint used: ${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.918" level="INFO">Endpoint used: http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.918" endtime="20230425 16:35:33.918"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Method used: POST</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.918" level="INFO">Method used: POST</msg>
+<status status="PASS" starttime="20230425 16:35:33.918" endtime="20230425 16:35:33.918"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_create}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>${status}</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.921" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.918" endtime="20230425 16:35:33.921"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response Post: ${response_create}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.921" endtime="20230425 16:35:33.921"/>
+</kw>
+<kw name="Verify Schema" library="libraries.assertions.verification.Verification">
+<arg>${schemas_path}/create_category.json</arg>
+<arg>${response_create}</arg>
+<doc>Asserts the response corresponds to the schema</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.921" endtime="20230425 16:35:33.921"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${ID}</var>
+<arg>${response_create}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.921" endtime="20230425 16:35:33.921"/>
+</kw>
+<kw name="Get Category" library="categories_crud">
+<var>${response_get}</var>
+<arg>${ID}</arg>
+<arg>200</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.921" endtime="20230425 16:35:33.921"/>
+</kw>
+<kw name="Verify Subset Ignore" library="libraries.assertions.verification.Verification">
+<arg>${response_get}</arg>
+<arg>${body}</arg>
+<doc>Asserts the expected is subset of actual ignoring params</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.922" endtime="20230425 16:35:33.922"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.917" endtime="20230425 16:35:33.922"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category_id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.922" endtime="20230425 16:35:33.922"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.922" endtime="20230425 16:35:33.922"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.916" endtime="20230425 16:35:33.922"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.916" endtime="20230425 16:35:33.922"/>
+</kw>
+<kw name="Create user with author role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<status status="NOT RUN" starttime="20230425 16:35:33.922" endtime="20230425 16:35:33.922"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.923" endtime="20230425 16:35:33.923"/>
+</kw>
+<kw name="Update existent category with invalid user" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.923" endtime="20230425 16:35:33.923"/>
+</kw>
+<kw name="Verify response returns an error message" library="categories_crud_with_errors">
+<arg>${error_user_update}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.923" endtime="20230425 16:35:33.923"/>
+</kw>
+<kw name="Teardown Testcase" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.925" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.924" endtime="20230425 16:35:33.925"/>
+</kw>
+<kw name="Delete Category" library="categories_crud">
+<arg>${category_id}</arg>
+<arg>${admin_session}</arg>
+<msg timestamp="20230425 16:35:33.927" level="FAIL">Variable '${category_id}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.925" endtime="20230425 16:35:33.927"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.923" endtime="20230425 16:35:33.927">Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</kw>
+<tag>INTEGRATION</tag>
+<tag>UPDATE</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.914" endtime="20230425 16:35:33.927">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Several failures occurred:
+
+1) Variable '${response_user}' not found.
+
+2) Variable '${category_id}' not found.</status>
+</test>
+<test id="s1-t11" name="Verify an administrator user can delete a category" line="94">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.929" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFDEFD0&gt;</msg>
+<msg timestamp="20230425 16:35:33.932" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.929" endtime="20230425 16:35:33.932"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.932" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFDEFD0&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.932" endtime="20230425 16:35:33.932"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.933" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFDEFD0&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.932" endtime="20230425 16:35:33.933"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.933" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.933" endtime="20230425 16:35:33.933"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.933" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFDEFD0&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.933" endtime="20230425 16:35:33.933"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.929" endtime="20230425 16:35:33.933"/>
+</kw>
+<kw name="Create user with administrator role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<kw name="Get users endpoint" library="keywords">
+<var>${url}</var>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${user_url}</var>
+<arg>endpoint=${end_point_path}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.934" level="INFO">${user_url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.934" endtime="20230425 16:35:33.934"/>
+</kw>
+<msg timestamp="20230425 16:35:33.934" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.934" endtime="20230425 16:35:33.934"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.935" level="INFO">http://localhost/wordpress:80/wp-json/wp/v2/users</msg>
+<status status="PASS" starttime="20230425 16:35:33.935" endtime="20230425 16:35:33.935"/>
+</kw>
+<kw name="Get body ${role} user" library="keywords" sourcename="Get body ${role} user">
+<var>${body}</var>
+<kw name="User Body" library="wp_api.resources.data.bodies.body_generator.BodyGenerator">
+<var>${body}</var>
+<arg>${role}</arg>
+<doc>return valid bodies</doc>
+<msg timestamp="20230425 16:35:33.935" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'administrator', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.935" endtime="20230425 16:35:33.935"/>
+</kw>
+<msg timestamp="20230425 16:35:33.935" level="INFO">${body} = {'password': '4o7r9hil', 'username': 'soyuvo_timelupefi', 'email': 'soyuvo_timelupefi@gmail.com', 'roles': 'administrator', 'first_name': 'soyuvo', 'last_name': 'timelupefi'}</msg>
+<status status="PASS" starttime="20230425 16:35:33.935" endtime="20230425 16:35:33.935"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_user}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>201</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.938" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.935" endtime="20230425 16:35:33.938"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.938" endtime="20230425 16:35:33.938"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${id}</var>
+<arg>${response_user}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.938" endtime="20230425 16:35:33.938"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.938" endtime="20230425 16:35:33.938"/>
+</kw>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${response_user}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.939" endtime="20230425 16:35:33.939"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.934" endtime="20230425 16:35:33.939"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.939" endtime="20230425 16:35:33.939"/>
+</kw>
+<kw name="Obtain existent category" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.939" endtime="20230425 16:35:33.939"/>
+</kw>
+<kw name="Delete existent category" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.939" endtime="20230425 16:35:33.939"/>
+</kw>
+<kw name="Verify category was deleted" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.940" endtime="20230425 16:35:33.940"/>
+</kw>
+<kw name="Teardown Testcase without category" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.942" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.940" endtime="20230425 16:35:33.942"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.940" endtime="20230425 16:35:33.942">Variable '${response_user}' not found.</status>
+</kw>
+<tag>DELETE</tag>
+<tag>INTEGRATION</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.928" endtime="20230425 16:35:33.942">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Variable '${response_user}' not found.</status>
+</test>
+<test id="s1-t12" name="Verify an editor user can delete a category" line="103">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.944" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFC5910&gt;</msg>
+<msg timestamp="20230425 16:35:33.944" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.944" endtime="20230425 16:35:33.944"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.944" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFC5910&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.944" endtime="20230425 16:35:33.944"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.945" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFC5910&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.944" endtime="20230425 16:35:33.945"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.945" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.945" endtime="20230425 16:35:33.945"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.945" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFC5910&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.945" endtime="20230425 16:35:33.945"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.944" endtime="20230425 16:35:33.945"/>
+</kw>
+<kw name="Obtain existent category" library="common_keywords">
+<kw name="Create valid category" library="common_keywords">
+<kw name="Create Body Category" library="wp_api.resources.data.bodies.category_body_generator.CategoryBodyGenerator">
+<var>${body}</var>
+<doc>Generate a random category body</doc>
+<msg timestamp="20230425 16:35:33.946" level="INFO">${body} = {'name': 'category15092YJGBT', 'description': 'this is a description 38346982171637076259948714645972032552271873698398FPOKONJJYFRJBRKFZISDKXEUORUDRAEQFYYOBMOBSEDCPOVDMT', 'slug': 'category15092yjgbt'...</msg>
+<status status="PASS" starttime="20230425 16:35:33.946" endtime="20230425 16:35:33.946"/>
+</kw>
+<kw name="Create Category" library="categories_crud">
+<var>${category_id}</var>
+<var>${category}</var>
+<arg>${body}</arg>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${url}</var>
+<arg>endpoint=${endpoint}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.947" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.947" endtime="20230425 16:35:33.947"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Endpoint used: ${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.947" level="INFO">Endpoint used: http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.947" endtime="20230425 16:35:33.947"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Method used: POST</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.947" level="INFO">Method used: POST</msg>
+<status status="PASS" starttime="20230425 16:35:33.947" endtime="20230425 16:35:33.947"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_create}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>${status}</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.950" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.947" endtime="20230425 16:35:33.950"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response Post: ${response_create}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.950" endtime="20230425 16:35:33.950"/>
+</kw>
+<kw name="Verify Schema" library="libraries.assertions.verification.Verification">
+<arg>${schemas_path}/create_category.json</arg>
+<arg>${response_create}</arg>
+<doc>Asserts the response corresponds to the schema</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.950" endtime="20230425 16:35:33.950"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${ID}</var>
+<arg>${response_create}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.950" endtime="20230425 16:35:33.950"/>
+</kw>
+<kw name="Get Category" library="categories_crud">
+<var>${response_get}</var>
+<arg>${ID}</arg>
+<arg>200</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.950" endtime="20230425 16:35:33.950"/>
+</kw>
+<kw name="Verify Subset Ignore" library="libraries.assertions.verification.Verification">
+<arg>${response_get}</arg>
+<arg>${body}</arg>
+<doc>Asserts the expected is subset of actual ignoring params</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.950" endtime="20230425 16:35:33.950"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.946" endtime="20230425 16:35:33.951"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category_id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.951" endtime="20230425 16:35:33.951"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.951" endtime="20230425 16:35:33.951"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.946" endtime="20230425 16:35:33.951"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.946" endtime="20230425 16:35:33.951"/>
+</kw>
+<kw name="Create user with editor role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<status status="NOT RUN" starttime="20230425 16:35:33.951" endtime="20230425 16:35:33.951"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.951" endtime="20230425 16:35:33.952"/>
+</kw>
+<kw name="Delete existent category" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.952" endtime="20230425 16:35:33.952"/>
+</kw>
+<kw name="Verify category was deleted" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.952" endtime="20230425 16:35:33.952"/>
+</kw>
+<kw name="Teardown Testcase without category" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.954" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.953" endtime="20230425 16:35:33.954"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.952" endtime="20230425 16:35:33.954">Variable '${response_user}' not found.</status>
+</kw>
+<tag>DELETE</tag>
+<tag>INTEGRATION</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.943" endtime="20230425 16:35:33.955">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Variable '${response_user}' not found.</status>
+</test>
+<test id="s1-t13" name="Verify a subscriber user can not delete a category" line="112">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.956" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFD9F40&gt;</msg>
+<msg timestamp="20230425 16:35:33.956" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.956" endtime="20230425 16:35:33.956"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.957" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFD9F40&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.956" endtime="20230425 16:35:33.957"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.957" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFD9F40&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.957" endtime="20230425 16:35:33.957"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.957" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.957" endtime="20230425 16:35:33.957"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.957" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFD9F40&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.957" endtime="20230425 16:35:33.957"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.956" endtime="20230425 16:35:33.958"/>
+</kw>
+<kw name="Obtain existent category" library="common_keywords">
+<kw name="Create valid category" library="common_keywords">
+<kw name="Create Body Category" library="wp_api.resources.data.bodies.category_body_generator.CategoryBodyGenerator">
+<var>${body}</var>
+<doc>Generate a random category body</doc>
+<msg timestamp="20230425 16:35:33.958" level="INFO">${body} = {'name': 'category73551VAENF', 'description': 'this is a description 08053504251666866861917348145500013290422554672099YKBXAGTDAUHHBGXPJUIHEBWQSQKMRBJLEESOAVQHDPUKHSIEAW', 'slug': 'category73551vaenf'...</msg>
+<status status="PASS" starttime="20230425 16:35:33.958" endtime="20230425 16:35:33.958"/>
+</kw>
+<kw name="Create Category" library="categories_crud">
+<var>${category_id}</var>
+<var>${category}</var>
+<arg>${body}</arg>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${url}</var>
+<arg>endpoint=${endpoint}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.959" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.959" endtime="20230425 16:35:33.959"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Endpoint used: ${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.959" level="INFO">Endpoint used: http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.959" endtime="20230425 16:35:33.959"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Method used: POST</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.959" level="INFO">Method used: POST</msg>
+<status status="PASS" starttime="20230425 16:35:33.959" endtime="20230425 16:35:33.959"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_create}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>${status}</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.962" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.959" endtime="20230425 16:35:33.962"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response Post: ${response_create}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.962" endtime="20230425 16:35:33.962"/>
+</kw>
+<kw name="Verify Schema" library="libraries.assertions.verification.Verification">
+<arg>${schemas_path}/create_category.json</arg>
+<arg>${response_create}</arg>
+<doc>Asserts the response corresponds to the schema</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.963" endtime="20230425 16:35:33.963"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${ID}</var>
+<arg>${response_create}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.963" endtime="20230425 16:35:33.963"/>
+</kw>
+<kw name="Get Category" library="categories_crud">
+<var>${response_get}</var>
+<arg>${ID}</arg>
+<arg>200</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.963" endtime="20230425 16:35:33.963"/>
+</kw>
+<kw name="Verify Subset Ignore" library="libraries.assertions.verification.Verification">
+<arg>${response_get}</arg>
+<arg>${body}</arg>
+<doc>Asserts the expected is subset of actual ignoring params</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.963" endtime="20230425 16:35:33.963"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.958" endtime="20230425 16:35:33.963"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category_id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.963" endtime="20230425 16:35:33.963"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.963" endtime="20230425 16:35:33.963"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.958" endtime="20230425 16:35:33.963"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.958" endtime="20230425 16:35:33.963"/>
+</kw>
+<kw name="Create user with subscriber role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<status status="NOT RUN" starttime="20230425 16:35:33.964" endtime="20230425 16:35:33.964"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.964" endtime="20230425 16:35:33.964"/>
+</kw>
+<kw name="Delete existent category with invalid user" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.964" endtime="20230425 16:35:33.964"/>
+</kw>
+<kw name="Verify response returns an error message" library="categories_crud_with_errors">
+<arg>${error_user_delete}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.964" endtime="20230425 16:35:33.964"/>
+</kw>
+<kw name="Teardown Testcase without category" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.967" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.965" endtime="20230425 16:35:33.967"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.965" endtime="20230425 16:35:33.967">Variable '${response_user}' not found.</status>
+</kw>
+<tag>DELETE</tag>
+<tag>INTEGRATION</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.955" endtime="20230425 16:35:33.967">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Variable '${response_user}' not found.</status>
+</test>
+<test id="s1-t14" name="Verify a contributor user can not delete a category" line="121">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.969" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFB4400&gt;</msg>
+<msg timestamp="20230425 16:35:33.969" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.969" endtime="20230425 16:35:33.969"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.969" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CFB4400&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.969" endtime="20230425 16:35:33.969"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.970" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFB4400&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.969" endtime="20230425 16:35:33.970"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.970" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.970" endtime="20230425 16:35:33.970"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.970" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CFB4400&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.970" endtime="20230425 16:35:33.970"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.968" endtime="20230425 16:35:33.970"/>
+</kw>
+<kw name="Obtain existent category" library="common_keywords">
+<kw name="Create valid category" library="common_keywords">
+<kw name="Create Body Category" library="wp_api.resources.data.bodies.category_body_generator.CategoryBodyGenerator">
+<var>${body}</var>
+<doc>Generate a random category body</doc>
+<msg timestamp="20230425 16:35:33.971" level="INFO">${body} = {'name': 'category94056WEIUK', 'description': 'this is a description 86447842294042075147304184164757512106547170174241AZOXBITIQONEJFVRYZIPDKGYKAHLYGFGLGDJMJYXIQEQCGXHKE', 'slug': 'category94056weiuk'...</msg>
+<status status="PASS" starttime="20230425 16:35:33.971" endtime="20230425 16:35:33.971"/>
+</kw>
+<kw name="Create Category" library="categories_crud">
+<var>${category_id}</var>
+<var>${category}</var>
+<arg>${body}</arg>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${url}</var>
+<arg>endpoint=${endpoint}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.971" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.971" endtime="20230425 16:35:33.971"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Endpoint used: ${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.972" level="INFO">Endpoint used: http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.972" endtime="20230425 16:35:33.972"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Method used: POST</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.972" level="INFO">Method used: POST</msg>
+<status status="PASS" starttime="20230425 16:35:33.972" endtime="20230425 16:35:33.972"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_create}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>${status}</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.974" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.972" endtime="20230425 16:35:33.975"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response Post: ${response_create}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.975" endtime="20230425 16:35:33.975"/>
+</kw>
+<kw name="Verify Schema" library="libraries.assertions.verification.Verification">
+<arg>${schemas_path}/create_category.json</arg>
+<arg>${response_create}</arg>
+<doc>Asserts the response corresponds to the schema</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.975" endtime="20230425 16:35:33.975"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${ID}</var>
+<arg>${response_create}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.975" endtime="20230425 16:35:33.975"/>
+</kw>
+<kw name="Get Category" library="categories_crud">
+<var>${response_get}</var>
+<arg>${ID}</arg>
+<arg>200</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.975" endtime="20230425 16:35:33.975"/>
+</kw>
+<kw name="Verify Subset Ignore" library="libraries.assertions.verification.Verification">
+<arg>${response_get}</arg>
+<arg>${body}</arg>
+<doc>Asserts the expected is subset of actual ignoring params</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.975" endtime="20230425 16:35:33.975"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.971" endtime="20230425 16:35:33.976"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category_id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.976" endtime="20230425 16:35:33.976"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.976" endtime="20230425 16:35:33.976"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.971" endtime="20230425 16:35:33.976"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.970" endtime="20230425 16:35:33.976"/>
+</kw>
+<kw name="Create user with contributor role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<status status="NOT RUN" starttime="20230425 16:35:33.976" endtime="20230425 16:35:33.976"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.977" endtime="20230425 16:35:33.977"/>
+</kw>
+<kw name="Delete existent category with invalid user" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.977" endtime="20230425 16:35:33.977"/>
+</kw>
+<kw name="Verify response returns an error message" library="categories_crud_with_errors">
+<arg>${error_user_delete}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.977" endtime="20230425 16:35:33.977"/>
+</kw>
+<kw name="Teardown Testcase without category" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.979" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.978" endtime="20230425 16:35:33.979"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.977" endtime="20230425 16:35:33.979">Variable '${response_user}' not found.</status>
+</kw>
+<tag>DELETE</tag>
+<tag>INTEGRATION</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.968" endtime="20230425 16:35:33.980">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Variable '${response_user}' not found.</status>
+</test>
+<test id="s1-t15" name="Verify an author user can not delete a category" line="130">
+<kw name="Setup test" library="keywords" type="SETUP">
+<kw name="Create Session" library="libraries.authentication.custom_session.CustomSession">
+<var>${session}</var>
+<var>${params}</var>
+<doc>Returns created session on demand</doc>
+<msg timestamp="20230425 16:35:33.981" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CF98F10&gt;</msg>
+<msg timestamp="20230425 16:35:33.981" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.981" endtime="20230425 16:35:33.981"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.982" level="INFO">${session} = &lt;requests.sessions.Session object at 0x000002085CF98F10&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.982" endtime="20230425 16:35:33.982"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${admin_session}</var>
+<arg>${session}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20230425 16:35:33.982" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CF98F10&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.982" endtime="20230425 16:35:33.982"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${params}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.982" level="INFO">${params} = {}</msg>
+<status status="PASS" starttime="20230425 16:35:33.982" endtime="20230425 16:35:33.982"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${admin_session}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20230425 16:35:33.983" level="INFO">${admin_session} = &lt;requests.sessions.Session object at 0x000002085CF98F10&gt;</msg>
+<status status="PASS" starttime="20230425 16:35:33.982" endtime="20230425 16:35:33.983"/>
+</kw>
+<status status="PASS" starttime="20230425 16:35:33.981" endtime="20230425 16:35:33.983"/>
+</kw>
+<kw name="Obtain existent category" library="common_keywords">
+<kw name="Create valid category" library="common_keywords">
+<kw name="Create Body Category" library="wp_api.resources.data.bodies.category_body_generator.CategoryBodyGenerator">
+<var>${body}</var>
+<doc>Generate a random category body</doc>
+<msg timestamp="20230425 16:35:33.983" level="INFO">${body} = {'name': 'category57764QZYKV', 'description': 'this is a description 09299118945928044720412188101677875717309800858504FCBTMFGFBZWVTWSCEZHWMGDCPEBRMLBPGSZNGPYIPZTWWJURVP', 'slug': 'category57764qzykv'...</msg>
+<status status="PASS" starttime="20230425 16:35:33.983" endtime="20230425 16:35:33.983"/>
+</kw>
+<kw name="Create Category" library="categories_crud">
+<var>${category_id}</var>
+<var>${category}</var>
+<arg>${body}</arg>
+<kw name="Get Url" library="libraries.process_data.url_assembler.UrlAssembler">
+<var>${url}</var>
+<arg>endpoint=${endpoint}</arg>
+<doc>Returns the URL</doc>
+<msg timestamp="20230425 16:35:33.984" level="INFO">${url} = http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.984" endtime="20230425 16:35:33.984"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Endpoint used: ${url}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.984" level="INFO">Endpoint used: http://localhost/wordpress:80/wp-json/wp/v2/categories</msg>
+<status status="PASS" starttime="20230425 16:35:33.984" endtime="20230425 16:35:33.984"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Method used: POST</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20230425 16:35:33.984" level="INFO">Method used: POST</msg>
+<status status="PASS" starttime="20230425 16:35:33.984" endtime="20230425 16:35:33.984"/>
+</kw>
+<kw name="Custom Post" library="libraries.requests.custom_request.CustomRequest">
+<var>${response_create}</var>
+<arg>${session}</arg>
+<arg>${url}</arg>
+<arg>${params}</arg>
+<arg>${body}</arg>
+<arg>${status}</arg>
+<doc>Custom post request</doc>
+<msg timestamp="20230425 16:35:33.987" level="FAIL">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.984" endtime="20230425 16:35:33.987"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>Response Post: ${response_create}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.987" endtime="20230425 16:35:33.987"/>
+</kw>
+<kw name="Verify Schema" library="libraries.assertions.verification.Verification">
+<arg>${schemas_path}/create_category.json</arg>
+<arg>${response_create}</arg>
+<doc>Asserts the response corresponds to the schema</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.987" endtime="20230425 16:35:33.988"/>
+</kw>
+<kw name="Get Key Value" library="libraries.process_data.process_data.ProcessData">
+<var>${ID}</var>
+<arg>${response_create}</arg>
+<arg>id</arg>
+<doc>Returns the value of the specified key</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.988" endtime="20230425 16:35:33.988"/>
+</kw>
+<kw name="Get Category" library="categories_crud">
+<var>${response_get}</var>
+<arg>${ID}</arg>
+<arg>200</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.988" endtime="20230425 16:35:33.988"/>
+</kw>
+<kw name="Verify Subset Ignore" library="libraries.assertions.verification.Verification">
+<arg>${response_get}</arg>
+<arg>${body}</arg>
+<doc>Asserts the expected is subset of actual ignoring params</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.988" endtime="20230425 16:35:33.988"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.983" endtime="20230425 16:35:33.988"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category_id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.988" endtime="20230425 16:35:33.988"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${category}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20230425 16:35:33.988" endtime="20230425 16:35:33.988"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.983" endtime="20230425 16:35:33.988"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.983" endtime="20230425 16:35:33.988"/>
+</kw>
+<kw name="Create user with author role and return credentials" library="keywords" sourcename="Create user with ${role} role and return credentials">
+<var>${user}</var>
+<var>${password}</var>
+<status status="NOT RUN" starttime="20230425 16:35:33.989" endtime="20230425 16:35:33.989"/>
+</kw>
+<kw name="Create Custom Session and params" library="crud">
+<arg>${user}</arg>
+<arg>${password}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.989" endtime="20230425 16:35:33.989"/>
+</kw>
+<kw name="Delete existent category with invalid user" library="common_keywords">
+<status status="NOT RUN" starttime="20230425 16:35:33.989" endtime="20230425 16:35:33.989"/>
+</kw>
+<kw name="Verify response returns an error message" library="categories_crud_with_errors">
+<arg>${error_user_delete}</arg>
+<status status="NOT RUN" starttime="20230425 16:35:33.989" endtime="20230425 16:35:33.989"/>
+</kw>
+<kw name="Teardown Testcase without category" type="TEARDOWN">
+<kw name="Delete created user" library="keywords">
+<arg>${admin_session}</arg>
+<arg>${response_user}</arg>
+<msg timestamp="20230425 16:35:33.992" level="FAIL">Variable '${response_user}' not found.</msg>
+<status status="FAIL" starttime="20230425 16:35:33.990" endtime="20230425 16:35:33.992"/>
+</kw>
+<status status="FAIL" starttime="20230425 16:35:33.990" endtime="20230425 16:35:33.992">Variable '${response_user}' not found.</status>
+</kw>
+<tag>DELETE</tag>
+<tag>INTEGRATION</tag>
+<tag>USERS_CATEGORIES</tag>
+<status status="FAIL" starttime="20230425 16:35:33.981" endtime="20230425 16:35:33.992">Expected &lt;201&gt; to be equal to &lt;403&gt;, but was not.
+
+Also teardown failed:
+Variable '${response_user}' not found.</status>
+</test>
+<status status="FAIL" starttime="20230425 16:35:29.984" endtime="20230425 16:35:33.993"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="15" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="5" skip="0">CREATE</stat>
+<stat pass="0" fail="5" skip="0">DELETE</stat>
+<stat pass="0" fail="15" skip="0">INTEGRATION</stat>
+<stat pass="0" fail="5" skip="0">UPDATE</stat>
+<stat pass="0" fail="15" skip="0">USERS_CATEGORIES</stat>
+</tag>
+<suite>
+<stat pass="0" fail="15" skip="0" id="s1" name="Tb110 E2E Users Categories">Tb110 E2E Users Categories</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

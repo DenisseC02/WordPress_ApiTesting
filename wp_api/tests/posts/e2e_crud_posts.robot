@@ -4,7 +4,7 @@ Resource        wp_api/keywords/posts/update.robot
 Resource    ../../keywords/posts/crud.robot
 Variables       wp_api/resources/data/bodies/posts.py
 Test Setup      Create Session and params
-Force Tags    POSTS    POSTS_CRUD
+Force Tags    SMOKE    POSTS    POSTS_CRUD
 
 *** Variables ***
 ${end_point_posts}      posts

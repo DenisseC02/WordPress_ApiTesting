@@ -38,4 +38,3 @@ path_list_schema = 'wp_api/resources/data/schemas/pages/list_page.json'
 path_create_schema = 'wp_api/resources/data/schemas/pages/create_page.json'
 path_delete_schema = 'wp_api/resources/data/schemas/pages/delete_page.json'
 path_update_schema = 'wp_api/resources/data/schemas/pages/update_page.json'
-

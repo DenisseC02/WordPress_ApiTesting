@@ -18,3 +18,11 @@ Create Block with "${type}"
     verify_schema    ${wrong_status_schema}    ${response}
     ${value}    get_key_value    ${response}    code
     Verify Equal Ignore    ${value}    rest_invalid_param
+
+Create Block Error
+    [Arguments]    ${body_create}    ${status_code}
+    ${url}    get_url    path=${end_point}
+    ${response}    custom_post    ${session}    ${url}    ${params}    ${body_create}    ${status_code}
+    log     ${response}
+    ${Error}    get_key_value    ${response}    code
+    Verify Equal Ignore    ${Error}    rest_cannot_create

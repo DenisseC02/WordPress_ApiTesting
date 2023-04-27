@@ -75,7 +75,7 @@ create_without_role_user = {
 update_user = {
     'password': f'updated_{password}',
     'email': f'updated_{email}',
-    'role': f'{role}',
+    'roles': f'{role}',
     'first_name': f'updated_{name}',
     'last_name': f'updated_{lastname}'
     }

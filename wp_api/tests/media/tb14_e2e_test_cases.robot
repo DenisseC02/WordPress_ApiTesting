@@ -19,6 +19,7 @@ Verify that a pdf document bigger than 2MB can not be uploaded.
     [Tags]    smoke    known
     Upload PDF document > 2MB
     
+    
 
 Verify that is possible to add ALT TEXT to an existing image.
     [Tags]    update
