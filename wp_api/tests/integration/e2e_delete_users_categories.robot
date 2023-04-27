@@ -3,8 +3,6 @@ Variables    wp_api/resources/data/bodies/users.py
 Variables    wp_api/resources/data/bodies/category.py
 Library    wp_api.resources.data.bodies.category_body_generator.CategoryBodyGenerator
 Resource    wp_api/resources/imports.robot
-Resource    ../../keywords/categories/categories_crud.robot
-Resource    ../../keywords/categories/categories_crud_with_errors.robot
 Resource    wp_api/keywords/users/keywords.robot
 Resource    wp_api/keywords/pages/crud.robot
 Resource    wp_api/keywords/categories/common_keywords.robot
