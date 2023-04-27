@@ -7,7 +7,7 @@ class UrlAssembler:
     def get_url(self, **kwargs):
         '''Returns the URL'''
         base_url = getenv('HOST')
-        end_point = getenv('END_POINT')
+        end_point = getenv('END_POINT_PATH')
         port = getenv('PORT')
         url = '%s:%s/%s' % (base_url, port, end_point)
         for extra_path in kwargs:
