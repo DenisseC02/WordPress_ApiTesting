@@ -18,60 +18,21 @@ pipeline {
         sh 'pip install -r requirements.txt --no-cache'
       }
     }
-    // stage('Code Inspection') {
-    //   environment {
-    //     SONAR_TOKEN = credentials('SONAR_TOKEN')
-    //   }
-    //   agent { 
-    //     docker {  image 'danisku/sonarqube:1.3' 
-    //               args '--entrypoint=""' 
-    //     }
-    //   }
-    //   steps {
-    //     withSonarQubeEnv('SonarQube') {
-    //       sh '~/sonar-scanner/bin/sonar-scanner \
-    //             -Dsonar.organization=at19org \
-    //             -Dsonar.projectKey=at19org_devops \
-    //             -Dsonar.sources=. \
-    //             -Dsonar.branch.name=${BRANCH_NAME} \
-    //             -Dsonar.host.url=https://sonarcloud.io \
-    //             -Dsonar.language=python'
-    //     }
-    //   }
-    //   post {
-    //       always {
-    //         archiveArtifacts artifacts: '.scannerwork/report-task.txt', fingerprint: true
-    //       }
-    //       success {
-    //         sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: passed"'
-    //       }
-    //       failure {
-    //         sh 'STAGE_INFO_FOR_MAIL="<br>${STAGE_INFO_FOR_MAIL}<br>Stage: Test - status: failed"'
-    //       }
-    //   }
-    // }
-    // stage("Quality Gate") {
-    //   steps {
-    //     timeout(time: 5, unit: 'MINUTES') {
-    //       waitForQualityGate abortPipeline: true
-    //     }
-    //   }
-    // } 
     stage('Smoke Testing') {
       steps {
             script {
                 load "/var/jenkins_home/envfile.groovy"
             }
-            sh 'echo $PYTHONPATH'
-            sh 'robot -d wp_api/reports --loglevel TRACE -i smoke wp_api/tests'
-      }
+            sh 'if [ ! -d "wp_api/reports/smoke" ]; then mkdir -p wp_api/reports/smoke; fi'
+            sh 'robot -d wp_api/reports/smoke --loglevel TRACE -i smoke wp_api/tests'
+    }
         post {
             always {
-                archiveArtifacts artifacts: 'wp_api/reports/log.html', fingerprint: true
-                archiveArtifacts artifacts: 'wp_api/reports/report.html', fingerprint: true
-                archiveArtifacts artifacts: 'wp_api/reports/output.xml', fingerprint: true
-                sh 'robotmetrics -I wp_api/reports'
 
+                archiveArtifacts artifacts: 'wp_api/reports/smoke/log.html', fingerprint: true
+                archiveArtifacts artifacts: 'wp_api/reports/smoke/report.html', fingerprint: true
+                archiveArtifacts artifacts: 'wp_api/reports/smoke/output.xml', fingerprint: true
+                sh 'robotmetrics -I wp_api/reports/smoke'
             }
         }
     }
